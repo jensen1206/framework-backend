@@ -1,0 +1,16 @@
+    {% if footer is defined and footer %}
+    <footer class="footer">
+        {% set builder = footer %}
+        {% if footerSettings is defined and footerSettings %}
+           {% set settings = footerSettings %}
+        {% endif %}
+        {{ include('public/builder/Core/builder-core.html.twig') }}
+    </footer>
+    {% else %}
+    <footer class="footer bg-body-tertiary mt-auto py-3 ">
+        <div class="container text-center">
+            <span class="text-muted">{{ ''|appSettings.site_name }} &copy; {{ "now"|date("Y") }}</span>
+        </div>
+    </footer>
+    {% endif %}
+

@@ -1,0 +1,370 @@
+{% set route_name = app.request.attributes.get('_route') %}
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="check2" viewBox="0 0 16 16">
+        <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+    </symbol>
+    <symbol id="circle-half" viewBox="0 0 16 16">
+        <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+    </symbol>
+    <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+        <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+    </symbol>
+    <symbol id="sun-fill" viewBox="0 0 16 16">
+        <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+    </symbol>
+    <symbol id="lightbulb-fill" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13h-5a.5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm3 8.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1-.5-.5z"/>
+    </symbol>
+    <symbol id="bi-flower2" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M8 16a4 4 0 0 0 4-4 4 4 0 0 0 0-8 4 4 0 0 0-8 0 4 4 0 1 0 0 8 4 4 0 0 0 4 4zm3-12c0 .073-.01.155-.03.247-.544.241-1.091.638-1.598 1.084A2.987 2.987 0 0 0 8 5c-.494 0-.96.12-1.372.331-.507-.446-1.054-.843-1.597-1.084A1.117 1.117 0 0 1 5 4a3 3 0 0 1 6 0zm-.812 6.052A2.99 2.99 0 0 0 11 8a2.99 2.99 0 0 0-.812-2.052c.215-.18.432-.346.647-.487C11.34 5.131 11.732 5 12 5a3 3 0 1 1 0 6c-.268 0-.66-.13-1.165-.461a6.833 6.833 0 0 1-.647-.487zm-3.56.617a3.001 3.001 0 0 0 2.744 0c.507.446 1.054.842 1.598 1.084.02.091.03.174.03.247a3 3 0 1 1-6 0c0-.073.01-.155.03-.247.544-.242 1.091-.638 1.598-1.084zm-.816-4.721A2.99 2.99 0 0 0 5 8c0 .794.308 1.516.812 2.052a6.83 6.83 0 0 1-.647.487C4.66 10.869 4.268 11 4 11a3 3 0 0 1 0-6c.268 0 .66.13 1.165.461.215.141.432.306.647.487zM8 9a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+    </symbol>
+</svg>
+
+<nav id="nav-main-public-menu" class="navbar navbar-expand-lg border-bottom bg-body-tertiary py-3 fixed-top">
+    <div class="container-fluid menu-container">
+        <div id="menu-toggle-2" class="d-md-block me-1 d-none">
+            <span class="toggle-icon-sidebar"></span>
+        </div>
+        <button id="menu-toggle" class="navbar-toggler me-2 no-blur d-block d-md-none">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="flex-grow-1 ms-2">
+            <a class="navbar-brand"
+               href="{{ path('app_public_index') }}">
+                {{ ''|appSettings.site_name }}
+            </a>
+            {% if is_granted('ROLE_SUPER_ADMIN') %}
+                <small class="d-block fw-semibold text-green">{{ 'SU-Admin'|trans }} </small>
+            {% else %}
+                <small class="d-block">{{ app.user.email }} </small>
+            {% endif %}
+        </div>
+        {% if is_granted('ROLE_PREVIOUS_ADMIN') %}
+            <div>
+                {% set referer = app.request.headers.get('referer')|default('/') %}
+                <a class="green-link pe-2" href="{{ path('app_dashboard') }}?_switch_user=_exit"><i class="bi bi-person me-1"></i>
+                    {{ 'Switch Admin'|trans }}
+                </a>
+            </div>
+        {% endif %}
+        <ul class="navbar-nav flex-row align-items-center justify-content-start mt-md-0 mt-3">
+            {% if is_granted('MANAGE_ACTIVITY', 'queue'|userAccount) %}
+                {% set activityLog = 'queue'|activityLog %}
+                {% set activityCount = 'queue'|activityCount %}
+                {% if activityCount > 5 %}
+                    {% set activityCount = '5+' %}
+                {% endif %}
+                <li class="nav-item dropdown no-arrow me-1">
+                    <a title="{{ 'system.Activity Log'|trans }}"
+                       class="nav-link dropdown-toggle dropdown-alert " href="#" id="messagesActivityDropdown"
+                       role="button"
+                       data-bs-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <i class="{% if activityCount < 1 %}text-secondary{% endif %}  bi bi-activity"></i>
+                        <span id="new-activity"
+                              class="badge border {% if activityCount > 0 %}badge-danger text-light {% else %}text-secondary{% endif %} border badge-counter">{{ activityCount }} </span>
+                    </a>
+                    <div class="dropdown-list pb-0 overflow-hidden position-absolute dropdown-menu dropdown-menu-end center-drop- shadow animated--grow-in"
+                         aria-labelledby="messagesActivityDropdown">
+                        <div class="dropdown-header text-center fw-semibold bg-body-tertiary">
+                            <i class="bi-activity me-1"></i>
+                            {{ 'system.Activities'|trans }}
+                        </div>
+                        <div id="messageCenterActivity" class="send-messages text-center">
+                            {% if activityCount > 0 %}
+                                {% for a in activityLog %}
+                                    <div class="top-menu-btn text-start text-truncate">
+                                        <a href="{{ path('dashboard_show_activity', {'id': a.id, 'channel': 'queue'}) }}"
+                                           class="d-flex text-decoration-none text-reset justify-content-center align-items-center">
+                                            <i class="bi bi-activity"></i>
+                                            <div class="d-flex flex-column w-100 justify-content-center">
+                                                <div style="min-width: 12rem" class="text-wrap lh-12">{{ a.message }}</div>
+                                                <small class="d-block small-lg mt-1 text-muted">{{ a.createdAt|date('d.m.Y H:i:s') }}</small>
+                                            </div>
+                                        </a>
+                                    </div>
+                                {% endfor %}
+                            {% else %}
+                                <p class="py-2 px-2 text-nowrap mb-0">{{ 'system.no new activities'|trans }}</p>
+                            {% endif %}
+                        </div>
+                        <a class="dropdown-item bg-body-tertiary py-2 text-center small text-body"
+                           href="{{ path('dashboard_activity', {'channel': 'queue'}) }}">
+                            {{ 'system.All activities'|trans }}
+                        </a>
+                    </div>
+                </li>
+            {% endif %}
+            {% if is_granted('MANAGE_REGISTRATION', ''|userAccount) %}
+                {% set registerLog = 'register'|activityLog %}
+                {% set registerCount = 'register'|activityCount %}
+                {% if registerCount > 5 %}
+                    {% set registerCount = '5+' %}
+                {% endif %}
+                <li class="nav-item dropdown no-arrow me-1">
+                    <a title="{{ 'system.new registration'|trans }}"
+                       class="nav-link dropdown-toggle dropdown-alert " href="#" id="messagesDropdownNewRegister"
+                       role="button"
+                       data-bs-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <i class="{% if registerCount < 1 %}text-secondary{% endif %} bi bi-person-fill-up"></i>
+                        <span id="new-register"
+                              class="badge border {% if registerCount > 0 %}badge-danger text-light {% else %}text-secondary{% endif %} badge-counter">{{ registerCount }} </span>
+                    </a>
+                    <div class="dropdown-list pb-0 overflow-hidden position-absolute dropdown-menu dropdown-menu-end center-drop- shadow animated--grow-in"
+                         aria-labelledby="messagesDropdownNewRegister">
+                        <div class="dropdown-header text-center fw-semibold bg-body-tertiary">
+                            {{ 'system.Registration'|trans }}
+                        </div>
+                        <div id="messageCenterNewRegister" class="send-messages text-center">
+                            {% if registerCount > 0 %}
+                                {% for a in registerLog %}
+                                    <div class="top-menu-btn text-start text-truncate">
+                                        <a href="{{ path('dashboard_show_activity', {'id': a.id,'channel':'register'}) }}"
+                                           class="d-flex text-decoration-none text-reset justify-content-center align-items-center">
+                                            <i class="bi bi-person-fill-up"></i>
+                                            <div class="d-flex flex-column w-100 justify-content-center">
+                                                <div style="min-width: 12rem" class="text-wrap lh-12">{{ a.message }}</div>
+                                                <small class="d-block small-lg mt-1 text-muted">{{ a.createdAt|date('d.m.Y H:i:s') }}</small>
+                                            </div>
+                                        </a>
+                                    </div>
+                                {% endfor %}
+                            {% else %}
+                            <p class="p-3 text-nowrap mb-0">
+                                {{ 'system.No new registrations'|trans }}
+                            </p>
+                            {% endif %}
+                        </div>
+                        <a class="dropdown-item bg-body-tertiary py-2 text-center small text-body"
+                           href="{{ path('dashboard_activity', {'channel': 'register'}) }}">
+                            {{ 'system.all Registrations'|trans }}
+                        </a>
+                    </div>
+                </li>
+            {% endif %}
+            {% if is_granted('MANAGE_ACTIVATION', ''|userAccount) %}
+                {% set validateCount = ''|mustValidatedCount %}
+                {% set mustValidatedUser = '5'|mustValidated %}
+                {% if validateCount > 5 %}
+                    {% set validateCount = '5+' %}
+                {% endif %}
+
+                <li class="nav-item dropdown no-arrow me-1">
+                    <a title="{{ 'system.manual activation'|trans }}"
+                       class="nav-link dropdown-toggle dropdown-alert" href="#" id="messagesDropdownManuel"
+                       role="button"
+                       data-bs-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <i class="{% if validateCount < 1 %}text-secondary{% endif %} bi bi-person-fill-gear"></i>
+                        <span id="new-validate"
+                              class="badge border {% if validateCount > 0 %}badge-danger text-light {% else %}text-secondary{% endif %}  badge-counter"> {{ validateCount }} </span>
+                    </a>
+                    <div class="dropdown-list pb-0 overflow-hidden position-absolute dropdown-menu dropdown-menu-end center-drop- shadow animated--grow-in"
+                         aria-labelledby="messagesDropdownManuel">
+                        <div class="dropdown-header text-center fw-semibold bg-body-tertiary">
+                            {% if validateCount > 0 %}
+                                <p class="px-2 text-nowrap mb-0">{{ 'system.Activate registrations manually'|trans }}</p>
+                            {% else %}
+                                <p class="px-2 text-nowrap mb-0">{{ 'system.No new registrations'|trans }}</p>
+                            {% endif %}
+                        </div>
+                        {% if validateCount > 0 %}
+                            {% for v in mustValidatedUser %}
+                                <div class="top-menu-btn text-start text-truncate">
+                                    <a href="{{ path('dashboard_validate_user') }}"
+                                       class="d-flex text-decoration-none text-reset justify-content-center align-items-center">
+                                        <i class="bi bi-person-plus"></i>
+                                        <div class="d-flex flex-column w-100 justify-content-center">
+                                            <div class="text-truncate lh-1">{{ v.accountHolder.email }}</div>
+                                            <small class="d-block small-lg mt-1 text-muted">{{ v.createdAt|date('d.m.Y H:i:s') }}</small>
+                                        </div>
+                                    </a>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </li>
+            {% endif %}
+            {% if is_granted('MANAGE_EMAIL', ''|userAccount) %}
+                {% set emailCount = ''|emailCount %}
+                {% if emailCount > 5 %}
+                    {% set emailCount = '5+' %}
+                {% endif %}
+                <li class="nav-item dropdown no-arrow me-1">
+                    <a title="{{ 'system.Sent emails'|trans }}"
+                       class="nav-link dropdown-toggle dropdown-alert " href="#" id="messagesDropdown" role="button"
+                       data-bs-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <i class="{% if emailCount < 1 %}text-secondary{% endif %} bi bi-envelope-fill"></i>
+                        <span id="email-counter"
+                              class="badge border {% if emailCount > 0 %}badge-danger text-light{% else %}text-secondary{% endif %} badge-counter"> {{ emailCount }} </span>
+                    </a>
+                    <div class="dropdown-list pb-0 overflow-hidden position-absolute dropdown-menu dropdown-menu-end center-drop- shadow animated--grow-in"
+                         aria-labelledby="messagesDropdown">
+                        <div class="dropdown-header text-center fw-semibold bg-body-tertiary">
+                            {{ 'system.Sent emails'|trans }}
+                        </div>
+                        {% if ''|emailCount > 0 %}
+                            {% for s in '5'|sentEmails %}
+                                <div class="top-menu-btn text-start text-truncate">
+                                    <a href="{{ path('dashboard_show_email_sent', {'id': s.id}) }}"
+                                       class="d-flex text-decoration-none text-reset justify-content-center align-items-center">
+                                        <i class="bi bi-envelope-paper"></i>
+                                        <div class="d-flex flex-column w-100 justify-content-center">
+                                            <small class="d-block lh-1 small-lg-">
+                                                {{ 'email.To'|trans }}: {{ s.sentTo }}
+                                                <span class="fw-lighter small-lg">
+                                                     ( {{ s.createdAt|date('d.m.Y H:i:s') }} )
+                                                     </span>
+                                            </small>
+                                            <div class="text-truncate"> {{ s.emailSubject }}</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <div id="messageCenterEmail" class="send-messages text-center">
+                                <p class="py-2 mb-0">{{ 'system.No new e-mails'|trans }}</p>
+                            </div>
+                        {% endif %}
+                        <a class="dropdown-item bg-body-tertiary py-2 text-center small text-body"
+                           href="{{ path('dashboard_sent_email') }}">
+                            {{ 'system.Show all emails'|trans }}
+                        </a>
+                    </div>
+                </li>
+            {% endif %}
+            {# Theme Switcher #}
+            <li class="nav-item dropdown no-arrow me-1">
+                <a id="dropDownDark" class="nav-link dropdown-toggle" href="#" role="button"
+                   data-bs-toggle="dropdown"
+                   aria-expanded="false">
+                    <svg width="16" height="16" class="bi my-1 theme-icon-active" fill="currentColor">
+                        <use href="#circle-half" fill="currentColor"></use>
+                    </svg>
+                </a>
+                <ul class="position-absolute shadow dropdown-menu-end dropdown-menu center-drop m-0 animated--grow-in">
+                    <li>
+                        <button type="button" class="dropdown-item color-mode d-flex align-items-center"
+                                data-bs-theme-value="auto">
+                            <svg width="16" height="16" class="bi me-2 opacity-50 theme-icon"
+                                 fill="currentColor">
+                                <use href="#circle-half"></use>
+                            </svg>
+                            <span>{{ 'Auto'|trans }}</span>
+                            <svg width="16" height="16" fill="currentColor" class="bi ms-auto d-none">
+                                <use href="#check2"></use>
+                            </svg>
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="dropdown-item color-mode d-flex align-items-center"
+                                data-bs-theme-value="light">
+                            <svg width="16" height="16" class="bi me-2 opacity-50 theme-icon"
+                                 fill="currentColor">
+                                <use href="#sun-fill"></use>
+                            </svg>
+                            <span>{{ 'Light'|trans }}</span>
+                            <svg width="16" height="16" fill="currentColor" class="bi ms-auto d-none">
+                                <use href="#check2"></use>
+                            </svg>
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="dropdown-item color-mode d-flex align-items-center"
+                                data-bs-theme-value="dark">
+                            <svg width="16" height="16" class="bi me-2 opacity-50 theme-icon"
+                                 fill="currentColor">
+                                <use href="#moon-stars-fill"></use>
+                            </svg>
+                            <span>{{ 'Dark'|trans }}</span>
+                            <svg width="16" height="16" fill="currentColor" class="bi ms-auto d-none">
+                                <use href="#check2"></use>
+                            </svg>
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="dropdown-item color-mode d-flex align-items-center"
+                                data-bs-theme-value="blue">
+                            <svg width="16" height="16" class="bi me-2 opacity-50 theme-icon"
+                                 fill="currentColor">
+                                <use href="#lightbulb-fill"></use>
+                            </svg>
+                            <span>{{ 'Blue'|trans }}</span>
+                            <svg width="16" height="16" fill="currentColor" class="bi ms-auto d-none">
+                                <use href="#check2"></use>
+                            </svg>
+                        </button>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <div style="min-height: 2rem" class="vr h-100 mx-1"></div>
+            </li>
+
+            {# User Settings #}
+            <li class="nav-item dropdown mb-2 no-arrow">
+                {% if gravatar_exists(app.user.email) and not ''|userAccount.imageFilename %}
+                    <a class="nav-link py-0 dropdown-toggle" href="#" id="userDropdown" role="button"
+                       data-bs-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <div class="table-img-wrapper">
+                            {#  <img class="navbar-user-image" alt="{{ app.user.email }}"
+                                 src="{{ gravatar(app.user.email, '', '', ''|userAccount.gravatar) }}"/> #}
+                            <img title="{{ app.user.email }}" class="navbar-user-image" alt="{{ app.user.email }}"
+                                 src="{{ ''|getGravatar }}"/>
+                        </div>
+                    </a>
+                {% else %}
+                    {% if ''|userAccount.imageFilename %}
+                        <a class="nav-link py-0 dropdown-toggle" href="#" id="userDropdown" role="button"
+                           data-bs-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            <div class="table-img-wrapper">
+                                <img class="navbar-user-image"
+                                     src="{{ ''|userAccount.imagePath|imagine_filter('squared_thumbnail_small') }}"
+                                     alt="{{ app.user.email }}">
+                            </div>
+                        </a>
+                    {% else %}
+                        <a class="nav-link py-0 dropdown-toggle" href="#" id="userDropdown" role="button"
+                           data-bs-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            <i class="user-icon icon-circle gray-600 bi bi-person-workspace"></i>
+                        </a>
+                    {% endif %}
+                {% endif %}
+                <!-- Dropdown - User Information -->
+                <div class="dropdown-menu right-drop-0 shadow position-absolute dropdown-menu-end dropdown-menu m-0 animated--grow-in"
+                     aria-labelledby="userDropdown">
+                    {% if ''|userAccount.imageFilename %}
+                        <div class="top-img-container text-center p-3">
+                            <a class="img-link" data-control="single"
+                               href="{{ ''|userAccount.imagePath|imagine_filter('large_image_filter') }}">
+                                <img alt=""
+                                     src="{{ ''|userAccount.imagePath|imagine_filter('squared_thumbnail_small') }}">
+                            </a>
+                        </div>
+                    {% endif %}
+                    {% if is_granted('ACCOUNT_SHOW', ''|userAccount) %}
+                        <a class="dropdown-item {% if route_name == 'dashboard_show_account' %}active{% endif %}"
+                           href="{{ path('dashboard_show_account', {'id': ''|userAccount.id}) }}">
+                            <i class="bi bi-person-fill me-2"></i>
+                            {{ 'Profil'|trans }}
+                        </a>
+                    {% endif %}
+                    <div class="dropdown-divider"></div>
+                    <a href="{{ path('app_logout') }}" class="dropdown-item">
+                        <i class="bi bi-box-arrow-in-left me-2"></i>
+                        {{ 'Logout'|trans }}
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+

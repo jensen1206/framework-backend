@@ -1,0 +1,20 @@
+{% extends 'base-admin.html.twig' %}
+{% block title %}{% if title is defined %}{{ title }}{% else %}Web{% endif %} {{ parent() }}{% endblock %}
+ {% block navbar %}
+     {{ include('admin-navbar-top.html.twig') }}
+ {% endblock %}
+{% block body %}
+    <div id="page-content-wrapper">
+        {% if is_granted('MANAGE_ACCOUNT', ''|userAccount) %}
+            <div class="container-fluid py-3">
+                <div id="account-overview-react-app"></div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+ {% block javascripts %}
+      {{ encore_entry_script_tags('react_accounts_overview') }}
+     <script src="{{ path('javascript_account_settings') }}"></script>
+     <script src="{{ path('javascript_upload_settings') }}"></script>
+     {{ parent() }}
+ {% endblock %}

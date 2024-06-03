@@ -1,0 +1,32 @@
+{% set href ='#' %}
+{% if f.config.action == 'url' and not f.config.post_button %}
+    {% if f.config.page  %}
+        {% set href = f.config.page|pageById %}
+    {% endif %}
+{% endif %}
+{% if f.config.action == 'url' and f.config.post_button %}
+    {% set href = path('public_post', {'postCategory': post.postCategory.slug, 'slug': post.postSlug}) %}
+{% endif %}
+{% if f.config.action == 'custom' %}
+    {% set href = f.config.custom_link %}
+{% endif %}
+
+{% set btnData = '' %}
+{% if f.config.data is defined and f.config.data %}
+    {% set btnData = f.config.data %}
+{% endif %}
+
+<div id="{% if f.config.container_id %}{{ f.config.container_id }}{% else %}{{ f.id }}{% endif %}"
+     class="builder-button {{ f.config.css_class }} {% if f.config.block %}d-grid gap-2{% endif %}">
+    <a {{ btnData}} {% if f.config.blank %}target="_blank"{% endif %}
+       class="btn {{ f.config.size }} btn-{{ f.config.outline }}{{ f.config.variant }} {% if f.config.disabled %}disabled{% endif %}"
+       href="{{ href }}"
+    >
+        {% if f.config.icon is defined and f.config.icon %}
+         <i class="app-icon {{ f.config.icon }} me-1"></i>
+        {% endif %}
+        {% autoescape false %}
+            {{ f.data.input }}
+        {% endautoescape %}
+    </a>
+</div>

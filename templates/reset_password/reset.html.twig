@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'register.Register'|trans }}{% endblock %}
+ {% block navbar %}
+     {{ include('public-navbar.twig') }}
+ {% endblock %}
+{% block body %}
+    <main class="flex-shrink-0 flex-fill mt-3" style="height: max-content">
+        <div id="public-content" class="container d-flex align-items-center justify-content-center h-75">
+            <div class="col-xl-6 col-lg-8 col-12 mx-auto">
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        <div class="fs-5 py-3">{{ 'register.Reset your password'|trans }}</div>
+                    </div>
+                    <div class="card-body">
+                        {{ form_start(resetForm) }}
+                        {{ form_row(resetForm.plainPassword) }}
+                        {{ form_row(resetForm.newPwBtn) }}
+                        {{ form_end(resetForm) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+{% block footer %}
+    {{ include('public/public-footer.html.twig') }}
+{% endblock %}

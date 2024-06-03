@@ -1,0 +1,132 @@
+{% if f.images|length %}
+
+    <div data-slider="{{ f.config.slider }}" class="thumbnail-slider">
+        {% set objectPosition = '' %}
+        {% if f.config.objectPosition is defined %}
+            {% set objectPosition = f.config.objectPosition %}
+        {% endif %}
+        {% if f.config.slider_object_position is defined %}
+            {% set objectPosition = f.config.slider_object_position %}
+        {% endif %}
+        <section
+                id="{% if f.config.container_id %}{{ f.config.container_id }}{% else %}{{ f.id }}{% endif %}"
+                class="medien-slider {{ f.config.css_class }}">
+            <div class="splide carousel-splide">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        {% for i in f.images %}
+                            {% set size = f.config.size %}
+                            {% set imgSrc = '' %}
+                            {% set imgSrcFull = '' %}
+                            {% set href = '' %}
+                            {% set imgLightBox = '' %}
+                            {% set lightboxActiv = '' %}
+                            {% if i.type == 'data' %}
+                                {% set imgSrc = asset('uploads/mediathek/') %}
+                                {% set imgSrcFull = asset('uploads/mediathek/') %}
+                            {% endif %}
+                            {% if i.type == 'image' %}
+                                {% set imgSrc = i.urls[size]['url'] %}
+                                {% set imgSrcFull = i.urls['xl-large']['url'] %}
+                            {% endif %}
+
+                            {% if f.config.action == 'individual' %}
+                                {% if i.action == 'individual' %}
+                                    {% set href = i.externer_link %}
+                                {% endif %}
+                                {% if i.action == 'url' %}
+                                    {% set href = i.page|pageById %}
+                                {% endif %}
+                                {% if i.action == 'lightbox' %}
+                                    {% set lightboxActiv = 1 %}
+                                    {% if i.type == 'data' %}
+                                        {% set href = imgSrc ~ i.image %}
+                                    {% else %}
+                                        {% set href = imgSrcFull %}
+                                    {% endif %}
+                                {% endif %}
+                            {% endif %}
+                            {% if f.config.action == 'lightbox' %}
+                                {% set lightboxActiv = 1 %}
+                                {% if i.type == 'data' %}
+                                    {% set href = imgSrc ~ i.image %}
+                                {% else %}
+                                    {% set href = imgSrcFull %}
+                                {% endif %}
+                            {% endif %}
+
+                            <li  class="carousel-splide-image splide__slide">
+                                <div class="slide-wrapper">
+                                    <div class="slide-inner">
+                                        <a class="{% if lightboxActiv %}img-link{% endif %}" data-control="{% if f.config.lightboxSingle is defined and f.config.lightboxSingle or f.config.lightbox_type is defined and  f.config.lightbox_type == 'single' %}single{% else %}slide{% endif %}"
+                                           {% if href %}href="{{ href }}"{% endif %}>
+
+                                           {#  <img  style="object-position: {{ objectPosition }};" class="carousel-image" src="{{ imgSrc }}" alt="{{ i.alt }}">#}
+                                            <img style="object-position: {{ objectPosition }};" class="carousel-image" data-splide-lazy="{{ imgSrc }}" alt="{{ i.alt }}">
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-1 splide thumbnail-splide {% if f.images|length < 4 %}no-arrows{% endif %}" aria-label="Splide">
+                <div class="splide__track">
+                    <ul class="splide__list {% if f.images|length < 3 %}justify-content-center{% endif %}">
+                        {% for i in f.images %}
+                            {% set size = f.config.size %}
+                            {% set imgSrc = '' %}
+                            {% set imgSrcFull = '' %}
+                            {% set href = '' %}
+                            {% set imgLightBox = '' %}
+                            {% set lightboxActiv = '' %}
+                            {% if i.type == 'data' %}
+                                {% set imgSrc = asset('uploads/mediathek/') %}
+                                {% set imgSrcFull = asset('uploads/mediathek/') %}
+                            {% endif %}
+                            {% if i.type == 'image' %}
+                                {% set imgSrc = i.urls['thumbnail']['url'] %}
+                                {% set imgSrcFull = i.urls['xl-large']['url'] %}
+                            {% endif %}
+
+                            {% if f.config.action == 'individual' %}
+                                {% if i.action == 'individual' %}
+                                    {% set href = i.externer_link %}
+                                {% endif %}
+                                {% if i.action == 'url' %}
+                                    {% set href = i.page|pageById %}
+                                {% endif %}
+                                {% if i.action is defined and i.action == 'lightbox' %}
+                                    {% set lightboxActiv = 1 %}
+                                    {% if i.type == 'data' %}
+                                        {% set href = imgSrc ~ i.image %}
+                                    {% else %}
+                                        {% set href = imgSrcFull %}
+                                    {% endif %}
+                                {% endif %}
+                            {% endif %}
+                            {% if f.config.action == 'lightbox' %}
+                                {% set lightboxActiv = 1 %}
+                                {% if i.type == 'data' %}
+                                    {% set href = imgSrc ~ i.image %}
+                                {% else %}
+                                    {% set href = imgSrcFull %}
+                                {% endif %}
+                            {% endif %}
+                            <li  class="thumbnail-splide splide__slide">
+                                <img  class="thumbnail-image" data-splide-lazy="{{ imgSrc }}" alt="{{ i.alt }}">
+                                <div class="slide-inner h-100"></div>
+                               {# <div class="slide-wrapper h-100">
+                                    <div class="slide-inner h-100">
+                                        <img style="object-position: {{ objectPosition }};" class="thumbnail-image" data-splide-lazy="{{ imgSrc }}" alt="{{ i.alt }}">
+                                    </div>
+                                </div> #}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endif %}

@@ -1,0 +1,464 @@
+
+/*folder styles*/
+.bs-file-file.folder
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F3D7"
+	}
+}
+.bs-file-file.expanded
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F3D8"
+	}
+}
+.bs-file-file.file
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\f3c2"
+	}
+}
+.bs-file-file.wait
+{
+	background: url(../images/spinner.gif) no-repeat left top;
+}
+/*extensions and mime types*/
+.bs-file-file.ext_3gp
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F3C3"
+	}
+}
+.bs-file-file.ext_afp
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F2C7"
+	}
+}
+.bs-file-file.ext_afpa
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F2C7"
+	}
+}
+.bs-file-file.ext_asp
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F2C7"
+	}
+}
+.bs-file-file.ext_aspx
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F2C7"
+	}
+}
+.bs-file-file.ext_avi
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F3C3"
+	}
+}
+.bs-file-file.ext_bat
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F620"
+	}
+}
+.bs-file-file.ext_bmp
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F42A"
+	}
+}
+.bs-file-file.ext_c
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F2C7"
+	}
+}
+.bs-file-file.ext_cfm
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F2C7"
+	}
+}
+.bs-file-file.ext_cgi
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F2C7"
+	}
+}
+.bs-file-file.ext_com
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F620"
+	}
+}
+.bs-file-file.ext_cpp
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F2C7"
+	}
+}
+.bs-file-file.ext_css
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F742"
+	}
+}
+.bs-file-file.ext_doc, .bs-file-file.ext_docx
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F744"
+	}
+}
+.bs-file-file.ext_exe
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F620"
+	}
+}
+.bs-file-file.ext_gif
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F42A"
+	}
+}
+.bs-file-file.ext_fla
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F3C3"
+	}
+}
+.bs-file-file.ext_h
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F2C7"
+	}
+}
+.bs-file-file.ext_htm
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F749"
+	}
+}
+.bs-file-file.ext_html
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F749"
+	}
+}
+.bs-file-file.ext_jar
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F74C"
+	}
+}
+.bs-file-file.ext_jpg
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F42A"
+	}
+}
+.bs-file-file.ext_jpeg
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F42A"
+	}
+}
+.bs-file-file.ext_js
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F74C"
+	}
+}
+.bs-file-file.ext_lasso
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F2C7"
+	}
+}
+.bs-file-file.ext_log
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F3B9"
+	}
+}
+.bs-file-file.ext_m4p
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F4A2"
+	}
+}
+.bs-file-file.ext_mov
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F3C3"
+	}
+}
+.bs-file-file.ext_mp3
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F4A2"
+	}
+}
+.bs-file-file.ext_mp4
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F3C3"
+	}
+}
+.bs-file-file.ext_mpg
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F3C3"
+	}
+}
+.bs-file-file.ext_mpeg
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F3C3"
+	}
+}
+.bs-file-file.ext_ogg
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F4A2"
+	}
+}
+.bs-file-file.ext_pcx
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F42A"
+	}
+}
+
+.bs-file-file.ext_php
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F757"
+	}
+}
+.bs-file-file.ext_png
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F42A"
+	}
+}
+.bs-file-file.ext_ppt
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F75A"
+	}
+}
+.bs-file-file.ext_psd
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F75B"
+	}
+}
+.bs-file-file.ext_pl
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F43F"
+	}
+}
+.bs-file-file.ext_py
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F75C"
+	}
+}
+.bs-file-file.ext_rb
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F75E"
+	}
+}
+.bs-file-file.ext_rbx
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F75E"
+	}
+}
+.bs-file-file.ext_rhtml
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F75E"
+	}
+}
+.bs-file-file.ext_rpm
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F761"
+	}
+}
+.bs-file-file.ext_ruby
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F75E"
+	}
+}
+.bs-file-file.ext_sql
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F7F5"
+	}
+}
+.bs-file-file.ext_swf
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F3C3"
+	}
+}
+.bs-file-file.ext_tif
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F42A"
+	}
+}
+.bs-file-file.ext_tiff
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F42A"
+	}
+}
+.bs-file-file.ext_txt
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F3B9"
+	}
+}
+.bs-file-file.ext_vb
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F2C7"
+	}
+}
+.bs-file-file.ext_wav
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F4A2"
+	}
+}
+.bs-file-file.ext_wmv
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F3C3"
+	}
+}
+.bs-file-file.ext_xls, .bs-file-file.ext_csv, .bs-file-file.ext_xlsx
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F76A"
+	}
+}
+.bs-file-file.ext_xml
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F2C7"
+	}
+}
+.bs-file-file.ext_zip
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F391"
+	}
+}
+.bs-file-file.ext_xd
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F762"
+	}
+}
+.bs-file-file.ext_svg
+{
+	&:before {
+		font-family: bootstrap-icons, sans-serif;
+		content: "\F3B1"
+	}
+}
+
+.bs-file-file.ext_pdf
+{
+	&:before{
+		font-family: bootstrap-icons, sans-serif;
+		content: '\F63E';
+	}
+}
+.bs-file {
+	position: relative;
+	display: contents;
+	//width: 32px;
+	//height: 32px;
+}
+
+.bs-file-file {
+	font-style: normal;
+}
+
+.fs-media-icon {
+	font-size: 8rem;
+}

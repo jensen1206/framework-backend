@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+{% block title %}2FA Login {{ parent() }}{% endblock %}
+ {% block navbar %}
+     {{ include('public-navbar.twig') }}
+ {% endblock %}
+{% block body %}
+    <main class="flex-shrink-0 mt-3">
+        <div id="public-content" class="container">
+            <div class="col-xxl-5 col-xl-6 col-lg-8 col-12 mx-auto">
+                <div class="card shadow-sm mt-5">
+                    <div class="card-header border-top fs-5 py-3">
+                        <i class="bi bi-box-arrow-in-right me-1"></i>
+                        {{ 'login.Account is 2FA protected'|trans }}
+                    </div>
+                    <div class="card-body">
+                        <form class="form" action="{{ checkPathUrl ? checkPathUrl: path(checkPathRoute) }}"
+                              method="post">
+                            <input type="hidden" name="_target_path" value="{{ path('app_dashboard') }}"/>
+                            <p class="widget">
+                                <label for="_auth_code" class="form-label">
+                                    {{ 'login.Enter 6-digit PIN'|trans }}!</label>
+                                <input class="form-control no-blur"
+                                       aria-label="auth Code"
+                                       id="_auth_code"
+                                       type="number"
+                                       name="{{ authCodeParameterName }}"
+                                       autocomplete="one-time-code"
+                                       autofocus
+                                       inputmode="numeric"
+                                       pattern="[0-9]*"
+                                />
+                            </p>
+                            {% if displayTrustedOption %}
+                                <p class="widget"><label for="_trusted"><input id="_trusted" type="checkbox"
+                                                                               name="{{ trustedParameterName }}"/> {{ "trusted"|trans({}, 'SchebTwoFactorBundle') }}
+                                    </label></p>
+                            {% endif %}
+                            {% if isCsrfProtectionEnabled %}
+                                <input type="hidden" name="{{ csrfParameterName }}"
+                                       value="{{ csrf_token(csrfTokenId) }}">
+                            {% endif %}
+                            <p>
+                                <input class="btn btn-success-custom dark" type="submit"
+                                       value="{{ "login"|trans({}, 'SchebTwoFactorBundle') }}"/>
+                            </p>
+
+                        </form>
+                        {# The logout link gives the user a way out if they can't complete two-factor authentication #}
+                        <p class="small"><a class="text-decoration-none" href="{{ logoutPath }}">
+                                {{ "cancel"|trans({}, 'SchebTwoFactorBundle') }}
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                <div class="text-center pt-3">
+                    <a href="{{ path('app_public_index') }}" class="btn btn-link text-decoration-none px-0">
+                        <i class="bi bi-house-door me-1"></i>{{ 'Homepage'|trans }}
+                    </a>
+                    <span class="text-muted">|</span>
+                    <a href="{{ path('app_register') }}"
+                       class="btn btn-link text-decoration-none px-0">{{ 'registrierung.Register'|trans }}</a>
+                    <span class="text-muted">|</span>
+                    <a href="{{ path('app_reset_password') }}"
+                       class="btn btn-link text-decoration-none px-0">{{ 'Password forgotten'|trans }}</a>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+{% block footer %}
+    {{ include('public/public-footer.html.twig') }}
+{% endblock %}

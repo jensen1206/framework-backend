@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+{% block title %}Startseite{% endblock %}
+ {% block navbar %}
+     {{ include('public-navbar.twig') }}
+ {% endblock %}
+{% block body %}
+    <main class="flex-shrink-0 flex-fill mt-3" style="height: max-content">
+        <div id="public-content" class="container d-flex align-items-center justify-content-center h-75">
+            <div class="container">
+                <h2 class="text-center">
+                    <i style="color: orange" class="bi bi-box-arrow-right me-2"></i>
+                    {{ ''|appSettings.site_name }}
+                </h2>
+                <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-8 col-12 mt-3 mx-auto">
+                    {% for message in app.flashes('success') %}
+                       <h5 class="text-center">{{ message }}</h5>
+                    {% endfor %}
+                </div>
+                <p class="text-center mt-3">
+                    <a class="me-2" href="{{ path('app_public_index') }}">{{ 'Homepage'|trans }}</a>
+                    <a class="me-2"
+                       href="{{ path('app_login') }}">{{ 'Login'|trans }}</a>
+                </p>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+{% block footer %}
+    {{ include('public/public-footer.html.twig') }}
+{% endblock %}

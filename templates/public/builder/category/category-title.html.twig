@@ -1,0 +1,26 @@
+<{{ f.config.selector }} class="{{ f.config.css_class }}" id="{% if f.config.container_id %}{{ f.config.container_id }}{% else %}{{ f.id }}{% endif %}">
+{% set catLoop = '' %}
+
+{% if category is defined %}
+    {% set catLoop = category %}
+{% else %}
+    {% if post is defined %}
+        {% set catLoop = post.postCategory %}
+    {% endif %}
+{% endif %}
+{% if not catLoop and f.config.category is defined %}
+    {% if f.config.category|postCategory %}
+        {% set catLoop = f.config.category|postCategory %}
+    {% endif %}
+{% endif %}
+{% if catLoop %}
+    {% set href = '' %}
+    {% if f.config.link_category is defined and f.config.link_category %}
+        {% set href = path('public_post', {'postCategory':app.request.server.get('APP_POST_CATEGORY_NAME'), 'slug': catLoop.slug}) %}
+    {% endif %}
+    <a {% if f.config.new_tab is defined and f.config.new_tab %}target="_blank" {% endif %}
+       {% if href %}href="{{ href }}{% endif %}">
+        {% if f.config.word_limit is defined and f.config.word_limit %}{{ catLoop.title|u.truncate(f.config.word_limit, '...', false) }}{% else %}{{ catLoop.title }}{% endif %}</a>
+
+{% endif %}
+</{{ f.config.selector }}>

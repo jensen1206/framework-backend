@@ -1,0 +1,56 @@
+framework:
+  messenger:
+    failure_transport: failed
+    default_bus: command.bus
+
+    buses:
+      command.bus:
+        middleware:
+          - 'App\Messenger\RequestIdMiddleware'
+
+      event.bus: ~
+    transports:
+      # https://symfony.com/doc/current/messenger.html#transport-configuration
+      liip_imagine: '%env(MESSENGER_TRANSPORT_DSN)%'
+      async:
+        dsn: '%env(MESSENGER_TRANSPORT_DSN)%'
+        # options:
+        #     use_notify: true
+        #     check_delayed_interval: 60000
+        retry_strategy:
+          service: null
+          max_retries: 3
+          delay: 1000
+          multiplier: 2
+          max_delay: 0
+          #max_retries: 3
+          #multiplier: 2
+      failed: 'doctrine://default?queue_name=failed'
+      sync: 'sync://'
+
+    routing:
+      'App\Message\Command\SaveEmail': sync
+      'App\Message\Event\EmailSentEvent': async
+      'App\Message\Command\SavePublicEmail': sync
+
+      'App\Message\Event\MakeAppBackupEvent': async
+      'App\Message\Event\EmailPublicSentEvent': async
+      'App\Message\Event\EmailPublicSchedulerEvent': async
+      #'App\Message\Command\MakeBackup': sync
+      #'App\Message\Event\BackupEvent': async
+
+      'Liip\ImagineBundle\Message\WarmupCache': liip_imagine
+    #Symfony\Component\Mailer\Messenger\SendEmailMessage: async
+    #Symfony\Component\Notifier\Message\ChatMessage: async
+    #Symfony\Component\Notifier\Message\SmsMessage: async
+
+    # Route your messages to the transports
+    # 'App\Message\YourMessage': async
+
+when@test:
+  framework:
+    messenger:
+      transports:
+        # replace with your transport name here (e.g., my_transport: 'in-memory://')
+        # For more Messenger testing tools, see https://github.com/zenstruck/messenger-test
+        async: 'in-memory://'

@@ -1,0 +1,33 @@
+<div class="{% if f.config.wrapper_css %}{{ f.config.wrapper_css }}{% else %}custom-fields{% endif %}"
+     id="{% if f.config.container_id %}{{ f.config.container_id }}{% else %}{{ f.id }}{% endif %}">
+    {# {{ f.config.css_class }} #}
+    {% set customFields = f.config.fields|customFields %}
+    {% for c in customFields %}
+        {% set target = false %}
+        {% set url = '' %}
+        {% set isUrl = false %}
+        {% set urlTxt = c.value %}
+        {% if c.link_type == 'url' or c.link_type == 'mailto' or c.link_type == 'tel' %}
+            {% set isUrl = true %}
+            {% if c.link_type == 'url' %}
+                {% if c.new_tab is defined and c.new_tab %}
+                    {% set target = true %}
+                {% endif %}
+                {% if c.show_url == 'url' %}
+                    {% set urlTxt = c.value %}
+                {% else %}
+                    {% set urlTxt = c.designation %}
+                {% endif %}
+                {% set url = c.value %}
+            {% else %}
+                {% if c.link_type == 'mailto' %}
+                    {% set url = 'mailto:'~c.value %}
+                {% endif %}
+                {% if c.link_type == 'tel' %}
+                    {% set url = 'tel:'~c.tel_link %}
+                {% endif %}
+            {% endif %}
+        {% endif %}
+        <a {% if c.extra_css %}class="{{ c.extra_cs }}"{% endif %} {% if target%}target="_blank"{%endif %} {% if isUrl %}href="{{ url }}"{% endif %}>{% if c.icon %}<i class="{{ c.icon }} {{ c.icon_css }} me-2"></i> {% endif %}{{ urlTxt }}</a>
+    {% endfor %}
+ </div>

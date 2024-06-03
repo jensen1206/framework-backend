@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block title %}{% if title is defined %}{{ title }}{% else %}{{ 'app.Data protection'|trans }}{% endif %} {{ parent() }}{% endblock %}
+ {% block navbar %}
+     {{ include('public-navbar.twig') }}
+ {% endblock %}
+{% block body %}
+    <main class="flex-shrink-0 flex-fill mt-3" style="height: max-content">
+        <div id="public-content" class="container d-flex align-items-center justify-content-center h-75">
+            <div class="container">
+                <h2 class="text-center">
+                    <i style="color: orange" class="bi bi-house-door me-2"></i>
+                    {{ ''|appSettings.site_name }}
+                </h2>
+                <p class="text-center mt-2">
+                    {% if title is defined %}{{ title }}{% else %}{{ 'app.Data protection'|trans }}{% endif %}
+                </p>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+{% block footer %}
+    {{ include('public/public-footer.html.twig') }}
+{% endblock %}

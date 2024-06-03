@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 https://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+    {% for d in data %}
+        <url>
+            <loc>{{ d.loc }}
+                <lastmod>{{ d.lastmod }}</lastmod>
+                <changefreq>{{ d.changefreq }}</changefreq>
+                {% if d.priority is defined and d.priority  %}
+                    <priority>{{ d.priority }}</priority>
+                {% endif %}
+                {% if d.image %}
+                    <image:image>
+                    <image:loc>{{ d.image }}</image:loc>
+                        {% if d.image_title %}
+                            <image:title>{{ d.image_title }}</image:title>
+                        {% endif %}
+                    </image:image>
+                {% endif %}
+                {% if d.gallery %}
+                    {% for g in d.gallery %}
+                        <image:image>
+                            <image:loc>{{ g.image }}</image:loc>
+                            {% if g.image_title %}
+                                <image:title>{{ g.image_title }}</image:title>
+                            {% endif %}
+                        </image:image>
+                    {% endfor %}
+                {% endif %}
+            </loc>
+        </url>
+    {% endfor %}
+</urlset>

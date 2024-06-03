@@ -1,0 +1,13 @@
+{% extends 'base-install.html.twig' %}
+
+{% block title %}{{ parent()}} {{ title }}{% endblock %}
+
+{% block body %}
+   <div id="install-react-app"></div>
+{% endblock %}
+
+ {% block javascripts %}
+     <script src="{{ path('javascript_install_settings') }}"></script>
+     {{ encore_entry_script_tags('react_app_install') }}
+     {{ parent() }}
+ {% endblock %}

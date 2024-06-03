@@ -1,0 +1,21 @@
+{% extends 'base-admin.html.twig' %}
+{% block title %}{% if title is defined %}{{ title }}{% else %}Web{% endif %} {{ parent() }}{% endblock %}
+ {% block navbar %}
+     {{ include('admin-navbar-top.html.twig') }}
+ {% endblock %}
+{% block body %}
+    <div id="page-content-wrapper">
+
+        {% if is_granted('ROLE_ADMIN') %}
+            <div class="container-fluid py-3">
+                <div id="system-settings-app"></div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+ {% block javascripts %}
+     {{ encore_entry_script_tags('react_system_settings') }}
+     <script src="{{ path('javascript_system_settings') }}"></script>
+     <script src="{{ path('javascript_filemanager_settings') }}"></script>
+     {{ parent() }}
+ {% endblock %}

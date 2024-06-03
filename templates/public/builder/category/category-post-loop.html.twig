@@ -1,0 +1,110 @@
+{% if postLoop is defined and postLoop %}
+    {% set xxlGutter = '2' %}
+    {% set xxlColumn = '3' %}
+    {% if postLoop.settings.xxlGutter is defined and postLoop.settings.xxlGutter %}
+        {% set xxlGutter = postLoop.settings.xxlGutter %}
+    {% endif %}
+    {% if postLoop.settings.xxlColumn is defined and postLoop.settings.xxlColumn %}
+        {% set xxlColumn = postLoop.settings.xxlColumn %}
+    {% endif %}
+
+    {% set xlGutter = '2' %}
+    {% set xlColumn = '3' %}
+    {% if postLoop.settings.xlGutter is defined and postLoop.settings.xlGutter %}
+        {% set xlGutter = postLoop.settings.xlGutter %}
+    {% endif %}
+    {% if postLoop.settings.xlColumn is defined and postLoop.settings.xlColumn %}
+        {% set xlColumn = postLoop.settings.xlColumn %}
+    {% endif %}
+
+    {% set lgGutter = '2' %}
+    {% set lgColumn = '2' %}
+    {% if postLoop.settings.lgGutter is defined and postLoop.settings.lgGutter %}
+        {% set lgGutter = postLoop.settings.lgGutter %}
+    {% endif %}
+    {% if postLoop.settings.lgColumn is defined and postLoop.settings.lgColumn %}
+        {% set lgColumn = postLoop.settings.lgColumn %}
+    {% endif %}
+
+    {% set mdGutter = '2' %}
+    {% set mdColumn = '2' %}
+    {% if postLoop.settings.mdGutter is defined and postLoop.settings.mdGutter %}
+        {% set mdGutter = postLoop.settings.mdGutter %}
+    {% endif %}
+    {% if postLoop.settings.mdColumn is defined and postLoop.settings.mdColumn %}
+        {% set mdColumn = postLoop.settings.mdColumn %}
+    {% endif %}
+
+    {% set smGutter = '2' %}
+    {% set smColumn = '2' %}
+    {% if postLoop.settings.smGutter is defined and postLoop.settings.smGutter %}
+        {% set mdGutter = postLoop.settings.smGutter %}
+    {% endif %}
+    {% if postLoop.settings.smColumn is defined and postLoop.settings.smColumn %}
+        {% set smColumn = postLoop.settings.smColumn %}
+    {% endif %}
+
+    {% set xsGutter = '2' %}
+    {% set xsColumn = '1' %}
+    {% if postLoop.settings.xsGutter is defined and postLoop.settings.xsGutter %}
+        {% set xsGutter = postLoop.settings.xsGutter %}
+    {% endif %}
+    {% if postLoop.settings.xsColumn is defined and postLoop.settings.xsColumn %}
+        {% set xsColumn = postLoop.settings.xsColumn %}
+    {% endif %}
+
+    {% set loop_extra_css = '' %}
+    {% if postLoop.settings.loop_extra_css is defined and postLoop.settings.loop_extra_css %}
+        {% set loop_extra_css = postLoop.settings.loop_extra_css %}
+    {% endif %}
+
+    {% set loop_col_extra_css = '' %}
+    {% if postLoop.settings.loop_col_extra_css is defined and postLoop.settings.loop_col_extra_css %}
+        {% set loop_col_extra_css = postLoop.settings.loop_col_extra_css %}
+    {% endif %}
+
+    {% set loop_col_inner_extra_css = '' %}
+    {% if postLoop.settings.loop_col_inner_extra_css is defined and postLoop.settings.loop_col_inner_extra_css %}
+        {% set loop_col_inner_extra_css = postLoop.settings.loop_col_inner_extra_css %}
+    {% endif %}
+
+    <div id="{% if f.config.container_id %}{{ f.config.container_id }}{% else %}{{ f.id }}{% endif %}"
+         class="{{ f.config.css_class }} position-relative">
+        <div class="post-loop-{{ loop.index }} {{ loop_extra_css }} row row-cols-{{ xsColumn }} g-{{ xsGutter }} row-cols-xxl-{{ xxlColumn }} g-xxl-{{ xxlGutter }} row-cols-xl-{{ xlColumn }} g-xl-{{ xlGutter }} row-cols-lg-{{ lgColumn }} g-lg-{{ lgGutter }} row-cols-md-{{ mdColumn }} g-md-{{ mdGutter }} row-cols-sm-{{ smColumn }} g-sm-{{ smGutter }}">
+            {% set loadCat = [] %}
+            {% if f.config.categories %}
+                {% set loadCat = f.config.categories %}
+            {% else %}
+                {% if category is defined and category.id %}
+                    {% set loadCat = {'0': {'id': category.id} } %}
+                {% endif %}
+            {% endif %}
+
+            {% set categoryLoop = loadCat|categoryLoop(f.config) %}
+
+            {% for post in categoryLoop %}
+                {{ include('public/builder/category/category-loop-column.html.twig') }}
+            {% endfor %}
+        </div>
+
+        {% set page = '' %}
+        {% if f.config.lazy_load_active and f.config.load_more_type == 'lazy' and builder_id is defined %}
+            {% if data_page is defined %}
+                {% set page = data_page %}
+            {% else %}
+                {% set page = 1 %}
+            {% endif %}
+            <div {% if page == 1 %}data-controller="post-loop" {% endif %} data-loop="{{ loop.index }}"
+                 data-builder="{{ builder_id }}" data-grid="{{ g.id }}" data-form="{{ f.id }}" data-page="{{ page }}"
+                 class="position-absolute load-more-posts bottom-0 next-page"></div>
+        {% endif %}
+        {% if f.config.lazy_load_active and f.config.load_more_type == 'button' and builder_id is defined %}
+            <div class="load-more-btn">
+                <button data-controller="post-loop" data-page="1" data-loop="{{ loop.index }}" data-builder="{{ builder_id }}" data-grid="{{ g.id }}" data-form="{{ f.id }}"
+                        class="mt-3 load-post-btn loop-button-{{ loop.index }} btn btn-secondary {{ f.config.load_more_css }}">
+                    {{ f.config.load_more_txt }}
+                </button>
+            </div>
+        {% endif %}
+    </div>
+{% endif %}

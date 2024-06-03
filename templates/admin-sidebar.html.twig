@@ -1,0 +1,325 @@
+{% set route_name = app.request.attributes.get('_route') %}
+<div id="sidebar-wrapper" class="border-end">
+    <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
+        <li class="submenu custom-item {% if route_name == 'admin_index' %}current{% endif %}">
+            <a href="{{ path('app_dashboard') }}">
+                <i class="bi bi-house-door"></i>
+                <span> {{ 'Homepage'|trans }} </span>
+            </a>
+        </li>
+        {% if is_granted('MANAGE_ACCOUNT', ''|userAccount) %}
+            <li class="submenu custom-item {% if route_name == 'dashboard_accounts' %}current{% endif %}">
+                <a href="{{ path('dashboard_accounts') }}">
+                    <i class="bi bi-person-workspace"></i>
+                    <span> {{ 'User'|trans }} </span>
+                </a>
+            </li>
+        {% endif %}
+        {% if is_granted('ROLE_ADMIN') and is_granted('MANAGE_DESIGN', ''|userAccount) %}
+            <li class="custom-dropdown {% if route_name matches '{.+?_design}' %} current active{% endif %}">
+                <a class="drop" href="#">
+                    <i class="bi bi-palette"></i>
+                    <span>{{ 'builder.Design settings'|trans }}</span>
+                </a>
+                <ul class="nav-pills nav-stacked">
+                    {% if is_granted('MANAGE_DESIGN_SETTINGS', ''|userAccount) %}
+                        <li class="border-start submenu{% if route_name == 'dashboard_overview_design' %} current{% endif %}">
+                            <a href="{{ path('dashboard_overview_design') }}">
+                                <i class="second bi bi-paint-bucket"></i>
+                                <span> {{ 'design.Design'|trans }} </span>
+                            </a>
+                        </li>
+                    {% endif %}
+                    {% if is_granted('MANAGE_FONTS', ''|userAccount) %}
+                        <li class="border-start submenu{% if route_name == 'dashboard_overview_fonts_design' %} current{% endif %}">
+                            <a href="{{ path('dashboard_overview_fonts_design') }}">
+                                <i class="second bi bi-fonts"></i>
+                                <span> {{ 'system.Manage Fonts'|trans }} </span>
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </li>
+        {% endif %}
+
+
+        {% if is_granted('MANAGE_PAGE', ''|userAccount) %}
+            <li class="custom-dropdown {% if route_name matches '{.+?_sites}' %} current active{% endif %}">
+                <a class="drop" href="#">
+                    <i class="bi bi-blockquote-left"></i>
+                    <span>{{ 'system.Pages'|trans }}</span>
+                </a>
+                <ul class="nav-pills nav-stacked">
+
+                    <li class="border-start submenu{% if route_name == 'dashboard_overview_sites' %} current{% endif %}">
+                        <a href="{{ path('dashboard_overview_sites') }}">
+                            <i class="second bi bi-card-list"></i>
+                            <span> {{ 'system.Sites'|trans }} </span>
+                        </a>
+                    </li>
+
+                    {% if is_granted('MANAGE_PAGE_CATEGORY', ''|userAccount) %}
+                        <li class="border-start submenu{% if route_name == 'dashboard_category_overview_sites' %} current{% endif %}">
+                            <a href="{{ path('dashboard_category_overview_sites') }}">
+                                <i class="second bi bi bi-front"></i>
+                                <span> {{ 'Pages Categories'|trans }} </span>
+                            </a>
+                        </li>
+                    {% endif %}
+                    {% set hfHr = false %}
+                    {% if is_granted('MANAGE_HEADER', ''|userAccount) or is_granted('MANAGE_FOOTER', ''|userAccount) %}
+                        {% set hfHr = true %}
+                    {% endif %}
+                    {% if hfHr %}
+                        <li class="submenu">
+                            <hr class="mb-0 mt-0">
+                        </li>
+                    {% endif %}
+                    {% if is_granted('MANAGE_HEADER', ''|userAccount) %}
+                        <li class="border-start submenu{% if route_name == 'dashboard_header_sites' %} current{% endif %}">
+                            <a href="{{ path('dashboard_header_sites') }}">
+                                <i class="second bi bi-layout-wtf"></i>
+                                <span> {{ 'builder.Header'|trans }} </span>
+                            </a>
+                        </li>
+                    {% endif %}
+                    {% if is_granted('MANAGE_FOOTER', ''|userAccount) %}
+                        <li class="border-start submenu{% if route_name == 'dashboard_footer_sites' %} current{% endif %}">
+                            <a href="{{ path('dashboard_footer_sites') }}">
+                                <i class="second bi bi-layout-wtf"></i>
+                                <span> {{ 'builder.Footer'|trans }} </span>
+                            </a>
+                        </li>
+                    {% endif %}
+                    {% if hfHr %}
+                        <li class="submenu">
+                            <hr class="mb-0 mt-0">
+                        </li>
+                    {% endif %}
+                </ul>
+            </li>
+        {% endif %}
+        {% if is_granted('MANAGE_POST', ''|userAccount) %}
+            <li class="custom-dropdown {% if route_name matches '{.+?_post}' %} current active{% endif %}">
+                <a class="drop" href="#">
+                    <i class="bi bi-blockquote-right"></i>
+                    <span>{{ 'posts.Posts'|trans }}</span>
+                </a>
+                <ul class="nav-pills nav-stacked">
+
+                    <li class="border-start submenu{% if route_name == 'dashboard_overview_post' %} current{% endif %}">
+                        <a href="{{ path('dashboard_overview_post') }}">
+                            <i class="second bi bi-card-list"></i>
+                            <span> {{ 'posts.All posts'|trans }} </span>
+                        </a>
+                    </li>
+
+                    <li class="border-start submenu{% if route_name == 'dashboard_category_post' %} current{% endif %}">
+                        <a href="{{ path('dashboard_category_post') }}">
+                            <i class="second bi bi bi-front"></i>
+                            <span> {{ 'Categories'|trans }} / {{ 'posts.Design'|trans }} </span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        {% endif %}
+        {% if is_granted('MANAGE_MENU', ''|userAccount) %}
+            <li class="border-start custom-item{% if route_name == 'dashboard_menu_page' %} current{% endif %}">
+                <a href="{{ path('dashboard_menu_page') }}">
+                    <i class="second bi bi-collection"></i>
+                    <span> {{ 'system.Menus'|trans }} </span>
+                </a>
+            </li>
+        {% endif %}
+        {% if is_granted('MANAGE_FORMS', ''|userAccount) %}
+            <li class="border-start custom-item{% if route_name == 'dashboard_app_forms' %} current{% endif %}">
+                <a href="{{ path('dashboard_app_forms') }}">
+                    <i class="second bi bi-envelope-at"></i>
+                    <span> {{ 'forms.Forms'|trans }} </span>
+                </a>
+            </li>
+        {% endif %}
+        {% if is_granted('MANAGE_TOOLS', ''|userAccount) %}
+            <li class="custom-dropdown {% if route_name matches '{.+?_tools}' %} current active{% endif %}">
+                <a class="drop" href="#">
+                    <i class="bi bi-grid-1x2"></i>
+                    <span>{{ 'Tools'|trans }}</span>
+                </a>
+                <ul class="nav-pills nav-stacked">
+                    {% if is_granted('MEDIEN_SLIDER', ''|userAccount) %}
+                        <li class="border-start submenu{% if route_name == 'dashboard_slider_tools' %} current{% endif %}">
+                            <a href="{{ path('dashboard_slider_tools') }}">
+                                <i class="second bi bi-arrow-left-right"></i>
+                                <span> {{ 'mediaSlider.Slider'|trans }} </span>
+                            </a>
+                        </li>
+                    {% endif %}
+                    {% if is_granted('MEDIEN_CAROUSEL', ''|userAccount) %}
+                        <li class="border-start submenu{% if route_name == 'dashboard_carousel_tools' %} current{% endif %}">
+                            <a href="{{ path('dashboard_carousel_tools') }}">
+                                <i class="second bi bi-arrows-expand-vertical"></i>
+                                <span> {{ 'carousel.Carousel'|trans }} </span>
+                            </a>
+                        </li>
+                    {% endif %}
+                    {% if is_granted('MEDIEN_GALLERY', ''|userAccount) %}
+                        <li class="border-start submenu{% if route_name == 'dashboard_gallery_tools' %} current{% endif %}">
+                            <a href="{{ path('dashboard_gallery_tools') }}">
+                                <i class="second bi bi-images"></i>
+                                <span> {{ 'Gallery'|trans }} </span>
+                            </a>
+                        </li>
+                    {% endif %}
+                    {% if is_granted('MANAGE_CUSTOM_FIELDS', ''|userAccount) %}
+                        <li class="submenu">
+                            <hr class="mb-0 mt-0">
+                        </li>
+                        <li class="border-start submenu{% if route_name == 'dashboard_custom_fields_tools' %} current{% endif %}">
+                            <a href="{{ path('dashboard_custom_fields_tools') }}">
+                                <i class="second bi-alt"></i>
+                                <span> {{ 'app.Custom Fields'|trans }} </span>
+                            </a>
+                        </li>
+                    {% endif %}
+                    {% if is_granted('MANAGE_MAPS_PROTECTION', ''|userAccount) %}
+                        <li class="submenu">
+                            <hr class="mb-0 mt-0">
+                        </li>
+                        <li class="border-start submenu{% if route_name == 'dashboard_map_protection_tools' %} current{% endif %}">
+                            <a href="{{ path('dashboard_map_protection_tools') }}">
+                                <i class="second bi-pin-map"></i>
+                                <span> {{ 'Map data protection'|trans }} </span>
+                            </a>
+                        </li>
+                        <li class="submenu">
+                            <hr class="mb-0 mt-0">
+                        </li>
+                    {% endif %}
+                </ul>
+            </li>
+        {% endif %}
+        {% if is_granted('ROLE_ADMIN') and is_granted('MANAGE_MEDIEN', ''|userAccount) %}
+            <li class="custom-dropdown {% if route_name matches '{.+?_media}' %} current active{% endif %}">
+                <a class="drop" href="#">
+                    <i class="bi bi-files"></i>
+                    <span>{{ 'medien.Media'|trans }}</span>
+                </a>
+                <ul class="nav-pills nav-stacked">
+                    <li class="border-start submenu{% if route_name == 'dashboard_overview_media' %} current{% endif %}">
+                        <a href="{{ path('dashboard_overview_media') }}">
+                            <i class="second bi bi-folder-plus"></i>
+                            <span> {{ 'Mediathek'|trans }} </span>
+                        </a>
+                    </li>
+                    <li class="border-start submenu{% if route_name == 'dashboard_category_media' %} current{% endif %}">
+                        <a href="{{ path('dashboard_category_media') }}">
+                            <i class="second bi bi-front "></i>
+                            <span> {{ 'system.Media library category'|trans }} </span>
+                        </a>
+                    </li>
+                    {% if is_granted('MEDIEN_CONVERTER', ''|userAccount) %}
+                        <li class="submenu">
+                            <hr class="mb-0 mt-0">
+                        </li>
+                        <li class="border-start submenu{% if route_name == 'dashboard_converter_media' %} current{% endif %}">
+                            <a href="{{ path('dashboard_converter_media') }}">
+                                <i class="second bi bi-exclude"></i>
+                                <span> {{ 'converter.Image converter'|trans }} </span>
+                            </a>
+                        </li>
+                        <li class="submenu">
+                            <hr class="mb-0 mt-0">
+                        </li>
+                    {% endif %}
+                </ul>
+            </li>
+        {% endif %}
+        {% if is_granted('ACCOUNT_EMAIL', ''|userAccount) %}
+            <li class="custom-dropdown {% if route_name matches '{.+?_email}' %} current active{% endif %}">
+                <a class="drop" href="#">
+                    <i class="bi bi-envelope"></i>
+                    <span>{{ 'E-mail'|trans }}</span>
+                </a>
+                <ul class="nav-pills nav-stacked">
+                    {% if is_granted('SEND_EMAIL', ''|userAccount) %}
+                        <li class="border-start submenu{% if route_name == 'dashboard_send_email' %} current{% endif %}">
+                            <a href="{{ path('dashboard_send_email') }}">
+                                <i class="second bi bi-envelope-plus"></i>
+                                <span> {{ 'Send email'|trans }} </span>
+                            </a>
+                        </li>
+                    {% endif %}
+                    {% if is_granted('MANAGE_EMAIL', ''|userAccount) %}
+                        <li class="border-start submenu{% if route_name == 'dashboard_sent_email' %} current{% endif %}">
+                            <a href="{{ path('dashboard_sent_email') }}">
+                                <i class="second bi bi-envelope-paper"></i>
+                                <span> {{ 'system.Sent emails'|trans }} </span>
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </li>
+        {% endif %}
+
+        {% if is_granted('MANAGE_SITE_BUILDER', ''|userAccount) %}
+            <li class="custom-dropdown {% if route_name matches '{.+?_builder}' %} current active{% endif %}">
+                <a class="drop" href="#">
+                    <i class="bi bi-grid-fill"></i>
+                    <span>{{ 'builder.Page layouts'|trans }}</span>
+                </a>
+                <ul class="nav-pills nav-stacked">
+                    {% if is_granted('MANAGE_BUILDER_SITES', ''|userAccount) %}
+                        <li class="border-start submenu{% if route_name == 'dashboard_overview_builder' %} current{% endif %}">
+                            <a href="{{ path('dashboard_overview_builder') }}">
+                                <i class="second bi bi-grid"></i>
+                                <span> {{ 'builder.Layouts'|trans }} </span>
+                            </a>
+                        </li>
+                    {% endif %}
+                    {% if is_granted('MANAGE_BUILDER_PLUGINS', ''|userAccount) %}
+                        <li class="border-start submenu{% if route_name == 'dashboard_plugins_builder' %} current{% endif %}">
+                            <a href="{{ path('dashboard_plugins_builder') }}">
+                                <i class="second bi bi-ev-station"></i>
+                                <span> {{ 'plugins.Elements'|trans }} </span>
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </li>
+        {% endif %}
+        {% if is_granted('ROLE_ADMIN') and is_granted('MANAGE_SYSTEM_SETTINGS', ''|userAccount) or is_granted('MANAGE_BACKUP', ''|userAccount) or is_granted('MANAGE_REGISTRATION', ''|userAccount) %}
+            <li class="custom-dropdown {% if route_name matches '{.+?_system}' %} current active{% endif %}">
+                <a class="drop" href="#">
+                    <i class="bi bi-fan"></i>
+                    <span>{{ 'System settings'|trans }}</span>
+                </a>
+                <ul class="nav-pills nav-stacked">
+                    {% if is_granted('MANAGE_SYSTEM_SETTINGS', ''|userAccount) %}
+                        <li class="border-start submenu{% if route_name == 'dashboard_basic_settings_system' %} current{% endif %}">
+                            <a href="{{ path('dashboard_basic_settings_system') }}">
+                                <i class="second bi bi-wrench"></i>
+                                <span> {{ 'system.System'|trans }} </span>
+                            </a>
+                        </li>
+                    {% endif %}
+                    {% if is_granted('MANAGE_REGISTRATION', ''|userAccount) %}
+                        <li class="border-start submenu{% if route_name == 'dashboard_register_settings_system' %} current{% endif %}">
+                            <a href="{{ path('dashboard_register_settings_system') }}">
+                                <i class="second bi bi-person-workspace"></i>
+                                <span> {{ 'system.Registration'|trans }} </span>
+                            </a>
+                        </li>
+                    {% endif %}
+                    {% if is_granted('MANAGE_BACKUP', ''|userAccount) %}
+                        <li class="border-start submenu{% if route_name == 'dashboard_backup_system' %} current{% endif %}">
+                            <a href="{{ path('dashboard_backup_system') }}">
+                                <i class="second bi bi-database-down"></i>
+                                <span> {{ 'system.DB Backups'|trans }} </span>
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </li>
+        {% endif %}
+    </ul>
+</div>

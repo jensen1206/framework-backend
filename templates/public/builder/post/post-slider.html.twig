@@ -1,0 +1,42 @@
+{% if postLoop is defined and postLoop %}
+    {% set loop_extra_css = '' %}
+    {% if postLoop.settings.loop_extra_css is defined and postLoop.settings.loop_extra_css %}
+        {% set loop_extra_css = postLoop.settings.loop_extra_css %}
+    {% endif %}
+
+    {% set loop_col_extra_css = '' %}
+    {% if postLoop.settings.loop_col_extra_css is defined and postLoop.settings.loop_col_extra_css %}
+        {% set loop_col_extra_css = postLoop.settings.loop_col_extra_css %}
+    {% endif %}
+
+    {% set loop_col_inner_extra_css = '' %}
+    {% if postLoop.settings.loop_col_inner_extra_css is defined and postLoop.settings.loop_col_inner_extra_css %}
+        {% set loop_col_inner_extra_css = postLoop.settings.loop_col_inner_extra_css %}
+    {% endif %}
+    <section data-slider="{{ f.config.slider }}"
+             id="{% if f.config.container_id %}{{ f.config.container_id }}{% else %}{{ f.id }}{% endif %}"
+             class="medien-slider {{ f.config.css_class }}">
+        <div class="splide" aria-label="Splide">
+            <div class="splide__track">
+                <ul class="splide__list ">
+                    {% set loadCat = [] %}
+                    {% if f.config.categories %}
+                        {% set loadCat = f.config.categories %}
+                    {% else %}
+                        {% if category is defined and category.id %}
+                            {% set loadCat = {'0': {'id': category.id} } %}
+                        {% endif %}
+                    {% endif %}
+                    {% set categoryLoop = loadCat|categoryLoop(f.config) %}
+                    {% for post in categoryLoop %}
+                        <li class="splide__slide">
+                            <div class="splide__slide__container">
+                                {{ include('public/builder/category/category-loop-column.html.twig') }}
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </section>
+{% endif %}

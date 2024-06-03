@@ -1,0 +1,127 @@
+{% if f.images is defined and f.images %}
+    <div id="{% if f.config.container_id %}{{ f.config.container_id }}{% else %}{{ f.id }}{% endif %}"
+         class="single-img {{ f.config.css_class }}">
+        {% set hrefTag = 'div' %}
+        {% set ifLink = '' %}
+        {% if f.config.action == 'url' or f.config.action == 'lightbox' or f.config.action == 'custom' %}
+            {% set hrefTag = 'a' %}
+            {% set ifLink = true %}
+        {% endif %}
+        {% for i in f.images %}
+            {% set size = f.config.size %}
+            {% set imgSrc = '' %}
+            {% set imgSrcFull = '' %}
+            {% set href = '#' %}
+            {% set imgLightBox = '' %}
+            {% if f.config.source is defined and f.config.source == 'mediathek' %}
+                {% if i.type == 'data' %}
+                    {% set imgSrc = asset('uploads/mediathek/') %}
+                    {% set imgSrcFull = asset('uploads/mediathek/') %}
+                {% endif %}
+                {% if i.type == 'image' %}
+                    {% set imgSrc = i.urls[size]['url'] %}
+                    {% set imgSrcFull = i.urls['xl-large']['url'] %}
+                {% endif %}
+            {% endif %}
+            {% if f.config.source is defined and f.config.source == 'extern' %}
+                {% set imgSrc = f.config.external_url %}
+                {% set imgSrcFull = f.config.external_url %}
+            {% endif %}
+
+            {% if f.config.action == 'lightbox' %}
+                {% if i.type == 'data' %}
+                    {% set href = imgSrc ~ i.fileName %}
+                {% else %}
+                    {% set href = imgSrcFull %}
+                {% endif %}
+            {% endif %}
+            {% if f.config.action == 'url' and f.type != 'featured-image' %}
+                {% if f.type != 'post-category-image' %}
+                    {% set href = f.config.page|pageById %}
+                {% endif %}
+            {% endif %}
+            {% if f.config.action == 'url' and f.type == 'featured-image' %}
+                {% set href = path('public_post', {'postCategory': post.postCategory.slug, 'slug': post.postSlug}) %}
+            {% endif %}
+            {% if f.config.action == 'custom' %}
+                {% set href = f.config.custom_link %}
+            {% endif %}
+            {% set caption = '' %}
+            {% if f.config.caption_type == 'title' %}
+                {% set caption = i.title %}
+            {% endif %}
+            {% if f.config.caption_type == 'description' %}
+                {% set caption = i.description %}
+            {% endif %}
+            {% if f.config.caption_type == 'labelling' %}
+                {% set caption = i.labelling %}
+            {% endif %}
+            {% if f.config.caption_type == 'individuell' %}
+                {% set caption = f.config.custom_caption %}
+            {% endif %}
+            {% if f.type == 'featured-image' %}
+                {% if f.config.caption_type == 'post_title' %}
+                    {% set caption = post.siteSeo.seoTitle %}
+                {% endif %}
+                {% if f.config.caption_type == 'post_excerpt' %}
+                    {% set limit = '' %}
+                    {% if post.excerptLimit %}
+                        {% set limit = post.excerptLimit %}
+                    {% endif %}
+                    {% if post.postExcerpt %}
+                        {% if limit %}
+                            {% set caption = post.postExcerpt|striptags|u.truncate(limit, '...', false) %}
+                        {% else %}
+                            {% set caption = post.postExcerpt|striptags %}
+                        {% endif %}
+                    {% else %}
+                        {% if limit %}
+                            {% set caption = post.postContent|striptags|u.truncate(limit, '...', false) %}
+                        {% else %}
+                            {% set caption = post.postContent|striptags %}
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+            {% if f.type == 'post-category-image' %}
+                {% set imgCategory = '' %}
+                {% if type == 'page' %}
+                    {% set imgCategory = f.config.category %}
+                {% endif %}
+                {% if type == 'category' %}
+                    {% set imgCategory = category %}
+                {% endif %}
+                {% if type == 'post' %}
+                    {% set imgCategory = post.postCategory %}
+                {% endif %}
+                {% if f.config.action == 'url' %}
+                    {% set href =  path('public_post', {'postCategory':app.request.server.get('APP_POST_CATEGORY_NAME'), 'slug': imgCategory.slug}) %}
+                {% endif %}
+                {% if f.config.caption_type == 'category_title' %}
+                    {% set caption = imgCategory.title %}
+                {% endif %}
+                {% if f.config.caption_type == 'category_decription' %}
+                    {% set caption = imgCategory.description %}
+                {% endif %}
+            {% endif %}
+        <figure style="justify-self: {{ f.config.align }};{% if f.config.width %} width: {{ f.config.width }}px{% endif %}"
+                class="single-image">
+            <{{ hrefTag }} {% if ifLink %}href="{{ href }}"{% endif %}
+            data-control="single"
+            {% if f.config.new_tab %}target="_blank"{% endif %}
+            class="{% if f.config.action == 'lightbox' %}img-link{% endif %}" title="{{ i.title }}">
+            <img {% if f.config.width %}width="{{ f.config.width }}" {% else %}width="100%"{% endif %}
+                    {% if f.config.height %}height="{{ f.config.height }}" {% else %}height="auto"{% endif %}
+                 src="{% if i.type == 'data' %}{{ imgSrc }}{{ i.fileName }}{% else %}{{ imgSrc }}{% endif %}"
+                 class="builder-single-image {{ i.customCss }}"
+                 alt="{{ i.alt }}"/>
+            </{{ hrefTag }}>
+            <figcaption class="small text-start post-image-caption">
+                {% autoescape false %}
+                    {{ caption }}
+                {% endautoescape %}
+            </figcaption>
+            </figure>
+        {% endfor %}
+    </div>
+{% endif %}

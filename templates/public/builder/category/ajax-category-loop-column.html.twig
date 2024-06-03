@@ -1,0 +1,384 @@
+{% for postLoop in ajaxLoop %}
+    {% set post = postLoop.post %}
+    {% set loop_col_inner_extra_css = '' %}
+    {% if postLoop.settings.loop_col_inner_extra_css is defined and postLoop.settings.loop_col_inner_extra_css %}
+        {% set loop_col_inner_extra_css = postLoop.settings.loop_col_inner_extra_css %}
+    {% endif %}
+    {% set loop_col_extra_css = '' %}
+    {% if postLoop.settings.loop_col_extra_css is defined and postLoop.settings.loop_col_extra_css %}
+        {% set loop_col_extra_css = postLoop.settings.loop_col_extra_css %}
+    {% endif %}
+    <div class="{{ loop_col_extra_css }} column ajx-loop">
+        <div class="{{ loop_col_inner_extra_css }} col-inner-loop loop-{{ loop.index }}">
+            {% if postLoop.builder is defined %}
+                {% for b in postLoop.builder %}
+                    {% set rowZindex = '' %}
+                    {% set rowInnerZindex = '' %}
+                    {% if b.zIndex|length %}
+                        {% set rowZindex = b.zIndex %}
+                    {% endif %}
+                    {% if b.innerZindex|length %}
+                        {% set rowInnerZindex = b.innerZindex %}
+                    {% endif %}
+                    {% set parallaxContainer = b.parallax_container_active %}
+                    {% set parallaxInner = b.parallax_inner_active %}
+
+                    {% set parallaxContainerFixed = b.parallax_container_fixed %}
+                    {% set parallaxInnerFixed = b.parallax_inner_fixed %}
+
+                    <div style="{% if parallaxInner or parallaxInnerFixed %}height: {{ b.parallax_inner_height }};{% endif %} {% if parallaxContainer or parallaxContainerFixed %}height: {{ b.parallax_container_height }};{% endif %} background-color: rgba({{ b.cbg.r }},{{ b.cbg.g }},{{ b.cbg.b }},{{ b.cbg.a }}); {% if rowZindex %}z-index:{{ rowZindex }}{% endif %}"
+                         {% if b.row_id is defined and b.row_id %}id="{{ b.row_id }}"{% endif %}
+                         class=" {% if b.row_css is defined and b.row_css %}{{ b.row_css }}{% endif %}  col-loop-container element-{{ b.id }} col{{ loop.index }}">
+                        {% if b.bg_image.id is defined %}
+                            {% set rowBgImg = '' %}
+                            {% if b.bg_image.type == 'data' %}
+                                {% set imgSrc = asset('uploads/mediathek/') %}
+                            {% endif %}
+                            {% if b.bg_image.type == 'image' %}
+                                {% set imgSrc = b.bg_image.urls['xl-large']['url'] %}
+                            {% endif %}
+                            {% set bgPosition = 'center center' %}
+                            {% if b.bg_image.bgPosition %}
+                                {% set bgPosition = b.bg_image.bgPosition %}
+                            {% endif %}
+                            {% set repeat = 'no-repeat' %}
+                            {% set bgSize = 'cover' %}
+                            {% set zIndex = '' %}
+                            {% if b.bg_image.bgStyle %}
+                                {% set bgSize = b.bg_image.bgStyle %}
+                            {% endif %}
+                            {% if b.bg_image.bgZindex %}
+                                {% set zIndex = b.bg_image.bgZindex %}
+                            {% endif %}
+
+                            {% if parallaxContainer or parallaxContainerFixed %}
+                                {% if parallaxContainer %}
+                                    <div class="position-absolute top-0 start-0 w-100">
+                                        <div
+                                                style="height: {{ b.parallax_container_height }}"
+                                                data-speed="{{ b.parallax_container_speed }}"
+                                                data-top="{{ b.parallax_container_position_right }}"
+                                                data-left="{{ b.parallax_container_position_left }}"
+                                                data-type="{{ b.parallax_container_type }}"
+                                                class="parallax-is-active jarallax"
+                                        >
+                                            <img style="object-fit: cover; object-position: {{ b.parallax_container_position_left }} {{ b.parallax_container_position_right }}"
+                                                 class="w-100 jarallax-img" src="{{ imgSrc }}" alt="">
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                {% if parallaxContainerFixed %}
+                                    <div style="height: {{ b.parallax_container_height }}"
+                                         class="position-absolute top-0 start-0 w-100">
+                                        <div style="background-attachment: fixed; height: {{ b.parallax_container_height }}; background-image: url({{ imgSrc }});background-size: {{ bgSize }}; background-position: {{ b.parallax_container_position_left }} {{ b.parallax_container_position_right }}; background-repeat: {{ repeat }}; z-index: {{ zIndex }}"
+                                             class="bg-image position-absolute"></div>
+                                    </div>
+                                {% endif %}
+                                <div style="background-color: rgba({{ b.bg_image.bgOverlay.r }}, {{ b.bg_image.bgOverlay.g }},{{ b.bg_image.bgOverlay.b }},{{ b.bg_image.bgOverlay.a }}); z-index: {{ zIndex }}"
+                                     class="bg-img-overlay"></div>
+                            {% else %}
+                                <div style="background-image: url({{ imgSrc }});background-size: {{ bgSize }}; background-position: {{ bgPosition }}; background-repeat: {{ repeat }}; z-index: {{ zIndex }}"
+                                     class="bg-image"></div>
+                                {% if b.bg_image.bgOverlay %}
+                                    <div style="background-color: rgba({{ b.bg_image.bgOverlay.r }}, {{ b.bg_image.bgOverlay.g }},{{ b.bg_image.bgOverlay.b }},{{ b.bg_image.bgOverlay.a }}); z-index: {{ zIndex }}"
+                                         class="bg-img-overlay"></div>
+                                {% endif %}
+                            {% endif %}
+                        {% endif %}
+
+                        <div style="{% if parallaxInner or parallaxInnerFixed %}height: {{ b.parallax_inner_height }};{% endif %} background-color: rgba({{ b.icbg.r }},{{ b.icbg.g }},{{ b.icbg.b }},{{ b.icbg.a }});{% if rowInnerZindex %}z-index:{{ rowInnerZindex }}{% endif %}"
+                             class="inner-container {% if b.innerContainer is defined %}{{ b.innerContainer }}{% endif %}">
+                            {% if b.bg_inner_image.id is defined %}
+                                {% set rowBgImg = '' %}
+                                {% if b.bg_inner_image.type == 'data' %}
+                                    {% set imgSrc = asset('uploads/mediathek/') %}
+                                {% endif %}
+                                {% if b.bg_inner_image.type == 'image' %}
+                                    {% set imgSrc = b.bg_inner_image.urls['xl-large']['url'] %}
+                                {% endif %}
+                                {% set bgPosition = 'center center' %}
+                                {% if b.bg_inner_image.bgPosition %}
+                                    {% set bgPosition = b.bg_inner_image.bgPosition %}
+                                {% endif %}
+                                {% set repeat = 'no-repeat' %}
+                                {% set bgSize = 'cover' %}
+                                {% set zIndex = '' %}
+                                {% if b.bg_inner_image.bgStyle %}
+                                    {% set bgSize = b.bg_inner_image.bgStyle %}
+                                {% endif %}
+                                {% if b.bg_inner_image.bgZindex %}
+                                    {% set zIndex = b.bg_inner_image.bgZindex %}
+                                {% endif %}
+                                {% if parallaxInner or parallaxInnerFixed %}
+                                    {% if parallaxInner %}
+                                        <div class="position-absolute top-0 start-0 w-100">
+                                            <div
+                                                    style="height: {{ b.parallax_inner_height }}"
+                                                    data-speed="{{ b.parallax_inner_speed }}"
+                                                    data-top="{{ b.parallax_inner_position_right }}"
+                                                    data-left="{{ b.parallax_inner_position_left }}"
+                                                    data-type="{{ b.parallax_inner_type }}"
+                                                    class="parallax-is-active jarallax"
+                                            >
+
+                                                <img style="object-fit: cover; object-position: {{ b.parallax_inner_position_left }} {{ b.parallax_inner_position_right }}"
+                                                     class="w-100 jarallax-img" src="{{ imgSrc }}" alt="">
+                                            </div>
+                                            <div style="background-color: rgba({{ b.bg_inner_image.bgOverlay.r }}, {{ b.bg_inner_image.bgOverlay.g }},{{ b.bg_inner_image.bgOverlay.b }},{{ b.bg_inner_image.bgOverlay.a }}); z-index: {{ zIndex }}"
+                                                 class="bg-img-overlay"></div>
+                                        </div>
+
+                                    {% endif %}
+                                    {% if parallaxInnerFixed %}
+                                        <div style="height: {{ b.parallax_inner_height }}"
+                                             class="position-absolute top-0 start-0 w-100">
+                                            <div style="background-attachment: fixed; height: {{ b.parallax_inner_height }}; background-image: url({{ imgSrc }});background-size: {{ bgSize }}; background-position: {{ b.parallax_inner_position_left }} {{ b.parallax_inner_position_right }}; background-repeat: {{ repeat }}; z-index: {{ zIndex }}"
+                                                 class="bg-image position-absolute"></div>
+                                            <div style="background-color: rgba({{ b.bg_inner_image.bgOverlay.r }}, {{ b.bg_inner_image.bgOverlay.g }},{{ b.bg_inner_image.bgOverlay.b }},{{ b.bg_inner_image.bgOverlay.a }}); z-index: {{ zIndex }}"
+                                                 class="bg-img-overlay"></div>
+                                        </div>
+                                    {% endif %}
+                                {% else %}
+                                    <div style="background-image: url({{ imgSrc }}); background-size: {{ bgSize }}; background-position: {{ bgPosition }}; background-repeat: {{ repeat }}; z-index: {{ zIndex }}"
+                                         class="bg-image"></div>
+
+                                    {% if b.bg_inner_image.bgOverlay %}
+                                        <div style="background-color: rgba({{ b.bg_inner_image.bgOverlay.r }}, {{ b.bg_inner_image.bgOverlay.g }},{{ b.bg_inner_image.bgOverlay.b }},{{ b.bg_inner_image.bgOverlay.a }}); z-index: {{ zIndex }}"
+                                             class="bg-img-overlay"></div>
+                                    {% endif %}
+                                {% endif %}
+                            {% endif %}
+
+                            <div class="row {% if postLoop.settings.individuell %}{{ postLoop.settings.individuell }}{% else %}{{ postLoop.settings.gutter }}{% endif %}">
+
+                                {% for g in b.grid %}
+                                    {% set columnId = '' %}
+                                    {% set columnCss = '' %}
+                                    {% set colZindex = '' %}
+                                    {% if g.column_css is defined and g.column_css %}
+                                        {% set columnCss = g.column_css %}
+                                    {% endif %}
+                                    {% if g.columnId is defined and g.columnId %}
+                                        {% set columnId = g.columnId %}
+                                    {% endif %}
+                                    {% if g.zIndex is defined and g.zIndex|length %}
+                                        {% set colZindex = g.zIndex %}
+                                    {% endif %}
+
+                                    <div {% if g.animation is defined and g.animation.type %}data-animation-no-repeat="{{ g.animation.no_repeat }}"{% endif %} {% if g.animation is defined and g.animation.type %}data-wow-offset="{{ g.animation.offset }}"{% endif %} {% if g.animation is defined and g.animation.type %}data-wow-iteration="{{ g.animation.iteration }}"{% endif %} {% if g.animation is defined and g.animation.type %}data-wow-duration="{{ g.animation.duration }}"{% endif %} {% if g.animation is defined and g.animation.type %}data-wow-delay="{{ g.animation.delay }}"{% endif %} {% if g.animation is defined and g.animation.type %}data-type-animation="{{ g.animation.type }}"{% endif %}
+                                            {% if columnId %}id="{{ columnId }}"{% endif %}
+                                         style="background-color: rgba({% if g.bg is defined %}{{ g.bg.r }}{% endif %},{% if g.bg is defined %}{{ g.bg.g }}{% endif %},{% if g.bg is defined %}{{ g.bg.b }}{% endif %},{% if g.bg is defined %}{{ g.bg.a }}{% endif %}); {% if colZindex %}z-index:{{ colZindex }}{% endif %}"
+                                         class="app-animation col-column  {% if g.col < 12 %}col-{{ settings.col }}-{{ g.col }}{% endif %} col-12 {{ columnCss }} column-{{ g.id }}"
+                                    >
+                                        {% set pa = g.parallax_active %}
+                                        {% set pf = g.parallax_fixed %}
+                                        <div {% if pa or pf %}style="height: {{ g.parallax_height }}"{% endif %}
+                                             class="col-inner {% if g.column_inner_css is defined %}{{ g.column_inner_css }}{% endif %}">
+
+                                            {% if g.bg_image.id is defined %}
+                                                {% set rowBgImg = '' %}
+                                                {% if g.bg_image.type == 'data' %}
+                                                    {% set imgSrc = asset('uploads/mediathek/') %}
+                                                {% endif %}
+                                                {% if g.bg_image.type == 'image' %}
+                                                    {% set imgSrc = g.bg_image.urls['xl-large']['url'] %}
+                                                {% endif %}
+                                                {% set bgPosition = 'center center' %}
+                                                {% if g.bg_image.bgPosition %}
+                                                    {% set bgPosition = g.bg_image.bgPosition %}
+                                                {% endif %}
+                                                {% set repeat = 'no-repeat' %}
+                                                {% set bgSize = 'cover' %}
+                                                {% set zIndex = '' %}
+                                                {% if g.bg_image.bgStyle %}
+                                                    {% set bgSize = g.bg_image.bgStyle %}
+                                                {% endif %}
+                                                {% if g.bg_image.bgZindex %}
+                                                    {% set zIndex = g.bg_image.bgZindex %}
+                                                {% endif %}
+                                                {% if pa or pf %}
+                                                    {% if pa %}
+                                                        <div class="position-absolute top-0 start-0 w-100">
+                                                            <div
+                                                                    style="height: {{ g.parallax_height }}; z-index: -1"
+                                                                    data-speed="{{ g.parallax_speed }}"
+                                                                    data-top="{{ g.parallax_position_right }}"
+                                                                    data-left="{{ g.parallax_position_left }}"
+                                                                    data-type="{{ g.parallax_type }}"
+                                                                    class="parallax-is-active jarallax"
+                                                            >
+
+                                                                <img style="object-fit: cover; object-position: {{ g.parallax_position_left }} {{ g.parallax_position_right }}"
+                                                                     class="w-100 jarallax-img"
+                                                                     src="{{ imgSrc }}"
+                                                                     alt="">
+                                                            </div>
+                                                            <div style="background-color: rgba({{ g.bg_image.bgOverlay.r }}, {{ g.bg_image.bgOverlay.g }},{{ g.bg_image.bgOverlay.b }},{{ g.bg_image.bgOverlay.a }}); z-index: {{ zIndex }}"
+                                                                 class="bg-img-overlay"></div>
+                                                        </div>
+                                                    {% endif %}
+                                                    {% if pf %}
+                                                        <div style="height: {{ g.parallax_height }}; z-index: -1"
+                                                             class="position-absolute top-0 start-0 w-100">
+                                                            <div style="background-attachment: fixed; height: {{ g.parallax_height }}; background-image: url({{ imgSrc }});background-size: {{ bgSize }}; background-position: {{ g.parallax_position_left }} {{ g.parallax_position_right }}; background-repeat: {{ repeat }}; z-index: {{ zIndex }}"
+                                                                 class="bg-image position-absolute"></div>
+                                                            <div style="background-color: rgba({{ g.bg_image.bgOverlay.r }}, {{ g.bg_image.bgOverlay.g }},{{ g.bg_image.bgOverlay.b }},{{ g.bg_image.bgOverlay.a }}); z-index: {{ zIndex }}"
+                                                                 class="bg-img-overlay"></div>
+                                                        </div>
+                                                    {% endif %}
+                                                {% else %}
+                                                    <div style="background-image: url({{ imgSrc }});background-size: {{ bgSize }}; background-position: {{ bgPosition }}; background-repeat: {{ repeat }}; z-index: {{ zIndex }}"
+                                                         class="bg-image"></div>
+
+                                                    {% if g.bg_image.bgOverlay %}
+                                                        <div style="background-color: rgba({{ g.bg_image.bgOverlay.r }}, {{ g.bg_image.bgOverlay.g }},{{ g.bg_image.bgOverlay.b }},{{ g.bg_image.bgOverlay.a }}); z-index: {{ zIndex }}"
+                                                             class="bg-img-overlay"></div>
+                                                    {% endif %}
+                                                {% endif %}
+                                            {% endif %}
+
+                                            {% for f in g.forms %}
+                                                <div {% if f.animation is defined and f.animation.type %}data-wow-delay="{{ f.animation.delay }}"{% endif %}
+                                                        {% if f.animation is defined and f.animation.type %}data-wow-duration="{{ f.animation.duration }}"{% endif %}
+                                                        {% if f.animation is defined and f.animation.type %}data-wow-iteration="{{ f.animation.iteration }}"{% endif %}
+                                                        {% if f.animation is defined and f.animation.type %}data-wow-offset="{{ f.animation.offset }}"{% endif %}
+                                                        {% if f.animation is defined and f.animation.type %}data-animation-no-repeat="{{ f.animation.no_repeat }}"{% endif %}
+                                                        {% if f.animation is defined and f.animation.type %}data-type-animation="{{ f.animation.type }}"{% endif %}
+                                                     class="{{ f.type }} {% if f.animation is defined %}app-animation{% else %}builder-app-loop{% endif %}">
+
+                                                    {% if f.type == 'medien-carousel' %}
+                                                        {{ include('public/builder/carousel.html.twig') }}
+                                                    {% endif %}
+                                                    {% if f.type == 'tinymce' %}
+                                                        {{ include('public/builder/text.html.twig') }}
+                                                    {% endif %}
+                                                    {% if f.type == 'spacer' %}
+                                                        {{ include('public/builder/spacer.html.twig') }}
+                                                    {% endif %}
+                                                    {% if f.type == 'button' %}
+                                                        {{ include('public/builder/button.html.twig') }}
+                                                    {% endif %}
+                                                    {% if f.type == 'single_image' %}
+                                                        {{ include('public/builder/single-image.html.twig') }}
+                                                    {% endif %}
+                                                    {% if f.type == 'dividing-line' %}
+                                                        {{ include('public/builder/diving-line.html.twig') }}
+                                                    {% endif %}
+                                                    {% if f.type == 'unfiltered-html' %}
+                                                        {{ include('public/builder/unfiltered-html.html.twig') }}
+                                                    {% endif %}
+                                                    {% if f.type == 'dividing-with-text' %}
+                                                        {{ include('public/builder/diving-text-line.html.twig') }}
+                                                    {% endif %}
+                                                    {% if f.type == 'icon' %}
+                                                        {{ include('public/builder/icon.html.twig') }}
+                                                    {% endif %}
+                                                    {% if f.type == 'menu' %}
+                                                        {{ include('public/builder/menu.html.twig') }}
+                                                    {% endif %}
+                                                    {% if f.type == 'medien-gallery' %}
+                                                        {% set gallery = f.config.gallery|getSlider %}
+                                                        {{ include('public/builder/medien-gallery.html.twig') }}
+                                                    {% endif %}
+                                                    {% if f.type == 'gmaps-api' %}
+                                                        {{ include('public/builder/gmaps-api.html.twig') }}
+                                                    {% endif %}
+                                                    {% if f.type == 'gmaps-iframe' %}
+                                                        {{ include('public/builder/gmaps-iframe.html.twig') }}
+                                                    {% endif %}
+                                                    {% if f.type == 'osm' %}
+                                                        {{ include('public/builder/osm-iframe.html.twig') }}
+                                                    {% endif %}
+                                                    {% if f.type == 'osm-leaflet' %}
+                                                        {{ include('public/builder/leaflet-map.html.twig') }}
+                                                    {% endif %}
+                                                    {% if f.type == 'forms' %}
+                                                        {{ include('public/builder/forms.html.twig') }}
+                                                    {% endif %}
+                                                    {% if f.type == 'bs-accordion' %}
+                                                        {{ include('public/builder/accordion.html.twig') }}
+                                                    {% endif %}
+                                                    {% if f.type == 'custom-fields' %}
+                                                        {{ include('public/builder/custom-fields.html.twig') }}
+                                                    {% endif %}
+                                                    {% if f.type == 'video' %}
+                                                        {{ include('public/builder/video.html.twig') }}
+                                                    {% endif %}
+                                                    {% if f.type == 'medien-slider' %}
+                                                        {% set slider = f.config.slider|getSlider %}
+                                                        {% if  slider.thumbnail is defined and not slider.thumbnail %}
+                                                            {{ include('public/builder/medien-slider.html.twig') }}
+                                                        {% endif %}
+                                                        {% if slider.thumbnail is defined and slider.thumbnail %}
+                                                            {{ include('public/builder/medien-slider-thumbnail.html.twig') }}
+                                                        {% endif %}
+                                                    {% endif %}
+                                                    {% set type = 'post' %}
+                                                    {% set post_id = post.id %}
+                                                    {% if f.type == 'featured-image' %}
+                                                        {% set f = post.siteImg|featureImage(f) %}
+                                                        {{ include('public/builder/single-image.html.twig') }}
+                                                    {% endif %}
+                                                    {% if f.type == 'post-gallery' %}
+                                                        {% set updateForm = post_id|postGallery(f) %}
+                                                        {% set f = updateForm.form %}
+                                                        {% set gallery = updateForm.gallery %}
+                                                        {% if updateForm.type == 'gallery' %}
+                                                            {{ include('public/builder/medien-gallery.html.twig') }}
+                                                        {% endif %}
+                                                        {% if updateForm.type == 'slider' %}
+                                                            {% set slider = gallery %}
+                                                            {{ include('public/builder/medien-slider.html.twig') }}
+                                                        {% endif %}
+                                                        {% if updateForm.type == 'thumbnail' %}
+
+                                                            {% set slider = gallery %}
+                                                            {{ include('public/builder/medien-slider-thumbnail.html.twig') }}
+                                                        {% endif %}
+                                                    {% endif %}
+                                                    {% if f.type == 'post-excerpt' %}
+                                                        {{ include('public/builder/post/post-excerpt.html.twig') }}
+                                                    {% endif %}
+                                                    {% if f.type == 'post-content' %}
+                                                        {{ include('public/builder/post/post-content.html.twig') }}
+                                                    {% endif %}
+                                                    {% if f.type == 'post-title' %}
+                                                        {{ include('public/builder/post/post-title.html.twig') }}
+                                                    {% endif %}
+                                                    {% if f.type == 'post-date' %}
+                                                        {{ include('public/builder/post/post-date.html.twig') }}
+                                                    {% endif %}
+                                                    {% if f.type == 'post-category' %}
+                                                        {{ include('public/builder/category/category-title.html.twig') }}
+                                                    {% endif %}
+                                                    {% if f.type == 'post-category-description' %}
+                                                        {{ include('public/builder/category/category-description.html.twig') }}
+                                                    {% endif %}
+                                                    {% if f.type == 'post-category-image' %}
+                                                        {% set fileName = '' %}
+                                                        {% if type == 'category' %}
+                                                            {% set fileName = category.catImg %}
+                                                        {% endif %}
+                                                        {% if type == 'post' %}
+                                                            {% set fileName = post.postCategory.catImg %}
+                                                        {% endif %}
+                                                        {% set f = f|categoryImage(type, fileName) %}
+                                                        {{ include('public/builder/single-image.html.twig') }}
+                                                    {% endif %}
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+{% endfor %}
+{% if handle == 'lazy' %}
+<div data-loop="{{ currentLoop }}" data-builder="{{ builder }}" data-grid="{{ grid }}" data-form="{{ form }}" data-page="{{ page }}"
+     class="position-absolute{% if next %} load-more-posts next-page {% endif %}bottom-0 "></div>
+{% endif %}

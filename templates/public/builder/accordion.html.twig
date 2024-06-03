@@ -1,0 +1,27 @@
+{% set accId = '' %}
+{% if f.config.container_id %}
+    {% set accId = f.config.container_id  %}
+{% else %}
+    {% set accId = f.id  %}
+{% endif %}
+<div class="accordion {{ f.config.css_class }}" id="{{ accId }}" >
+    {% for a in f.config.accordion %}
+    <div class="accordion-item">
+        <h2 class="accordion-header {{ f.config.header_css }}">
+            <button class="accordion-button no-blurs {% if not a.open %}collapsed{% endif %}"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#item{{ a.id }}"
+                    aria-expanded="{% if a.open %}true{% else %}false{% endif %}"
+                    aria-controls="item{{ a.id }}">
+                {{ a.header|raw }}
+            </button>
+        </h2>
+        <div id="item{{ a.id }}" class="accordion-collapse collapse {% if a.open %}show{% endif %}" {% if f.config.parent_element %}data-bs-parent="#{{ accId }}"{% endif %}>
+            <div class="accordion-body {{ f.config.body_css }}">
+                {{ a.body|raw }}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>

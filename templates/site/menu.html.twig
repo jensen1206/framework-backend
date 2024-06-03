@@ -1,0 +1,18 @@
+{% extends 'base-admin.html.twig' %}
+{% block title %}{% if title is defined %}{{ title }}{% else %}Web{% endif %} {{ parent() }}{% endblock %}
+ {% block navbar %}
+     {{ include('admin-navbar-top.html.twig') }}
+ {% endblock %}
+{% block body %}
+    <div id="page-content-wrapper">
+        <div class="container-fluid py-3">
+              <div id="site-menu-react-app"></div>
+        </div>
+    </div>
+{% endblock %}
+ {% block javascripts %}
+      {{ encore_entry_script_tags('react_site_menu') }}
+   <script src="{{ path('javascript_menu_settings') }}"></script>
+     <script src="{{ path('javascript_filemanager_settings') }}"></script>
+     {{ parent() }}
+ {% endblock %}

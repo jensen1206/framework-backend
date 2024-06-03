@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% if title is defined %}{{ title }}{% else %}{{ 'Homepage'|trans }}{% endif %} {{ parent() }}{% endblock %}
+ {% block navbar %}
+     {{ include('public-navbar.twig') }}
+ {% endblock %}
+{% block body %}
+    <main class="flex-shrink-0 flex-fill" style="height: max-content">
+        <div id="public-content" class="container d-flex align-items-center justify-content-center">
+            <div class="container">
+                <div class="text-start mb-3">
+                    <h2 class="lh-1 mb-1">{{ category.title }}</h2>
+                    <small>{{ category.description }}</small>
+                </div>
+                <ul>
+                    {% for p in posts %}
+                        <li><a href="{{ path('public_post', {'postCategory': category.slug, 'slug': p.postSlug}) }}">{{ p.siteSeo.seoTitle }}</a> </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </main>
+
+{% endblock %}
+{% block footer %}
+    {{ include('public/public-footer.html.twig') }}
+{% endblock %}

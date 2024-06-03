@@ -1,0 +1,2000 @@
+Homepage: Startseite
+Imprint: Impressum
+Contents: Inhalt
+Page / Article: Seite / Beitrag
+Page: Seite
+Field type: Feld Typ
+Tools: Tools
+Show URL: URL anzeigen
+Show name: Bezeichnung anzeigen
+Map data protection: Map Datenschutz
+Page-Builder Type: Page-Builder Typ
+Builder type: Builder Typ
+loop: loop
+General Terms and conditions: AGB
+Clock: Uhr
+An error has occurred: Ein Fehler ist aufgetreten
+back: zurück
+Logout: Logout
+SU-Admin: SU-Admin
+Slug is already available: Slug ist schon vorhanden
+Route is already available: Route ist schon vorhanden
+Admin: Admin
+Settings: Einstellungen
+User: Benutzer
+Switch Admin: Switch Admin
+Profil: Profil
+Blue: Blue
+Dark: Dark
+Light: Light
+Gallery-Slider: Galerie-Slider
+Gallery: Galerie
+Auto: Auto
+Ajax transmission error: Ajax-Übertragungsfehler
+Missing authorisation: Fehlende Berechtigung
+No data found: keine Daten gefunden
+Error: Fehler
+Duplicate: Duplizieren
+Executed: Ausgeführt
+Admin Dashboard: Admin Dashboard
+Account: Account
+Delete: Löschen
+delete: löschen
+Help: Hilfe
+Data saved: Daten gespeichert
+Changes saved: Änderungen gespeichert
+The changes have been saved successfully.: Die Änderungen wurden erfolgreich gespeichert.
+The data has been saved successfully.: Die Daten wurden erfolgreich gespeichert.
+Overview: Übersicht
+Saved: Gespeichert
+yes: ja
+no: nein
+active: aktiv
+Not active: nicht aktiv
+All: Alle
+Excel: Excel
+CSV: CSV
+Copy: Kopie
+Users: Benutzer
+Section: Sektion
+unknown: unbekannt
+Google Maps: Google Maps
+OpenStreetMap: OpenStreetMap
+not specified: keine Angaben
+to overview: zur Übersicht
+edit: bearbeiten
+Edit: Bearbeiten
+Seo: Seo
+Type: Typ
+Categories: Kategorien
+Pages Categories: Seiten Kategorien
+Post categories: Beitrags Kategorien
+Posts: Beiträge
+Cover picture: Titelbild
+Estimated reading time:  Geschätzte Lesezeit
+Minute: Minute
+Minutes: Minuten
+Designation: Bezeichnung
+Add data protection: Datenschutz hinzufügen
+Shortcode: Shortcode
+System settings: Systemeinstellungen
+Your account is not verified.: Ihr Konto ist nicht Verifiziert.
+Your account is not activated.: Ihr Konto ist nicht aktiviert.
+The link to verify your email has expired. Please request a new link.: Der Link zur Verifizierung Ihrer E-Mail ist abgelaufen. Bitte fordern Sie einen neuen Link an.
+Your account will be activated after verification.: Ihr Konto wird nach einer Überprüfung aktiviert.
+After confirming the email, your account will be activated.: Nachdem Sie die E-Mail bestätigt haben, wird Ihr Konto aktiviert.
+Registration successful, your account has been activated.: Registrierung erfolgreich, Ihr Konto wurde aktiviert.
+Changes were saved successfully.: Die Änderungen wurden erfolgreich gespeichert.
+Custom Fields: Benutzerdefinierte Felder
+#Formular Profile
+profil:
+  OAuth2 API settings: OAuth2 API Einstellungen
+  Admin authorisation: Admin Berechtigung
+  User authorisation: User Berechtigung
+  Gravatar: Gravatar
+  Close settings: Einstellungen schließen
+  User consent: Benutzer Zustimmung
+  Created: Erstellt
+  Show user consent: Benutzer Zustimmung anzeigen
+  No user consent available: keine Benutzer Zustimmung vorhanden
+  Consent created: Zustimmung erstellt
+  Consent expired: Zustimmung abgelaufen
+  expires: läuft ab
+  expired: abgelaufen
+  Delete consent: Zustimmung löschen
+  Delete authentication: Authentifizierung löschen
+  After deletion, the user must re-authenticate.: Nach dem Löschen muss der Benutzer sich erneut authentifizieren.
+  IP: IP
+  Name: Name
+  Add new user: neuen Benutzer hinzufügen
+  Registered users: Registrierte Benutzer
+  Password not secure: Passwort nicht sicher
+  Profile picture: Profilbild
+  Company/Organization: Firma/Organisation
+  Company: Firma
+  User role: Benutzerrolle
+  User roles: Benutzerrollen
+  Add user role: Benutzerrolle hinzufügen
+  Delete user role: Benutzerrolle löschen
+  Select user role: Benutzerrolle auswählen
+  Edit user: Benutzer bearbeiten
+  Title: Titel
+  First name: Vorname
+  Last name: Nachname
+  Street: Strasse
+  House number: Hausnummer
+  Zip code: Postleitzahl
+  City: Ort
+  Phone: Telefon
+  Mobile: Mobil
+  Create password: Passwort erstellen
+  Select image: Bild auswählen
+  User active: Benutzer aktiv
+  2FA active: 2FA aktiv
+  User can change profile data: Benutzer kann Profildaten ändern
+  Note: Notiz
+  invalid password: ungültiges Passwort
+  E-mail address: E-Mail-Adresse
+  Change Password: Password ändern
+  already present: schon vorhanden
+  Profile saved successfully.: Profil erfolgreich gespeichert.
+  Create profile: Profil erstellen
+  Send link to create password: Link zum Passwort erstellen senden
+  Password set: Passwort gesetzt
+  Password: Passwort
+  Email: E-Mail
+  Repeat password: Passwort wiederholen
+  New password: Neues Passwort
+  Edit account: Account bearbeiten
+  Create account: Account erstellen
+  Copy password: Passwort kopieren
+  2FA: 2FA
+  API: API
+  Save API settings: API Einstellungen speichern
+  Use Authy or Google Authenticator to Scan the QR Code.: Verwenden Sie Authy oder Google Authenticator zum Scannen des QR-Codes.
+  URL for authentication app: URL für Authentifizierung-App
+  2FA Login has been deactivated.: 2FA Login wurde deaktiviert.
+  2FA Login has been activated.: 2FA Login wurde aktiviert.
+  2FA Login:  2FA Login
+  deactivate 2FA: 2FA deaktivieren
+  Activate 2FA: 2FA aktivieren
+  Dashboard Visibility Admin System Settings: Dashboard Sichtbarkeit Admin Systemeinstellungen
+  Image successfully deleted.: Bild erfolgreich gelöscht.
+  Change: Ändern
+  OAuth: OAuth
+  API OAuth2: API OAuth2
+  Change user role: Benutzerrolle ändern
+  Account deleted: Account gelöscht
+  Account has been deleted, you will be logged out.: Das Konto wurde gelöscht, Sie werden abgemeldet.
+  Account has been successfully deleted.: Das Konto wurde erfolgreich gelöscht.
+  After <b><u>saving</u></b>, all authorisations are reset and must be reassigned.: Nach dem <b><u>Speichern</u></b> werden alle Berechtigungen zurückgesetzt und müssen neu zugewiesen werden.
+media:
+  Drag & drop or click files here.: Dateien hier per Drag & Drop ablegen oder klicken.
+  You cannot upload files of this type.: Sie können keine Dateien dieses Typs hochladen.
+  Your browser does not support drag n drop file uploads.: Ihr Browser unterstützt keine Drag n Drop-Datei-Uploads.
+  File is too large ({{filesize}} MB). Maximum file size {{maxFilesize}} MB: Datei ist zu groß ({{filesize}} MB). Maximale Dateigröße {{maxFilesize}} MB.
+  Maximum file size is {{maxFiles}}: Maximale Dateigröße ist {{maxFiles}}
+  Remove file: Datei entfernen
+  General: Allgemein
+  Longitude: Longitude
+  Latitude: Latitude
+  Altitude: Altitude
+  General category: Allgemeine Kategorie
+  Filename: Dateiname
+  select all: alles auswählen
+  Category: Kategorie
+  File type: Dateityp
+  File size: Dateigröße
+  Created: Erstellt
+  Privat: Privat
+  Public: Öffentlich
+  Exif: Exif
+  Details: Details
+  Owner: Besitzer
+  Ext: Ext
+
+login:
+  Invalid credentials.: Ungültige Anmeldedaten.
+  Account is 2FA protected: Account ist 2FA geschützt
+  Enter 6-digit PIN: 6-stellige PIN eingeben
+  Please sign in: Bitte melden Sie sich an
+  You are logged in as: Sie sind eingeloggt als
+  Sign in: Anmelden
+  Email: E-Mail
+  Password: Passwort
+  Email address: E-Mail Adresse
+register:
+  Agree terms: Bedingungen zustimmen
+  You should agree to our terms.: Sie müssen unseren Bedingungen zustimmen.
+  Register: Registrieren
+  Forgot password: Passwort vergessen
+  Stay logged in: Angemeldet bleiben
+  The password must be at least {{ limit }} characters long: Das Passwort muss mindestens {{ limit }} Zeichen lang sein
+  The email {{ value }} is not a valid email address.: Die E-Mail {{ value }} ist keine gültige E-Mail-Adresse.
+  Repeat password: Passwort wiederholen
+  New password: Neues Passwort
+  Reset your password: Passwort zurücksetzen
+  If an account matching your email exists, then an email was just sent that contains a link that you can use to reset your password. This link will expire in: Wenn es ein Konto gibt, das mit Ihrer E-Mail-Adresse übereinstimmt, wurde soeben eine E-Mail gesendet, die einen Link enthält, mit dem Sie Ihr Passwort zurücksetzen können. Dieser Link läuft ab in
+  If you dont receive an email please check your spam folder or: Wenn Sie keine E-Mail erhalten, überprüfen Sie bitte Ihren Spam-Ordner oder
+  This link will expire in: Dieser Link läuft ab in
+  Click on the link below to reset your password.: Klicken Sie auf den untenstehenden Link, um Ihr Passwort zu zurückzusetzen
+  try again: versuchen Sie es erneut
+  Password Reset Email Sent: E-Mail zum Zurücksetzen des Passworts gesendet
+  Enter your email address, and we will send you a link to reset your password.: Geben Sie Ihre E-Mail-Adresse ein, und wir senden Ihnen einen Link zum Zurücksetzen Ihres Passworts.
+  Send password reset email: E-Mail zum Zurücksetzen des Passworts senden
+  The password fields must match.: Die Passwortfelder müssen übereinstimmen.
+  Please enter a password: Bitte geben Sie ein Passwort ein
+  Please enter your email: Bitte geben Sie Ihre E-Mail ein
+  Your email address has been verified.: Ihre E-Mail-Adresse wurde überprüft.
+  This e-mail address cannot be used.: Diese E-Mail-Adresse kann nicht verwendet werden.
+  SU-Admin successfully registered.: SU-Admin erfolgreich Registriert.
+  If you don t receive an email please check your spam folder or: Wenn Sie keine E-Mail erhalten, überprüfen Sie bitte Ihren Spam-Ordner oder
+  Please Confirm your Email: Bitte bestätigen Sie Ihre E-Mail
+  ## Grundeinstellungen System
+fm:
+  Filemanager: Filemanager
+  Select document: Dokument auswählen
+  Select documents: Dokumente auswählen
+  Select attachment: Anhang auswählen
+  Insert attachment: Anhang einfügen
+  Insert attachments: Anhänge einfügen
+  Select and close: Auswählen und schließen
+  Options not found.: Optionen nicht gefunden.
+  No files found.: Keine Dateien gefunden.
+  User category: Benutzer Kategorie
+  Search: Suchen
+  Load more: Mehr laden
+  loaded: geladen
+  Uploaded on: Hochgeladen am
+  Uploaded from: Hochgeladen von
+  File name: Dateiname
+  File type: Dateityp
+  File size: Dateigröße
+  Alternative text: Alternativer Text
+  Title: Titel
+  Labelling: Beschriftung
+  Description: Beschreibung
+  File URL: Datei-URL
+  Thumbnail URL: Thumbnail URL
+  Medium URL: Medium URL
+  Large URL: Large URL
+  Large XL URL: Large XL URL
+  Copy URL: URL kopieren
+  Category: Kategorie
+  last editing: letzte Änderung
+  No file selected: keine Datei ausgewählt
+  Dimensions: Abmessungen
+  to: zu
+  Pixel: Pixel
+  selected: ausgewählt
+  File: Datei
+  Files: Dateien
+  Files selected: Dateien ausgewählt
+  File selected: Datei ausgewählt
+date:
+  January: Januar
+  February: Februar
+  March: März
+  April: April
+  May: Mai
+  June: Juni
+  July: Juli
+  August: August
+  September: September
+  October: Oktober
+  November: November
+  Dezember: Dezember
+email:
+  Click on the link below to create your password.: Klicken Sie auf den untenstehenden Link, um Ihr Passwort zu erstellen.
+  Create new password: Neues Passwort erstellen
+  Link to reset the password: Link zum Zurücksetzen des Passworts
+  from: von
+  on: an
+  to: an
+  To: An
+  Cc: Cc
+  Bcc: Bcc
+  Sent emails: Gesendete Emails
+  Sent email: Gesendete Email
+  Show email: E-Mail anzeigen
+  Sent: Gesendet
+  Sent from: Gesendet von
+  Sender: Absender
+  Recipient: Empfänger
+  Recipient e-mail: Empfänger E-Mail
+  Subject: Betreff
+  Sent to: Gesendet an
+  From user: von Benutzer
+  Delete all emails: Alle E-Mails löschen
+  Sent on: Gesendet am
+  Attachment: Anhang
+  Download: Download
+  Message: Nachricht
+  Send e-mail: E-Mail senden
+  Add attachment: Anhang hinzufügen
+  Separate multiple recipients with a comma or semicolon.: Trennen Sie mehrere Empfänger durch Komma oder Semikolon.
+  The e-mail will be sent shortly.: Die E-Mail wird in Kürze verschickt.
+  E-mail is being sent: E-Mail wird gesendet
+
+system:
+  Allowed file types: Erlaubte Dateitypen
+  Enter only extension without dot. Separate with a comma or semicolon.: Nur Endung ohne Punkt eingeben. Mit Komma oder Semikolon trennen.
+  Entry successfully deleted.: Eintrag erfolgreich gelöscht.
+  Add images: Bilder hinzufügen
+  Delete field: Feld löschen
+  Default authorisations: Standard-Berechtigungen
+  No custom fields available: keine Benutzerdefinierte Felder vorhanden
+  You have successfully logged out.: Sie haben sich erfolgreich abgemeldet.
+  Category Title is a required field.: Kategorie Titel ist ein Pflichtfeld.
+  Please check your entry.: Bitte überprüfen Sie Ihre Eingabe.
+  System: System
+  Title: Titel
+  Add to menu: zum Menü hinzufügen
+  Page created: Seite erstellt
+  Page was successfully created.: Seite wurde erfolgreich erstellt.
+  File details: Datei Details
+  E-mail authorisations: E-Mail Berechtigungen
+  Download: Download
+  E-mail sent: E-Mail gesendet
+  The e-mail was sent successfully.: Die E-Mail wurde erfolgreich gesendet.
+  E-mail and log: E-Mail und Log
+  System settings and e-mail: System Einstellungen und E-Mail
+  System settings: System Einstellungen
+  Media library authorisations: Mediathek-Berechtigungen
+  select: auswählen
+  Authentication: Authentifizierung
+  Client name: Client name
+  Save changes: Änderungen speichern
+  Copy url: Url kopieren
+  Create new: Neu erstellen
+  Backend settings: Backend Einstellungen
+  no new activities: keine neuen Aktivitäten
+  Activities: Aktivitäten
+  All activities: alle Aktivitäten
+  Show all emails: Alle E-Mails anzeigen
+  No new e-mails: keine neuen E-Mails
+  Send email: E-Mail senden
+  OAuth2 security: OAuth2-Sicherheit
+  Database backup: Datenbank Backup
+  Navigation menu: Navigationsmenü
+  Activity Log: Activity Log
+  new registration: neue Registrierung
+  Activate registrations manually: Registrierungen manuell aktivieren
+  manual activation: manuelle Aktivierung
+  Notification: Benachrichtigung
+  Registration: Registrierung
+  Email SMTP settings: E-Mail SMTP Einstellungen
+  Upload settings: Upload Einstellungen
+  DB Backups: DB Backups
+  Create duplicate with installation: Duplikat mit Installation erstellen
+  Create new template: Neue Vorlage erstellen
+  Sent emails: Gesendete E-Mails
+  Media library category: Mediathek Kategorie
+  Media library overview: Mediathek Übersicht
+  Mediathek Upload: Mediathek Upload
+  Google-Maps GPS: Google-Maps GPS
+  GPS data: GPS Daten
+  GPS: GPS
+  Database backups: Datenbank-Sicherungen
+  Create new backup: neues Backup erstellen
+  Page title: Seitentitel
+  Administrator email address: Administrator-E-Mail-Adresse
+  Privacy site: Datenschutz Seite
+  AGB site: AGB Seite
+  Imprint site: Impressum Seite
+  Logo upload: Logo Upload
+  Email signature: E-Mail Signatur
+  Image size: Bildgröße
+  Change image: Bild ändern
+  Dashboard Logo: Dashboard Logo
+  Login Logo: Login Logo
+  Access data: Zugangsdaten
+  Email: E-Mail
+  Send: Senden
+  send: senden
+  E-mail template: E-Mail Template
+  Create password link: Link zum Passwort erstellen
+  Email changed: E-Mail geändert
+  Password forgotten: Passwort vergessen
+  Activation link: Aktivierungslink
+  Placeholder valid for registration or password forgotten: Platzhalter gültig für Registrierung oder Passwort vergessen
+  Placeholder for dashboard user: Platzhalter für Dashboard-Benutzer
+  Placeholders can always be used: Platzhalter können immer verwendet werden
+  No new registrations: keine neuen Registrierungen
+  Registrations: Registrierungen
+  all Registrations: alle Registrierungen
+  Delete all emails: Alle E-Mails löschen
+  Activate account: Konto aktivieren
+  Registration link expiration time: Ablaufzeit Registrierungslink
+  Specification in hours: Angabe in Stunden
+  Confirmation e-mail changed: Bestätigung E-Mail geändert
+  The <b>unlock</b> code is <b>no longer valid</b>. Please register again.: Der Freischaltcode ist <b>nicht mehr gültig</b>. Bitte registrieren Sie sich erneut.
+  The <b>link</b> is no longer valid. Contact the <b>administrator!</b>: Der <b>Link</b> ist nicht mehr gültig. Wenden Sie sich an den <b>Administrator!</b>
+  This e-mail address is <b>not</b> known.<br> Try again. ( 3 attempts ): Diese E-Mail-Adresse ist <b>nicht</b> bekannt. Versuchen Sie es erneut. ( 3 Versuche )
+  last chance: letzte Chance
+  At the moment this service cannot be performed.: Zur Zeit kann dieser Service nicht ausgeführt werden.
+  Please enter the email address you used to create your account. We will then send you a link to reset your password.: Bitte geben Sie die E-Mail-Adresse ein, mit der Sie Ihr Konto erstellt haben. Wir senden Ihnen dann einen Link, mit dem Sie Ihr Passwort zurücksetzen können.
+  The e-mail address is not known.: Die E-Mail-Adresse ist nicht bekannt.
+  Thank you for your registration.: Vielen Dank für Ihre Registrierung.
+  The password was updated.: Das Passwort wurde aktualisiert.
+  The password was successfully saved and the account was activated.: Das Passwort wurde erfolgreich gespeichert und das Konto aktiviert.
+  Form fields: Formularfelder
+  Required field: Pflichtfeld
+  no required field: kein Pflichtfeld
+  do not show: nicht anzeigen
+  Password Leak Checker active: Passwort Leak Checker aktiv
+  Checks if the password is affected by a data leak.: Prüft ob das Passwort von einem Daten-Leak betroffen ist.
+  Log settings: Log Einstellungen
+  Delete all activities: alle Aktivitäten löschen
+  Activities overview: Aktivitäten Übersicht
+  Log entry deleted: Logeintrag gelöscht
+  delete all entries: alle Einträge löschen
+  Delete log entry: Logeintrag löschen
+  All entries have been deleted.: Alle Einträge wurden gelöscht.
+  Deleted: Gelöscht
+  The file was successfully deleted.: Die Datei wurde erfolgreich gelöscht.
+  Category: Kategorie
+  Save: Speichern
+  Saved sections: Gespeicherte Sektionen
+  Add section: Sektion hinzufügen
+  Section added: Sektion hinzugefügt
+  save: speichern
+  Description: Beschreibung
+  Image Details: Bild Details
+  Image: Bild
+  Grid successfully saved.: Grid erfolgreich gespeichert.
+  The section already exists.: Die Sektion ist schon vorhanden.
+  Menu created: Menü erstellt
+  Menu was successfully created.: Menü wurde erfolgreich erstellt.
+  Exif data: Exif Daten
+  Copyright: Copyright
+  last modified: zuletzt geändert
+  Count: Anzahl
+  Web page settings: Webseiten Einstellungen
+  Pages: Seiten
+  Menu structure: Menü-Struktur
+  Add menu items: Menüeinträge hinzufügen
+  Create page: Seite erstellen
+  Site status: Status der Website
+  Websites: Webseiten
+  Website: Webseite
+  Websites overview: Webseiten Übersicht
+  Pages title: Seiten Titel
+  Private: Privat
+  Draft: Entwurf
+  Public: Öffentlich
+  Slug: Slug
+  Create new page: neue Seite erstellen
+  Parent site: Übergeordnete Website
+  Order: Reihenfolge
+  Text excerpt: Textauszug
+  Allow comments: Kommentare erlauben
+  Page attributes: Seiten-Attribute
+  Character Limit: Zeichenbegrenzung
+  Title Character Limit: Title Zeichenbegrenzung
+  Excerpt Character Limit: Auszug Zeichenbegrenzung
+  Article image: Beitragsbild
+  Password protected: Passwortgeschützt
+  Page Settings: Seiten Einstellungen
+  Menu: Menü
+  Extra Css: Extra Css
+  Individual links: Individuelle Links
+  URL: URL
+  Link text: Link-Text
+  Sent E-mails: Gesendete E-mails
+  Dump File: Dump File
+  Send database file: Datenbank-File senden
+  If Public is active, the file is displayed in the file manager and is visible to all registered users.: Wenn Öffentlich aktiviert ist, wird die Datei im Dateimanager angezeigt und ist für alle registrierten Benutzer sichtbar.
+  Output options: Ausgabe-Optionen
+  Uploaded on: Hochgeladen am
+  Owner: Besitzer
+  File name: Dateiname
+  File url: Datei-Url
+  Uploaded: Hochgeladen
+  open in new window: in neuem Fenster öffnen
+  Settings are only valid for the Image data type.: Die Einstellungen sind nur für den Datentyp Image gültig.
+  Gallery Item extra-Css: Galerie Item extra-Css
+  Gallery Container extra-Css: Galerie Container extra-Css
+  oAuth Settings: oAuth Einstellungen
+  Create new certificates: Neue Zertifikate erstellen
+  Executed: Ausgeführt
+  The action was successfully executed.: Die Aktion wurde erfolgreich ausgeführt.
+  The password you entered is wrong!: Das eingegebene Passwort ist falsch!
+  Password to execute: Passwort zum ausführen
+  Enter password to execute: Passwort zum ausführen eingeben
+  Enter your password to execute.: Geben Sie zum Ausführen Ihr Passwort ein.
+  The password entered is incorrect!: Das eingegebene Passwort ist falsch!
+  Execute: Ausführen
+  Properties of the JSON Web Key Set: Eigenschaften des JSON-Webschlüsselsatzes
+  Certificates: Zertifikate
+  default Scopes: Standard-Geltungsbereiche
+  Generate Defuse Crypto Key: Defuse Crypto Key generieren
+  Crypto Key successfully created.: Crypto Key erfolgreich erstellt.
+  Key successfully created.: Key erfolgreich erstellt.
+  Client ID: Client ID
+  Client Secret: Client Secret
+  Redirect uris: Redirect uris
+  Client Secret must not be empty: Client Secret darf nicht leer sein
+  The name must not be empty.: Der Name darf nicht leer sein.
+  Scope: Geltungsbereiche
+  Grants: Berechtigungen
+  Delete authorisation: Berechtigung löschen
+  no authorisations: keine Berechtigungen
+  Add authorisation: Berechtigung hinzufügen
+  released addresses: freigegebene Adressen
+  Add URL: URL hinzufügen
+  No addresses available: keine Adressen vorhanden
+  Redirect URL: Redirect URL
+  Delete URL: URL löschen
+  API active: API aktiv
+  API Scope: API Geltungsbereich
+  No scope available: kein Geltungsbereich vorhanden
+  Add scope of application: Geltungsbereich hinzufügen
+  Copied!: Kopiert!
+  API is active: API ist aktiv
+  API is not active: API ist nicht aktiv
+  Copy: Kopieren
+  Status: Status
+  status: status
+  Login as: Login als
+  Show password: Passwort anzeigen
+  Hide password: Passwort ausblenden
+  Authorisations: Berechtigungen
+  Manage users: Benutzer verwalten
+  Manage posts: Beiträge Verwalten
+  Manage header: Header verwalten
+  Manage footer: Footer verwalten
+  Manage consumer: Worker verwalten
+  Manage Tools: Tools verwalten
+  Manage Google Maps I-Frame: Google Maps I-Frame verwalten
+  Manage Google Maps Api: Google Maps Api verwalten
+  Manage Map data protection: Map Datenschutz verwalten
+  Manage forms: Formulare Verwalten
+  Create posts: Beiträge erstellen
+  Use Authy or Google Authenticator to Scan the QR Code.: Verwenden Sie Authy oder Google Authenticator zum Scannen des QR-Codes.
+  URL for authentication app: URL für Authentifizierung-App
+  Authy or Google Authenticator: Authy oder Google Authenticator
+  Account: Konto
+  Secret: Secret
+  API settings: API Einstellungen
+  E-mail active: E-Mail aktiv
+  Send e-mail: E-Mail senden
+  Manage API: API-Verwalten
+  Manage oAuth2: oAuth2 Verwalten
+  Manage Backup: Backup Verwalten
+  Manage Gallery: Galerie Verwalten
+  Manage Custom Fields: Benutzerdefinierte Felder verwalten
+  Custom Fields: Benutzerdefinierte Felder
+  Custom Field: Benutzerdefiniertes Feld
+  Add Custom Field: Benutzerdefiniertes Feld hinzufügen
+  Manage Menu: Menü Verwalten
+  Manage Fonts: Fonts verwalten
+  Delete fonts: Fonts löschen
+  Add menu: Menü hinzufügen
+  Page menu: Seiten-Menü
+  Main menu: Hauptmenü
+  Customised: Benutzerdefiniert
+  Menus: Menüs
+  Menu type: Menü Typ
+  Add Backup: Backup erstellen
+  Route: Route
+  Manage user roles: Benutzerrollen-Verwalten
+  Manage API authorisations: API Berechtigungen-Verwalten
+  Manage authorisations: Berechtigungen-Verwalten
+  Manage activities: Aktivitäten-Verwalten
+  Manage email: E-Mail-Verwalten
+  Manage e-mail system: E-Mail-System Verwalten
+  Manage registration: Registrierung-Verwalten
+  Manage activation: Aktivierung-Verwalten
+  Manage system settings: System-Einstellungen Verwalten
+  Manage log: Log Verwalten
+  Manage APP settings: APP-Settings Verwalten
+  Manage Websites: Webseiten verwalten
+  Manage Seo: Seo verwalten
+  Manage Sites: Seiten verwalten
+  Manage Page-Builder: Page-Builder Verwalten
+  Manage Page-Builder layouts: Page-Builder Layouts Verwalten
+  Manage Page-Builder plugins: Page-Builder Plugins Verwalten
+  Pages Categories Manage: Seiten Kategorien Verwalten
+  Page settings: Seiten Einstellungen
+  Delete account: Account löschen
+  Media library: Mediathek
+  Media library upload: Mediathek-Upload
+  Show profile: Profil anzeigen
+  Edit profile: Profil bearbeiten
+  System backups: System Backups
+  After adding or deleting user roles, the authorisations must be recreated.: Nach dem Hinzufügen oder Löschen von Benutzerrollen müssen die Berechtigungen neu erstellt werden.
+  Account authorisations: Account Berechtigungen
+  API authorisations: API Berechtigungen
+  Basic settings: Grundeinstellungen
+  Please delete the installation folder.: Bitte Installationsordner löschen.
+  Delete folder now: Ordner jetzt löschen
+swal:
+  All settings in your authentication app will be lost. The settings cannot be restored.: Alle Einstellungen in Ihrer Authentifizierung-App gehen dabei verloren. Die Einstellungen können nicht wieder hergestellt werden.
+  Enter the PIN.: Geben Sie den PIN ein.
+  Cancel: Abbrechen
+  Close: Schließen
+  PIN: PIN
+  The category template cannot be selected. Category templates cannot be shared.: Das Kategorie Template kann nicht ausgewählt werden. Kategorie Templates können nicht gemeinsam genutzt werden.
+  The PIN entered is incorrect!: Der eingegebene PIN ist falsch!
+  Enter PIN: PIN eingeben
+  deactivate 2FA: 2FA deaktivieren
+  The deletion cannot be undone.: Das Löschen kann nicht rückgängig gemacht werden.
+  Delete user: Benutzer löschen
+  All data will be deleted. The deletion cannot be reversed.: Alle Daten werden gelöscht. Das Löschen kann nicht rückgängig gemacht werden.
+  Consent deleted: Zustimmung gelöscht
+  User consent successfully deleted.: Benutzer Zustimmung erfolgreich gelöscht.
+  Delete email: E-Mail löschen
+  Delete all emails: Alle E-Mails löschen
+  Delete files: Dateien löschen
+  Delete file: Datei löschen
+  Delete font: Schrift löschen
+  Font deleted: Schrift gelöscht
+  The font has been successfully deleted: Die Schrift wurde erfolgreich gelöscht
+
+  Delete form builder: Form-Builder löschen
+  Delete element: Element löschen
+  Delete menu: Menü löschen
+  Menu deleted: Menü gelöscht
+  Delete gallery: Galerie löschen
+  Gallery successfully deleted: Galerie erfolgreich gelöscht
+  Gallery was successfully deleted: Galerie wurde erfolgreich gelöscht
+  All page content with this layout will be lost.: Alle Seiteninhalte mit diesem Layout gehen verloren.
+  All files are deleted. The deletion cannot be undone.: Alle Dateien werden gelöscht. Das Löschen kann nicht rückgängig gemacht werden.
+  Delete category: Kategorie löschen
+  Delete page: Seite löschen
+  Page deleted: Seite gelöscht
+  Post deleted: Beitrag gelöscht
+  Reset settings: Einstellungen zurücksetzen
+  All settings will be lost.: Alle Einstellungen gehen verloren.
+  Settings reset: Einstellungen zurückgesetzt
+  All settings have been successfully reset.: Alle Einstellungen wurden erfolgreich zurückgesetzt.
+  Reset all colour settings: Alle Farbeinstellungen zurücksetzen
+  The page has been successfully deleted.: Die Seite wurde erfolgreich gelöscht.
+  The post has been successfully deleted.: Der Beitrag wurde erfolgreich gelöscht.
+  All documents of this category will be moved to the default category.: Alle Dokumente dieser Kategorie werden in die Standard Kategorie verschoben.
+  All pages in this category are moved to the standard category.: Alle Seiten dieser Kategorie werden in die Standard Kategorie verschoben.
+  Category deleted: Kategorie gelöscht
+  Form builder deleted: Form-Builder gelöscht
+  Form builder successfully deleted and all pages updated.: Form Builder erfolgreich gelöscht und alle Seiten aktualisiert.
+  Element deleted: Element gelöscht
+  Form builder element successfully deleted.: Form-Builder Element erfolgreich gelöscht.
+  Category was successfully deleted.: Kategorie wurde erfolgreich gelöscht.
+  Backup was successfully deleted.: Backup wurde erfolgreich gelöscht.
+  The menu has been successfully deleted.: Das Menü wurde erfolgreich gelöscht.
+  Backup deleted: Backup gelöscht
+  Delete backup: Backup löschen
+  Delete slider: Slider löschen
+  Delete carousel: Carousel löschen
+  Delete button: Button löschen
+  Delete data protection: Datenschutz löschen
+  Data protection deleted: Datenschutz gelöscht
+  Data protection was successfully deleted: Datenschutz wurde erfolgreich gelöscht
+  Delete breakpoint: Breakpoint löschen
+  Slider deleted: Slider gelöscht
+  Carousel deleted: Carousel gelöscht
+  Carousel has been successfully deleted.: Carousel wurde erfolgreich gelöscht.
+  Breakpoint deleted: Breakpoint gelöscht
+  The slider has been successfully deleted.: Der Slider wurde erfolgreich gelöscht.
+  The breakpoint has been successfully deleted.: Der Breakpoint wurde erfolgreich gelöscht.
+  Password: Passwort
+  Delete log entry: Logeintrag löschen
+  Log entry deleted: Logeintrag gelöscht
+  Delete log entries: Logeinträge löschen
+  Log entries deleted: Logeinträge gelöscht
+  Selected entries successfully deleted.: Ausgewählte Einträge erfolgreich gelöscht.
+  The log entry has been successfully deleted.: Der Logeintrag wurde erfolgreich gelöscht.
+## Medien ExifData
+medien:
+  maximal: maximal
+  Files: Dateien
+  Media: Medien
+  GPS Latitude Ref: GPS Latitude Ref
+  GPS Latitude 1: GPS Latitude 1
+  GPS Latitude 2: GPS Latitude 2
+  GPS Latitude 3: GPS Latitude 3
+  GPS Longitude Ref: GPS Longitude Ref
+  GPS Longitude 1: GPS Longitude 1
+  GPS Longitude 2: GPS Longitude 2
+  GPS Longitude 3: GPS Longitude 3
+  GPS Altitude: GPS Altitude
+  ISO: ISO
+  File: Datei
+  File type: Dateityp
+  Category: Kategorie
+  Multiple selection: Mehrfachauswahl
+  Assign to a category: einer Kategorie zuordnen
+  Select category: Kategorie auswählen
+  Category successfully created.: Kategorie erfolgreich erstellt.
+  Delete selected: ausgewählte löschen
+  execute: ausführen
+  File size: Dateigröße
+  Exif: Exif
+  No image data: keine Bilddaten
+  Uploaded documents: Hochgeladene Dokumente
+  last modification: letzte Bearbeitung
+  Custom: Benutzerdefiniert
+  HDR (no original saved): HDR ( nicht im Original) gespeichert
+  HDR (original saved): HDR (Original gespeichert)
+  Daylight: Tageslicht
+  Fluorescent: Fluoreszierend
+  Tungsten (Incandescent): Wolfram (Glühlampe)Blitzlicht
+  Flash: Blitzlicht
+  Fine Weather: Schönes Wetter
+  Cloudy: Bewölkt
+  Shade: Schatten
+  Daylight Fluorescent: Tageslicht Fluoreszierend
+  Day White Fluorescent: Tag Weiß Fluoreszierend
+  Cool White Fluorescent: Kalt weiß Leuchtstoffröhre
+  White Fluorescent: Weiß fluoreszierend
+  Warm White Fluorescent: Warm weiß Leuchtstoffröhre
+  Standard Light A: Standard Light A
+  Standard Light B: Standard Light B
+  Standard Light C: Standard Light C
+  ISO Studio Tungsten: ISO Studio Wolfram
+  other: andere
+  Wide: Breit
+  Field: Feld
+  centre: Mitte
+  Flexible spot: Flexible spot
+  Extended Flexible Spot: Erweit. Flexible Spot
+  AF lock Extended Flexible Spot: AF-Verriegel.:Erw. Flexible Spot
+  Not Defined: Nicht definiert
+  M (Manual): M (Manual)
+  P (Program): P (Programmautomatik)
+  Aperture Priority: Blendenpriorität
+  Shutter Priority: Verschlusszeitenpriorität
+  Creative (Slow speed): Kreativ (langsame Geschwindigkeit)
+  Action (High speed): Aktion (hohe Geschwindigkeit)
+  Portrait: Portrait
+  Landscape: Landschaft
+  Bulb: Bulb
+  alt: alt
+  Messmodus: Messmodus
+  Camera: Kamera
+  Model: Model
+  Recorded: Aufgenommen
+  Lens: Objektiv
+  Blende: Blende
+  Digitized: Digitalisiert
+  Exposure: Belichtung
+  Software: Software
+  Focal length: Brennweite
+  Image width: Bild Breite
+  Image height: Bildhöhe
+  White balance: Weißabgleich
+  Program: Programm
+  Light source: Lichtquelle
+  in: in
+  Upload: Upload
+  Create a new category: neue Kategorie erstellen
+  Create category: Kategorie erstellen
+  Edit category: Kategorie bearbeiten
+  Cancel upload: Upload abbrechen
+  Gallery edition: Galerie-Ausgabe
+  Approach Details: Angang Details
+  Insert file(s): Datei(en) einfügen
+  Lightbox: Lightbox
+  Lightbox single: Lightbox single
+  Lightbox slide: Lightbox slide
+  Thumbnail: Thumbnail
+  Medium: Medium
+  Large: Large
+  XL-Large: XL-Large
+  Full: Full
+  Output: Ausgabe
+converter:
+  Image converter: Bildkonverter
+  Image to WebP: Image zu WebP
+  WebP to PNG: WebP zu PNG
+  WebP to JPEG: WebP zu JPEG
+  Image / SVG to WebP: Image / SVG zu WebP
+  webP - SVG - Image - Converter: webP - SVG - Image - Converter
+  SVG to PNG: SVG zu PNG
+  SVG to WebP: SVG zu WebP
+  PHP extension <b>ImageMagick</b> is not installed.: PHP-Erweiterung <b>ImageMagick</b> ist nicht installiert.
+  ImageMagick ® is a free open source software suite for editing and processing digital images. It can be used to create, edit, assemble or convert bitmap images and supports a variety of file formats including JPEG, PNG, GIF, TIFF and PDF.: ImageMagick ® ist eine kostenlose Open-Source -Software-Suite zur Bearbeitung und Bearbeitung digitaler Bilder. Es kann zum Erstellen, Bearbeiten, Zusammenstellen oder Konvertieren von Bitmap-Bildern verwendet werden und unterstützt eine Vielzahl von Dateiformaten , darunter JPEG, PNG, GIF, TIFF und PDF.
+  Save results in media library: Ergebnisse in Mediathek speichern
+  The file is not an SVG file.: Die Datei ist keine SVG-Datei.
+  The file is not an webP file.: Die Datei ist keine webP-Datei.
+  The file format is not supported.: Das Dateiformat wird nicht unterstützt.
+  Quality: Qualität
+backup:
+  Database backups: Datenbank-Sicherungen
+  Database backup: Datenbank backup
+  Version: Version
+  File size: Dateigröße
+  Created: Erstellt
+  Create new backup: neues Backup erstellen
+  Send database file: Datenbank-File senden
+  Dump File: Dump File
+  Send e-mail: E-Mail senden
+  File name: Dateiname
+  Email: E-Mail
+  Status: Status
+  Backup created: Backup erstellt
+  Installer: Installer
+  in progress: in Arbeit
+  created: erstellt
+  failed: fehlgeschlagen
+  Backup was successfully created and saved.: Backup wurde erfolgreich erstellt und gespeichert.
+  Archive is being created and will be available shortly.: Archiv wird erstellt und steht in kürze zur Verfügung.
+  Archive cannot be created at the moment. Please try again later.: Archiv kann zur Zeit nicht erstellt werden. Versuchen sie es später nochmal.
+log:
+  Database backup created: Datenbank Backup erstellt
+  Database backup deleted: Datenbank Backup gelöscht
+  Login error: Login Fehler
+  Login: Login
+  Register: Registrieren
+  Forgotten password: Passwort vergessen
+  Password changed: Passwort geändert
+  Account activated: Konto aktiviert
+  Account deactivated: Konto deaktiviert
+  Account deleted: Konto gelöscht
+  E-mail sent: E-Mail gesendet
+  System e-mail sent: System E-Mail gesendet
+  Backup created: Backup erstellt
+  Backup deleted: Backup gelöscht
+  User has logged in: Benutzer hat sich angemeldet
+  User has logged out: Benutzer hat sich abgemeldet
+  Forgotten password Email sent.: Passwort vergessen E-Mail gesendet.
+  Password has been changed.: Passwort wurde geändert.
+  Incorrect access data.: Fehlerhafte Zugangsdaten.
+  New registration: neue Registrierung
+  Account was activated by e-mail: Konto wurde per E-Mail aktiviert
+  Account has been activated: Konto wurde aktiviert
+app:
+  Minimise HTML: HTML minimieren
+  Export vendor archive: Archiv vendor exportieren
+  Custom Fields: Custom Fields
+  App settings: App Einstellungen
+  Page title: Seitentitel
+  Administrator e-mail address: Administrator-E-Mail-Adresse
+  Dashboard Logo: Dashboard Logo
+  Login Logo: Login Logo
+  E-mail signature logo: E-Mail Signatur Logo
+  Image size: Bildgröße
+  Data protection: Datenschutz
+  Privacy page: Datenschutz Seite
+  Imprint page: Impressum Seite
+  Terms and conditions page: AGB Seite
+  App Logos: App Logos
+  Select image: Bild auswählen
+  Change image: Bild ändern
+  Delete image: Bild löschen
+  Insert image: Bild einfügen
+  Insert video: Video einfügen
+  Change video: Video ändern
+  Select video: Video auswählen
+  Add video: Video hinzufügen
+  Add video from media library: Video aus Mediathek hinzufügen
+  Video source: Video Quelle
+  Video URL: Video URL
+  Video ID: Video ID
+  Video title: Video Titel
+  Carousel options: Carousel Optionen
+  Use video title: Videotitel verwenden
+  Use external cover: Externes Cover verwenden
+  External poster URL: Externe Poster URL
+  YouTube Video: YouTube Video
+  Video Poster: Video Poster
+  Vimeo Video: Vimeo Video
+  External video: Externes Video
+  Add external video: Externes Video hinzufügen
+  Delete video: Video löschen
+  no videos available: keine Videos vorhanden
+  oAuth2 settings: oAuth2 Einstellungen
+  Properties of the JSON web key set: Eigenschaften des JSON-Webschlüsselsatzes
+  Defuse Crypto Key: Defuse Crypto Key
+  Stop worker: Stop worker
+  worker restarted: worker restarted
+  worker stopped: worker stopped
+  Restart worker: Restart worker
+  alg: alg
+  kty: kty
+  use: use
+  x5t: x5t
+  Standard scope: Standard Geltungsbereich
+  x5c: x5c
+  kid: kid
+  Save JWKS: JWKS speichern
+  Certificates: Zertifikate
+  Create new certificates: Neue Zertifikate erstellen
+  Generate Defuse Crypto Key: Defuse Crypto Key generieren
+  Scopes: Geltungsbereiche
+  Generate kid key: kid Schlüßel generieren
+  E-mail settings: E-Mail Einstellungen
+  Save e-mail active: E-Mail speichern aktiv
+  Send e-mail asynchronously: E-Mail asynchron versenden
+  E-mail attachments active: E-Mail-Anhänge aktiv
+  Maximum number of attachments: Maximale Anzahl von Anhängen
+  maximum file size (MB): maximale Dateigröße (MB)
+  Media library: Mediathek
+  Google Maps active: Google Maps aktiv
+  ReplyTo: ReplyTo
+reg:
+  Registration settings: Registrierung-Einstellungen
+  Registration: Registrierung
+  Show forgotten password: Passwort vergessen anzeigen
+  Anyone can register: Jeder kann sich registrieren
+  Confirm registration with e-mail: Registrierung mit E-Mail bestätigen
+  Activate new registration manually: neue Registrierung manuell aktivieren
+  User active immediately: Benutzer sofort aktiv
+  Send notification of new registration: Benachrichtigung bei neuer Registrierung senden
+  E-mail address for notification: E-Mail Adresse für die Benachrichtigung
+  Registration form fields: Registrierung Formularfelder
+  do not show: nicht anzeigen
+  not a required field: kein Pflichtfeld
+  Required field: Pflichtfeld
+  Company/Organisation: Firma/Organisation
+  Title: Titel
+  First name: Vorname
+  Last name: Nachname
+  Street: Strasse
+  House number: Hausnummer
+  ZIP: PLZ
+  City: Ort
+  First name / Surname: Vorname / Nachname
+  Street / house number: Strasse / Hausnummer
+  Postcode / city: Postleitzahl / Ort
+  Telephone number: Telefon
+  Mobile: Mobil
+  Email address cannot be used!: Die E-Mail-Adresse kann nicht verwendet werden!
+  Password Leak Checker active: Passwort Leak Checker aktiv
+  Checks whether the password is affected by a data leak.: Prüft ob das Passwort von einem Daten-Leak betroffen ist.
+  Registered: Registriert
+  Register ID: Register ID
+  Activate: Aktivieren
+  User activated: Benutzer aktiviert
+  User has been successfully activated.: Benutzer wurde erfolgreich aktiviert.
+  Send notification after manual activation.: Benachrichtigung nach manueller Aktivierung senden.
+activity:
+  Activity: Aktivitäten
+  Date: Datum
+  User: User
+  Entry: Eintrag
+  Type: Type
+  Level: Level
+  Level Name: Level Name
+  Channel: Kanal
+  Request ID: Request ID
+  Show: Anzeigen
+  System Log: System Log
+  No information: keine Informationen
+seo:
+  no-follow: no-follow
+  no-index: no-index
+  follow: follow
+  index: index
+  FB: FB
+  X: X
+  Twitter: Twitter
+  Page Title: Seiten Titel
+  Page Title Prefix: Seiten Titel Prefix
+  Page Title Suffix: Seiten Titel Suffix
+  Separator: Separator
+  Page description: Seiten Beschreibung
+  Facebook active: Facebook aktiv
+  X (Twitter) active: X (Twitter) aktiv
+  Open Graph: Open Graph
+  OG Type: OG Type
+  OG title: OG Titel
+  OG page description: OG Seiten Beschreibung
+  OG Image: OG Image
+  Facebook: Facebook
+  Estimated reading time: Geschätzte Lesezeit
+  minutes: Minuten
+  Facebook Admins: Facebook Admins
+  Facebook App ID: Facebook App-ID
+  Separate multiple admins with a comma: mehrere Admins mit Komma trennen
+  X (Twitter) Card-Type: X (Twitter) Card-Type
+  X (Twitter) Site: X (Twitter) Seite
+  X (Twitter) Creator: X (Twitter) Creator
+site:
+  User name: Benutzername
+  Password: Passwort
+builder:
+  Header: Header
+  Footer: Footer
+  Edit header: Header bearbeiten
+  Create footer: Footer erstellen
+  Select category header: Kategorie Header auswählen
+  Select category footer: Kategorie Footer auswählen
+  Select post header: Beitrags Header auswählen
+  Select post footer: Beitrags Footer auswählen
+  Edit footer: Footer bearbeiten
+  Editor: Editor
+  Color: Farbe
+  Create header: Header erstellen
+  Builder extra CSS: Builder extra CSS
+  Loop settings: Loop Einstellungen
+  Position left: Position links
+  Top position: Position oben
+  Centred: Zentriert
+  Left-aligned: Linksbündig
+  Right-aligned: Rechtsbündig
+  Parallax type: Parallax Type
+  from -1.0 to 2.0: von -1.0 bis 2.0
+  Background position: Background position
+  Background style: Background style
+  Design settings: Design Einstellungen
+  BG-Overlay color: BG-Overlay color
+  Container background colour: Container Hintergrundfarbe
+  Column background colour: Column Hintergrundfarbe
+  Inner container background colour: Inner-Container Hintergrundfarbe
+  Object position: Objekt Position
+  CSS Column-Inner-Container: CSS Column-Inner-Container
+  CSS Inner-Container: CSS Inner-Container
+  Column extra CSS: Column extra CSS
+  Column-Inner extra CSS: Column-Inner extra CSS
+  Row extra CSS: Row extra CSS
+  CSS Column-Inner-Container (without dot or hash in front): CSS Column-Inner-Container (ohne Punkt oder Raute davor)
+  Lightbox single: Lightbox single
+  Page-Builder: Page-Builder
+  Page layout: Seiten Layout
+  Page layouts: Seiten Layouts
+  Layouts: Layouts
+  Plugins: Plugins
+  Page settings: Seiten-Einstellungen
+
+  Click on to add a new line to the layout.: Klicken Sie auf , um eine neue Zeile zum Layout hinzuzufügen.
+  Import layout: Layout Importieren
+  Upload json File: Upload json File
+  Drag & drop or click the file here.: Datei hier per Drag & Drop ablegen oder klicken.
+  File type not accepted!: Dateityp nicht akzeptiert!
+  Drop file: Datei ablegen
+  Create layout: Layout erstellen
+  Page builder created: Page-Builder erstellt
+  Twig-Filter: Twig-Filter
+  Fixed image height: Feste Bildhöhe
+  A new page builder has been successfully created.: Ein neuer Page-Builder wurde erfolgreich erstellt.
+  Page-Builder was successfully copied!: Page-Builder wurde erfolgreich kopiert!
+  File upload error: File-Upload Fehler
+  This form builder is already available.: Dieser Form-Builder ist schon vorhanden.
+  The form builder is faulty.: Der Form-Builder ist fehlerhaft.
+  The Form Builder version is not compatible.: Die Form-Builder Version ist nicht kompatibel.
+  Form builder imported: Form-Builder importiert
+  The form builder has been saved successfully.: Der Form-Builder wurde erfolgreich gespeichert.
+  Create a new page builder: neuen Page-Builder erstellen
+  Select page builder: Page-Builder auswählen
+  merge: zusammenführen
+  Fields wrapper extra CSS: Fields wrapper extra CSS
+  split: teilen
+  Responsive settings: Responsive Einstellungen
+  Columns: Spalten
+  Do not wrap columns: Spalten nicht umbrechen
+  Raster: Grid
+  Gutter: Gutter
+  Gutter (spacing): Gutter (Abstand)
+  Possible values e.g. gx-1 gy-2 etc.: mögliche Werte z.b gx-1 gy-2 usw.
+  Individual grid: Individuelles Raster
+  Individual: Individuell
+  Page Builder settings: Page Builder-Einstellungen
+  no page builder selected!: kein Page Builder ausgewählt!
+  Delete group: Gruppe löschen
+  An error has occurred.: Ein Fehler ist aufgetreten.
+  Delete element: Element löschen
+  Page-Builder Row: Page-Builder Row
+  Page-Builder Column: Page-Builder Column
+  Container: Container
+  Container-Fluid: Container-Fluid
+  Full width: Volle Breite
+  Really delete the element? The deletion cannot be undone.: Das Element wirklich löschen? Das Löschen kann nicht rückgängig gemacht werden.
+  Really delete a group? The deletion cannot be undone.: Die Gruppe wirklich löschen? Das Löschen kann nicht rückgängig gemacht werden.
+plugins:
+  Icon: Icon
+  Video: Video
+  Output of saved or external videos: Ausgabe gespeicherter oder externer Videos
+  Output of saved fields: Ausgabe gespeicherter Felder
+  Content: Inhalt
+  Accordion: Akkordeon
+  Add accordion item: Akkordeon Element  hinzufügen
+  Accordion Header: Akkordeon Header
+  Accordion Body: Akkordeon Body
+  expanded: aufgeklappt
+  Only ever open one element: Immer nur ein Element öffnen
+  Header extra CSS: Header extra CSS
+  Body extra CSS: Body extra CSS
+  Delete element: Element löschen
+  Add accordion element: Akkordeon Element hinzufügen
+  no items available: keine Items vorhanden
+  Build collapsing accordions: Zusammenklappbare Akkordeons bauen
+  Output icon with various options: Icon ausgeben mit verschiedenen Optionen
+  No icon selected: kein Icon ausgewählt
+  Select icon: Icon auswählen
+  Icon CSS: Icon CSS
+  Delete icon: Icon löschen
+  Google Maps-Api: Google Maps-Api
+  Google Maps I-Frame: Google Maps I-Frame
+  OpenStreetMap I-Frame: OpenStreetMap I-Frame
+  OpenStreetMap Leaflet: OpenStreetMap Leaflet
+  Change icon: Icon ändern
+  Image settings: Image Einstellungen
+  Post gallery with options: Beitrags Galerie mit Optionen
+  Google API card with options: Google API Karte mit Optionen
+  Google I-Frame map with options: Google I-Frame Karte mit Optionen
+  OpenStreetMap with options: OpenStreetMap mit Optionen
+  OpenStreetMap Leaflet with options: OpenStreetMap Leaflet mit Optionen
+  Output post with various options: Beitrag ausgeben mit verschiedenen Optionen
+  left: links
+  Width: Breite
+  width: breite
+  Height: Höhe
+  right: rechts
+  Menu: Menü
+  LI extra CSS: LI extra CSS
+  UL extra CSS: UL extra CSS
+  Display menu name: Menuname anzeigen
+  Output menu with various options: Menu ausgeben mit verschiedenen Optionen
+  Dividing line: Trennlinie
+  Title level: Title level
+  Title: Titel
+  Title CSS: Title CSS
+  Horizontal dividing line: Horizontale Trennlinie
+  center: mitte
+  Structure: Struktur
+  Alignment: Ausrichtung
+  Unfiltered HTML: Ungefiltertes HTML
+  Output raw HTML code on your page: Ausgabe von HTML-Code auf Ihrer Seite
+  Frame width: Rahmenbreite
+  Style: Stil
+  Text: Text
+  Parallax: Parallax
+  Parallax active: Parallax aktiv
+  Parallax fixed: Parallax fixiert
+  Speed: Geschwindigkeit
+  (Min 1 Max 99): (Min 1 Max 99)
+
+  Dividing line with text: Trennlinie mit Text
+  Horizontal dividing line with heading: Horizontale Trennlinie mit Überschrift
+  Width of the element: Breite des Elements
+  Select images: Bilder auswählen
+  Add element: Element hinzufügen
+  General settings: Allgemeine Einstellungen
+  A text area with WYSIWYG editor: Ein Textbereich mit WYSIWYG Editor
+  Text area: Textbereich
+  Element-ID: Element-ID
+  CSS class name (without dot or hash in front): CSS Klassenname (ohne Punkt oder Raute davor)
+  CSS Inner-Container (without dot or hash in front): CSS Inner-Container (ohne Punkt oder Raute davor)
+  Enter element ID (Note make sure it is unique and valid according to w3c specification).: Geben Sie die Element-ID ein (Hinweis Achten Sie darauf, dass sie eindeutig und gemäß der w3c-Spezifikation gültig ist).
+  Style particular content element differently - add a class name and refer to it in custom CSS.: Ein bestimmtes Inhaltselement kann anders gestaltet werden - fügen Sie einen Klassennamen hinzu und verweisen Sie im benutzerdefinierten CSS auf ihn.
+  Add files: Dateien hinzufügen
+  Column: Column
+  Single image: Einzelbild
+  Slider: Slider
+  Simple image with various options: Einfaches Bild mit verschiedenen Optionen
+  Select page: Seite auswählen
+  Custom link: Benutzerdefinierter Link
+  Action on click: Aktion beim Klicken
+  No action: keine Aktion
+  open in new tab: in neuem Tab öffnen
+  Mediathek: Mediathek
+  Extern: Extern
+  External URL: Externe URL
+  Placeholder: Platzhalter
+  Spacer: Abstandhalter
+  Empty space with user-defined height: Leerraum mit benutzerdefinierter Höhe
+  Enter empty space height (Note CSS measurement units allowed).: Geben Sie die Höhe des Leerraums ein (Hinweis CSS-Maßeinheiten sind zulässig).
+  Button: Button
+  Post button: Beitrags Button
+  Link to the post: Link zum Beitrag
+  Bootstrap Button: Bootstrap Button
+  Button Text: Button Text
+  Button variant: Button Variant
+  Button size: Button-Größe
+  normal: normal
+  Button sm: Button sm
+  Button lg: Button lg
+  Block button: Block Button
+  Disabled: Deaktiviert
+  Data attributes: Daten-Attribute
+  Save element: Element speichern
+  Element Designation: Element Bezeichnung
+  No designation found: keine Bezeichnung gefunden
+  Element successfully saved.: Element erfolgreich gespeichert.
+  Saved elements: Gespeicherte Elemente
+  No elements available: keine Elemente vorhanden
+  Elements: Elemente
+  Element: Element
+  Import: Importieren
+  Rename: Umbenennen
+  Button Outline: Button Outline
+  Form builder element imported: Form-Builder Element importiert
+  Form builder element was saved successfully.: Form-Builder Element wurde erfolgreich gespeichert.
+  Caption: Bildunterschrift
+  Caption options: Bildunterschrift Optionen
+  Post title: Beitrags Titel
+  Post content: Beitrag Content
+  Post image: Beitrags Bild
+  Post excerpt: Beitrag Auszug
+  Post slider: Beitrags Slider
+  Post loop: Beitrag loop
+  Output of the post title: Ausgabe des Beitragstitels
+
+video:
+  Defines if the gallery slides are cleared from the gallery modal, or reused for the next gallery initialization: Legt fest, ob die Galeriedias aus dem Galerie-Modal gelöscht oder für die nächste Galerieinitialisierung wiederverwendet werden
+  Toggle the controls on pressing the Enter key: Umschalten der Steuerelemente beim Drücken der Eingabetaste
+  Toggle the controls on slide click: Umschalten der Steuerelemente beim Anklicken der Folie
+  Toggle the automatic slideshow interval on pressing the Space key: Umschalten des automatischen Diashow-Intervalls beim Drücken der Leertaste
+  Navigate the gallery by pressing the ArrowLeft and ArrowRight keys: Navigieren Sie durch die Galerie, indem Sie die Pfeil-Links- und Pfeil-Rechts-Tasten drücken
+  Close the gallery on pressing the Escape key: Schließen der Galerie durch Drücken der Escape-Taste
+  Close the gallery when clicking on an empty slide area: Schließen der Galerie beim Klicken auf einen leeren Folienbereich
+  Close the gallery when the URL hash changes: Schließen der Galerie, wenn sich der URL-Hash ändert
+  Close the gallery by swiping up or down: Schließen Sie die Galerie durch Wischen nach oben oder unten
+  Emulate touch events on mouse-pointer devices such as desktop browsers: Emulation von Berührungsereignissen auf Geräten mit Mauszeigern wie Desktop-Browsern
+  Stop touch events from bubbling up to ancestor elements of the Gallery: Verhindert, dass Berührungsereignisse auf Vorgängerelemente der Galerie übergreifen
+  Hide the page scrollbars: Ausblenden der Bildlaufleisten der Seite
+  Stops any touches on the container from scrolling the page: Verhindert, dass Berührungen des Containers die Seite verschieben
+  Carousel mode (shortcut for carousel specific options): Carousel-Modus (Shortcut für Karussell-spezifische Optionen)
+  Allow continuous navigation, moving from last to first and from first to last slide: Erlauben Sie eine kontinuierliche Navigation, indem Sie von der letzten zur ersten und von der ersten zur letzten Folie wechseln
+  Remove elements outside of the preload range from the DOM: Entfernen von Elementen außerhalb des Vorladebereichs aus dem DOM
+  Start with the automatic slideshow.: Starten Sie mit der automatischen Slide show.
+  Delay in milliseconds between slides for the automatic slideshow: Verzögerung in Millisekunden zwischen den Folien für die automatische Diashow
+  The direction the slides are moving ltr=LeftToRight or rtl=RightToLeft: Die Richtung, in die sich die Folien bewegen ltr=LeftToRight oder rtl=RightToLeft
+  The starting index as integer.: Der Startindex als Ganzzahl.
+  The number of elements to load around the current index: Die Anzahl der zu ladenden Elemente um den aktuellen Index
+  The transition duration between slide changes in milliseconds: Die Übergangsdauer zwischen den Folienwechseln in Millisekunden
+  The transition duration for automatic slide changes, set to an integer greater 0 to override the default transition duration: Die Übergangsdauer für automatische Folienechsel, gesetzt auf eine ganze Zahl größer 0, um die Standardübergangsdauer zu überschreiben
+  Change play icon: Play-Icon ändern
+  slide show Direction: Diashow Richtung
+  Slide show Interval: Slide show Interval
+  Transition Duration: Slide show Dauer
+  Slide show Transition Duration: Slide show Dauer des Übergangs
+  Start Slide show automatically: Slide show automatisch starten
+  Carousel Option: Carousel Option
+  clear Slides: Folien löschen
+  toggle Controls On Enter: Steuerelemente umschalten Einschalten
+  toggle Controls On Slide Click: Steuerung bei Slide-Klick ein- und ausschalten
+  toggle Slide show On Space: Slide show einschalten bei Leertaste
+  enable Keyboard Navigation: Tastaturnavigation aktivieren
+  close On Escape: bei Escape schließen
+  close on Slide Click: Schließen bei Slide Klick
+  close on swipe up or down: Schließen bei Bewegung nach oben oder unten
+  close on hash change: Schließen bei Hash-Wechsel
+  emulate touch events: Berührungsereignisse emulieren
+  stop touch events propagation: die Weitergabe von Touch-Events stoppen
+  hide page scrollbars: Bildlaufleisten ausblenden
+  disable scroll: Scrollen deaktivieren
+  continuous: kontinuierlich
+  unload elements: Elemente entfernen
+mediaSlider:
+  Medien Slider: Medien Slider
+  Page Slider: Seiten Slider
+  Slider with media library images: Slider mit Mediathek Bildern
+  Slider for created websites: Slider für erstellte Webseiten
+  Slider created: Slider erstellt
+  Slider successfully created and saved.: Slider erfolgreich erstellt und gespeichert.
+  Create media slider: Medien Slider erstellen
+  Breakpoint: Breakpoint
+  arrows: arrows
+  cover: cover
+  keyboard: keyboard
+  pauseOnFocus: pauseOnFocus
+  drag: drag
+  rewind: rewind
+  pauseOnHover: pauseOnHover
+  pagination: pagination
+  autoplay: autoplay
+  type: type
+  perPage: perPage
+  perMove: perMove
+  lazyLoad: lazyLoad
+  gap: gap
+  preloadPages: preloadPages
+  trimSpace: trimSpace
+  interval: interval
+  speed: speed
+  rewindSpeed: rewindSpeed
+  flickPower: flickPower
+  Padding: Padding
+  left: left
+  right: right
+  top: top
+  bottom: bottom
+  container: container
+  height: height
+  width: width
+  fixedWidth: fixedWidth
+  fixedHeight: fixedHeight
+  thumbnail: thumbnail
+  focus: focus
+  Breakpoints: Breakpoints
+  Add breakpoint: Breakpoint hinzufügen
+  Slider: Slider
+  Create SLider: Slider erstellen
+  Breakpoint created: Breakpoint erstellt
+  No sliders available: keine Slider vorhanden
+  No breakpoints available: keine Breakpoints vorhanden
+gallery:
+  Media gallery: Medien Galerie
+  Post gallery: Beitrags Galerie
+  Create gallery: Galerie erstellen
+  Gallery successfully created: Galerie erfolgreich erstellt
+  Gallery created: Galerie erstellt
+  no gallery available: keine Galerie vorhanden
+  Edit gallery: Galerie bearbeiten
+  Gallery Grid: Galerie Grid
+  Masonry Grid: Masonry Grid
+  Gallery type: Galerie Typ
+  Image Crop: Image Crop
+  Image width: Bildbreite
+  Row column: Row column
+  Gutter: Gutter
+  Gallery view: Galerie Ansicht
+  Show gallery name: Galerie Bezeichnung anzeigen
+  Show gallery description: Galerie Beschreibung anzeigen
+  Select post: Beitrag auswählen
+  Lazy Load: Lazy Load
+  Lazy Load Animation: Lazy Load Animation
+  Image height: Bildhöhe
+  Image link: Bildlink
+  Lightbox Type: Lightbox Typ
+  Select gallery: Galerie auswählen
+  Breakpoints ( Responsive ): Breakpoints ( Responsive )
+  Properties that are to be changed in a specific screen width.: Eigenschaften die in einer bestimmten Bildschirmbreite geändert werden sollen.
+  Slide: Slide
+  Single: Single
+  Gallery slider settings: Galerie-Slider Einstellungen
+  Gallery: Galerie
+  Post/Page: Beitrag/Seite
+  Image options: Bild Optionen
+  The options can also be set individually for each image.: Die Optionen können auch für jedes Bild individuell eingestellt werden.
+carousel:
+  Medien Carousel: Medien Carousel
+  Carousel with media library images: Carousel mit Mediathek Bildern
+  Carousel: Carousel
+  Carousel Settings: Carousel Settings
+  Slider Settings: Slider Settings
+  Create media carousel: Medien Carousel erstellen
+  Create carousel: Carousel erstellen
+  Carousel successfully created and saved.: Carousel erfolgreich erstellt und gespeichert.
+  Carousel created: Carousel erstellt
+  No carousel available: kein Carousel vorhanden
+  No sliders available: keine Slider vorhanden
+  lazy load active: lazy load aktiv
+  The text entered is displayed with each slider. HTML can be used.: Der eingegebene Text wird mit jedem Schieberegler angezeigt. HTML kann verwendet werden.
+  Show control elements: Bedienelemente anzeigen
+  Show indicators: Indikatoren anzeigen
+  autoplay: autoplay
+  Slide hover stop: Slide hover stop
+  Touch active: Touch aktiv
+  Keyboard active: Tastatur aktiv
+  Carousel height: Carousel Höhe
+  Animation: Animation
+  Animation for the transitions: Animation für die Übergange
+  Animation for text: Animation für Text
+  Static text: Static text
+  Slider: Slider
+  Add slider: Slider hinzufügen
+  Select or change image for slider: Bild für Slider auswählen oder
+  First Title: First Title
+  Headline: Headline
+  Subtitle: Subtitle
+  Button Settings: Button Settings
+  Slider active: Slider aktiv
+  Show caption on mobile devices: Bildunterschrift auf Mobile Geräte anzeigen
+  Show title on hover: Titel bei Hover anzeigen
+  This entry overwrites the image title tag.: Dieser Eintrag überschreibt den Bildtitel-Tag.
+  If active, the entered captions are displayed on mobile devices.: Wenn aktiv, werden die eingetragenen Bildunterschriften auf Mobilen Geräten angezeigt.
+  This entry overwrites the image alt tag.: Dieser Eintrag überschreibt den Alt-Tag des Bildes.
+  Slider Interval (msec): Slider Interval (msec)
+  Alt Tag: Alt Tag
+  Title Tag: Titel Tag
+  Add button: Button hinzufügen
+  HTML can be used: HTML kann verwendet werden
+  No button available: keine Button vorhanden
+  Select Carousel: Carousel auswählen
+  Selector: Selektor
+  Title Tag Selector: Title Tag Selector
+  Show title: Titel anzeigen
+  Show excerpt: Auszug anzeigen
+  Show post image: Beitragsbild anzeigen
+  Show date: Datum anzeigen
+  Show category: Kategorie anzeigen
+structure:
+  Default: Default
+  Top left: Links oben
+  Centre top: Mitte oben
+  Top right: Rechts oben
+  Centre left: Mitte links
+  Centre Centre: Mitte Mitte
+  Centre right: Rechts Mitte
+  Bottom left: Links unten
+  Bottom right: Rechts unten
+  Background image: Hintergrundbild
+animate:
+  Repeats: Wiederholungen
+  Select animation: Animation auswählen
+  Duration of the animation: Dauer der Animation
+  Number of repetitions of the animation. (infinite for infinite): Anzahl der Wiederholungen der Animation. (infinite für unendlich)
+  Change the duration of the animation. (e.g. 2s): Ändern Sie die Dauer der Animation. (z.B. 2s)
+  Delay: Verzögerung
+  Delay before the animation starts. (e.g. 3s): Verzögerung vor Beginn der Animation. (z.B. 3s)
+  Start of the animation: Start der Animation
+  Distance to the start of the animation (in relation to the bottom edge of the browser).: Abstand zum Start der Animation (bezogen auf den unteren Rand des Browsers).
+  No replay: keine Wiederholung
+  If active, the animation is not repeated after scrolling.: Wenn aktiv, wird nach dem Scrollen die Animation nicht wiederholt.
+  Animation: Animation
+  Repeat animation: Animation wiederholen
+menu:
+  Displayed name: Angezeigter Name
+  Attribut title (optional): Attribut title (optional)
+  Open link in a new tab: Link in einem neuen Tab öffnen
+  CSS classes (optional): CSS-Klassen (optional)
+  Link relationships (XFN): Link-Beziehungen (XFN)
+  Original name: Ursprünglicher Name
+  Remove: Entfernen
+  post-category: Post Kategorie
+  back to the menu: zurück zum Menu
+  Menu designation: Menu Bezeichnung
+  Main menu: Hauptmenü
+  Custom Menu: Benutzerdefiniertes Menü
+  Menu activated: Menü aktiv
+  Save menu: Menü speichern
+  Menu entry deleted: Menüeintrag gelöscht
+  The menu entry has been successfully deleted.: Der Menüeintrag wurde erfolgreich gelöscht.
+  no entries available: keine Einträge vorhanden
+  Individual Links: Individuelle Links
+  individual: Individuell
+  site: Seite
+  category: Kategorie
+  post: Beitrag
+  Route must be available: Route muss vorhanden sein
+  Update permalinks: Permalinks aktualisieren
+  Permalinks updated: Permalinks aktualisiert
+  After changes, update menu permalinks: Nach Änderungen, Menü-Permalinks aktualisieren
+  Create Seo page: Seo Seite erstellen
+  Seo page successfully created.: Seo Seite erfolgreich erstellt.
+  Display: Display
+  Scroll: Scroll
+  Mobil: Mobil
+  show only with login: bei Login anzeigen
+  Do not display on login: bei Login nicht anzeigen
+  Menu Brand Image: Menu Brand Image
+  Navigation Text: Navigation Text
+  Menu alignment: Menüausrichtung
+  Horizontal menu alignment: Horizontale Menüausrichtung
+  Menu centre: Menü center
+  Menu left: Menü links
+  Menu right: Menü rechts
+  Menu top: Menü oben
+  Pages Categories: Seiten Kategorien
+  Page category: Seitenkategorie
+  Menu below: Menü unten
+  Menu Container: Menu Container
+  Container breakpoint: Container breakpoint
+  Menu breakpoint: Menü breakpoint
+  container: container
+  Navigation background colour: Navigation Hintergrundfarbe
+  container-fluid: container-fluid
+  container-fluid extends across the entire width of the browser: container-fluid erstreckt sich über die gesamte Breite des Browsers
+posts:
+  Posts: Beiträge
+  All posts: Alle Beiträge
+  Post: Beitrag
+  Post category: Beitragskategorie
+  Post categories: Beitragskategorien
+  Category Description: Kategorie Beschreibung
+  Output Category Title: Ausgabe Kategorie Titel
+  Output of the category Description: Ausgabe der Kategorie Beschreibung
+  Create new post: neuen Beitrag erstellen
+  Create post: Beitrag erstellen
+  Delete post: Beitrag löschen
+  Layouts: Layouts
+  Design: Design
+  Category picture: Kategoriebild
+  Output category image with options: Ausgabe Kategoriebild mit Optionen
+  Category Design: Kategorie Design
+  Category position: Kategorie position
+  Category name: Kategoriename
+  Category title: Kategorie Titel
+  Category loop: Kategorie loop
+  Output posts of a category: Beiträge einer Kategorie ausgeben
+  Post Design: Beitrag Design
+  Loop Design: Loop Design
+  Post loop: Beitrags loop
+  Post gallery: Beitrags Galerie
+  no images available: keine Bilder vorhanden
+  Featured image: Beitragsbild
+  Edition Feature image: Ausgabe Beitragsbild
+  Post Text excerpt: Beitrag Textauszug
+  Output Text excerpt: Ausgabe Textauszug
+  Text excerpt: Textauszug
+  Post Content: Beitrag Inhalt
+  Article Content HTML Output: Beitrag Inhalt HTML Ausgabe
+  Article date: Beitrag Datum
+  Position: Position
+  Post title: Beitragstitel
+  Date with output options: Datum mit Ausgabe-Optionen
+  Date format: Datum-Format
+  Limit: limit
+  More loading: mehr Laden
+  Order by: Order by
+  Order: Order
+  Show more: mehr Anzeigen
+  Automatically more ads: automatisch mehr Anzeigen
+  Button more ads: Button mehr Anzeigen
+  Button text: Button Text
+  Button CSS: Button CSS
+scss:
+  SCSS Compiler: SCSS Compiler
+  SCSS Compiler Settings: SCSS Compiler Settings
+  SCSS Compiler active: SCSS Compiler aktiv
+  Cache Settings: Cache Settings
+  Cache active: Cache aktiv
+  The specified path must exist.: Der angegebene Pfad muss existieren.
+  Cache path: Cache Pfad
+  Empty cache: Cache leeren
+  Output settings: Ausgabe Settings
+  Output: Ausgabe
+  Create source map: Source Map erstellen
+  Compiler only active at login: Compiler nur bei Login aktiv
+  If activated, the SCSS compiler is only active when a user is logged in.: Wenn aktiviert, ist der SCSS-Compiler nur aktiv wenn ein Benutzer angemeldet ist.
+  Source map options: Source Map Optionen
+  SCSS Location: SCSS Location
+  CSS Location: CSS Location
+design:
+  Add font: Schrift hinzufügen
+  no fonts available: keine Schriften vorhanden
+  Font already exists: Font schon vorhanden
+  Font styles: Schriftstile
+  Font style: Schriftstil
+  Font-Style: Font-Style
+  Font-Weight: Font-Weight
+  Installed fonts: Installierte Schriften
+  Font Info: Font Info
+  Font settings: Schrift-Einstellungen
+  Font details: Font-Details
+  Font: Schrift
+  Design settings: Design Einstellungen
+  Design: Design
+  Font and colours: Schrift und Farben
+  Colours: Farben
+  Headings: Überschriften
+  Body Menu Button: Body Menü Button
+  Body: Body
+  Menu: Menü
+  Button: Button
+  Font family: Schriftfamilie
+  Font size desktop: Schriftgröße Desktop
+  Font size mobile: Schriftgröße Mobil
+  Line height: Zeilenhöhe
+  Display headline: Display-Überschrift
+  Font colour: Schriftfarbe
+  Background colours: Hintergrundfarben
+  Background colour: Hintergrundfarbe
+  Pages: Seiten
+  Footer: Footer
+  Menu font in capital letters.: Menü Schrift in Großbuchstaben.
+  Button font in capital letters.: Button Schrift in Großbuchstaben.
+  Menu button: Menü Button
+  Menu button hover: Menü Button hover
+  Menu button active: Menü Button aktiv
+  Dropdown: Dropdown
+  Dropdown Item: Dropdown Item
+  Main menu dropdown: Hauptmenü Dropdown
+  Dropdown menu active: Dropdown Menü aktiv
+  Dropdown menu hover: Dropdown Menü hover
+  Heading: Überschrift
+  Menu colours: Menü-Farben
+  Navigation: Navigation
+  uppercase: uppercase
+  Link colour: Link-Farbe
+  Active link: Aktiver Link
+  Link hover: Link-Hover
+  Scroll To Top Button: Scroll To Top Button
+  Icon Colour: Icon Color
+  The navigation background colour can be changed in the main menu settings.: Die Hintergrundfarbe der Navigation kann in den Einstellungen des Hauptmenüs geändert werden.
+maps:
+  Placeholder map: Platzhalter Karte
+  Placeholder Image: Platzhalter Image
+  Select data protection page: Datenschutz Seite auswählen
+  Accept data protection Text: Datenschutz akzeptieren Text
+  Data protection link: Datenschutz Link
+  Link underline: Link underline
+  Link uppercase: Link uppercase
+  Button uppercase: Button uppercase
+  Change placeholder image: Platzhalter Bild ändern
+  Delete placeholder image: Platzhalter Bild löschen
+  Button Text: Button Text
+  Button extra CSS: Button extra CSS
+  Link extra CSS: Link extra CSS
+  You can use {{LINK}} as a placeholder for the data protection link. If no placeholder is inserted, the link is inserted after the text.: Für den Datenschutz-Link kann als Platzhalter {{LINK}} verwendet werden. Wird kein Platzhalter eingefügt, wird der Link nach dem Text eingefügt.
+  API Key: API Key
+  User-defined colour scheme: Benutzerdefiniertes Farbschema
+  Map colour scheme: Map Farbschema
+  JavaScript Style Array: JavaScript Style Array
+  Standard Pin: Standard Pin
+  Select pin: Pin auswählen
+  Custom Pin: Custom Pin
+  Delete pin: Pin löschen
+  Change pin: Pin ändern
+  Coordinates: Koordinaten
+  Info text: Infotext
+  Add new pin: neuen Pin hinzufügen
+  This text appears when you click on the pin: Dieser Text erscheint beim klick auf den Pin
+  Pin: Pin
+  Manage API pins: Manage API pins
+  Map Privacy Policy: Map Datenschutz
+  Max zoom: Max zoom
+  Min zoom: Min zoom
+  Zoom: Zoom
+  Placeholder map grayscale: Platzhalter Karte grayscale
+  I-Frame: I-Frame
+  Link Show larger map: Link Größere Karte anzeigen
+  Add address: Adresse hinzufügen
+  Cluster Group Fill Colour: Cluster Group Fill Colour
+  Cluster Group Colour: Cluster Group Colour
+  Search address: Adresse suchen
+  No address found: keine Adresse gefunden
+  Pin Textbox: Pin Textbox
+  Cards Pins: Karten Pins
+  no locations available: keine Standorte vorhanden
+  max Cluster Radius: max. Cluster-Radius
+  Exit full screen mode: Den Vollbildmodus beenden
+  Show full screen mode: Vollbildmodus anzeigen
+  Show MiniMap: MiniMap anzeigen
+  Show pin: Pin anzeigen
+  Custom Polygon active: Benutzerdefiniertes Polygon
+  Fill colour: Füllfarbe
+  Border colour: Rahmenfarbe
+  Polygon border width: Polygon Border Breite
+  Hide thumbnail map: Miniaturkarte ausblenden
+  Show thumbnail map: Miniaturkarte einblenden
+  MiniMap height: MiniMap Höhe
+  MiniMap width: MiniMap Breite
+  MiniMap min. zoom: MiniMap min. zoom
+  MiniMap max. zoom: MiniMap max. zoom
+forms:
+  Animated checkbox: Animierte Checkbox
+  Checkbox color: Checkbox Farbe
+  Forms: Formulare
+  Create form: Formular erstellen
+  Edit form: Formular bearbeiten
+  Delete form: Formular löschen
+  Create and edit: Erstellen und bearbeiten
+  Delete group: Gruppe löschen
+  No condition selected: keine Bedingung ausgewählt
+  No rule defined: keine Regel definiert
+  Possible values e.g. gx-1 gy-2 etc.: mögliche Werte z.B. gx-1 gy-2 usw.
+  Reset active: zurücksetzen aktiv
+  Please check input fields.: Bitte Eingabefelder überprüfen.
+  Message from %s: Nachricht von %s
+  This message was sent from the %s contact form.: Diese Nachricht wurde vom %s Kontaktformular gesendet.
+  The sender s message was sent successfully: Die Nachricht des Absenders wurde erfolgreich gesendet
+  The message was sent successfully.: Die Nachricht wurde erfolgreich gesendet.
+  The sender s message could not be sent: Die Nachricht des Absenders konnte nicht gesendet werden
+  An error occurred while trying to send your message. Please try again later.: Beim Versuch, Ihre Nachricht zu senden, ist ein Fehler aufgetreten. Bitte versuchen Sie es später noch einmal.
+  Error filling out the form: Fehler beim Ausfüllen des Formulars
+  One or more fields have an error. Please check and try again.: Ein oder mehrere Felder haben einen Fehler. Bitte überprüfen Sie es und versuchen Sie es erneut.
+  Input was recognised as spam: Eingabe wurde als Spam erkannt
+  Form is being sent: Das Formular wird gesendet
+  Heading Error message: Überschrift Fehlermeldung
+  Form could not be sent!: Das Formular konnte nicht gesendet werden!
+  small: klein
+  normal: normal
+  large: gross
+  horizontal: horizontal
+  full width: volle Breite
+  vertical: vertikal
+  Date: Datum
+  Date / Time: Datum / Zeit
+  Time: Zeit
+  Month: Monat
+  Form successfully deleted.: Formular erfolgreich gelöscht.
+  Form successfully duplicated.: Formular erfolgreich dupliziert.
+  Settings saved successfully.: Einstellungen erfolgreich gespeichert.
+  Form condition successfully deleted.: Formular Bedingung erfolgreich gelöscht.
+  File type not accepted!: Dateityp nicht akzeptiert!
+  File upload failed!: Dateiupload fehlgeschlagen!
+  File upload failed! Incorrect form format.: Datei-Upload fehlgeschlagen! Falsches Formular Format.
+  The form already exists.: Das Formular ist schon vorhanden.
+  File is not compatible.: Datei ist nicht kompatibel.
+  File successfully imported.: Datei erfolgreich Importiert.
+  unknown: unbekannt
+  Overview: Übersicht
+  Incoming mail: Posteingang
+  Please wait: Bitte warten
+  Name or company of the sender: Name oder Firma des Absenders
+  Reply-To: Reply-To
+  Sender e-mail: Absender E-Mail
+  Attachment: Anhang
+  Sender: Absender
+  Save e-mail active: E-Mail speichern aktiv
+  File Upload Settings: File Upload Settings
+  File upload active: Datei-Upload aktiv
+  maximum file size (MB): maximale File Größe (MB)
+  minimum file size (MB): minimale File Größe (MB)
+  Max. Files per e-mail: Max. Files pro E-Mail
+  File Upload MimeTypes: File-Upload MimeTypes
+  Multiple uploads active: Multiple Uploads aktiv
+  If the entry remains empty, the page title is used.: Wenn der Eintrag leer bleibt, wird der Seitentitel verwendet.
+  Separate MimeTypes with comma or semicolon.: MimeTypes mit Komma oder Semikolon trennen.
+  Received messages: Empfangene Nachrichten
+  Received: Empfangen
+  Form: Formular
+  Subject: Betreff
+  Recipient: Empfänger
+  Sender IP: Absender IP
+  Delete all emails: Alle E-Mails löschen
+  Inbox: Posteingang
+  Form messages: Formular Meldungen
+  Duplicate: Duplizieren
+  Click to add a new row to layout.: Klicken Sie auf , um eine neue Zeile zum Layout hinzuzufügen.
+  Create new form: Neues Formular erstellen
+  Form designation: Formular Bezeichnung
+  Type: Typ
+  Update: Update
+  Fields: Felder
+  Input fields: Eingabefelder
+  Do you really want to delete a form field? The deletion cannot be undone.: Formularfeld wirklich löschen? Das Löschen kann nicht rückgängig gemacht werden.
+  Delete form field: Formularfeld löschen
+  Delete Option: Option löschen
+  Really delete a option? The deletion cannot be undone.: Option wirklich löschen? Das Löschen kann nicht rückgängig gemacht werden.
+  Form pages: Formular Seiten
+  Page: Seite
+  Add page: Seite hinzufügen
+  Field ID: Feld ID
+  Label: Label
+  Slug: Slug
+  Required field: Pflichtfeld
+  Hide label: Label ausblenden
+  Floating label: Floating label
+  Description: Beschreibung
+  Height in PX: Höhe in PX
+  Rows: Rows
+  Placeholder: Platzhalter
+  Extra CSS: Extra CSS
+  Default: Default
+  Button type: Button Typ
+  Button CSS: Button CSS
+  Sanitization Level: Sanitization Level
+  Options: Optionen
+  Add option: Option hinzufügen
+  no default: kein Standard
+  Email recipient: E-Mail Empfänger
+  Enter the e-mail recipient in the Value field.: Im Feld Value E-Mail Empfänger eintragen.
+  Delete option: Option löschen
+  Default option: Standard Option
+  Value: Value
+  Delete field: Feld löschen
+  please select: bitte auswählen
+  All form settings will be lost. The deletion cannot be undone.: Alle Formular Einstellungen gehen verloren. Das Löschen kann nicht rückgängig gemacht werden.
+  Form options: Formular Optionen
+  Delete page: Seite löschen
+  Really delete page? The deletion cannot be undone.: Seite wirklich löschen? Das Löschen kann nicht rückgängig gemacht werden.
+  Form layout: Formular Layout
+  Autoresponder settings: Autoresponder Einstellungen
+  Show: Anzeigen
+  show: anzeigen
+  not active: nicht aktiv
+  Available form placeholders: Verfügbare Formular Platzhalter
+  Message: Nachricht
+  Separate multiple recipients with a comma or semicolon.: Mehrere Empfänger mit Komma oder Semikolon trennen.
+  Send e-mail to: E-Mail senden an
+  E-mail settings: E-Mail Einstellungen
+  Automatic reply: Automatische Antwort
+  active: aktiv
+  hide: ausblenden
+  Save autoresponder: Autoresponder speichern
+  The e-mail is sent to the selected recipient.: Die E-Mail wird an den ausgewählten Empfänger gesendet.
+  checked: ausgewählt
+  Radio: Radio
+  Switch: Schalter
+  Alignment: Ausrichtung
+  Size: Größe
+  size: größe
+  Year: Jahr
+  Date from: Datum von
+  Date to: Datum bis
+  Date output: Datums Ausgabe
+  Date type: Datumstyp
+  Choose your color: Wählen Sie Ihre Farbe
+  Content: Inhalt
+  HTML: HTML
+  HR Tag: HR Tag
+  Width: Breite
+  Extra CSS Class: Extra CSS Class
+  File upload: Datei-Upload
+  Show button: Button anzeigen
+  Button text: Button Text
+  Chunk Upload: Chunk Upload
+  Validation of the file size: Validierung der Dateigröße
+  Text: Text
+  Uploader messages: Uploader Meldungen
+  Conditions form: Formular Bedingungen
+  Conditions: Bedingungen
+  Add condition: Bedingung hinzufügen
+  New condition: Neue Bedingung
+  Fields to which this condition should be applied.: Felder, auf die diese Bedingung angewendet werden soll.
+  Delete condition: Bedingung löschen
+  Hide: Verstecken
+  Deactivate: Deaktivieren
+  Add rule: Regel hinzufügen
+  if: wenn
+  is: ist
+  is not: ist nicht
+  greater: größer
+  smaller: kleiner
+  contains: enthält
+  Condition: Bedingung
+  The deletion cannot be undone.: Das Löschen kann nicht rückgängig gemacht werden.
+  Field: Feld
+  and: und
+  select: auswählen
+  new line: neue Zeile
+  Delete line: Zeile löschen
+  or: oder
+  Action: Aktion
+  Export: Export
+  Import: Importieren
+  Drag & drop or click the file here.: Datei hier per Drag & Drop ablegen oder klicken.
+  Drop file: Datei ablegen
+  Upload json File: Upload json File
+  Columns: Spalten
+  Gutter: Gutter
+  Customised: Individuell
+  Customised grid: Individuelles Raster
+  Form Gutter: Formular Gutter
+  Grid: Raster
+  Responsive settings: Responsive Einstellungen
+  Form Columns: Formular Spalten
+  Do not wrap columns: Spalten nicht umbrechen
+  Privacy page: Datenschutzseite
+  Privacy URL / URI: Datenschutz URL / URI
+  Privacy checkbox text: Datenschutz Checkbox Text
+  The placeholder { Text } links the text to the Privacy URL / URI: Der Platzhalter { Text } verlinkt den Text mit der Datenschutz URL / URI
+  Open in new tab: In neuem Tab öffnen
+  Extra: Extra
+  Slider: Slider
+  Minimum: Minimum
+  Maximum: Maximum
+  Show value: Wert anzeigen
+  Prefix: Prefix
+  Suffix: Suffix
+  Step: Schritt
+  Rating type: Bewertung Typ
+  font size: Schriftgröße
+  spacing: Abstand
+  Colour active: Farbe aktiv
+  Colour not active: Farbe nicht aktiv
+  Number of stars: Anzahl der Sterne
+  eCommerce: eCommerce
+  Expiry date: Ablaufdatum
+  Card Number: Kartennummer
+  CVC: CVC
+  Name of the cardholder: Name des Karteninhabers
+  Full name: Vollständiger Name
+  Show name: Name anzeigen
+  Show date: Datum anzeigen
+  Show CVC: CVC anzeigen
+  Label Name: Label Name
+  Name Placeholder: Name Platzhalter
+  Label Card number: Label Kartennummer
+  Label expiry date: Label Ablaufdatum
+  Label CVC: Label CVC
+  The slug is used as a placeholder for sending the e-mail.: Der Slug wird als Platzhalter für den Versand der E-Mail verwendet.
+  Email sending settings: E-Mail Versand Einstellungen
+  Email dispatch: E-Mail Versand
+  Sent: Gesendet
+  Cc: Cc
+  Bcc: Bcc
+  Summary: Zusammenfassung
+  Download: Download
+  Delete file: Datei löschen
+  Delete e-mail: E-Mail löschen
+  Label Text: Label Text
+  This field must be filled in.: Dieses Feld muss ausgefüllt werden.
+  Label email: Label E-Mail
+  Email: E-Mail
+  The e-mail address you entered is invalid.: Die eingegebene E-Mail-Adresse ist ungültig.
+  Label Number: Label Nummer
+  Number: Nummer
+  The number format is invalid.: Das Zahlenformat ist ungültig.
+  Label Textarea: Label Textarea
+  Textarea: Textarea
+  Label Url: Label Url
+  Url: Url
+  The URL is invalid.: Die URL ist unzulässig.
+  Label Phone: Label Telefon
+  Phone: Telefon
+  The format is invalid.: Das Format ist ungültig.
+  Label Password: Label Passwort
+  Hidden: Versteckt
+  Button: Button
+  Submit: Submit
+  next Page: nächste Seite
+  Previous page: Vorherige Seite
+  Reset: Reset
+  Editor TinyMce: Editor TinyMce
+  TinyMce: TinyMce
+  Restrictive: Restrictive
+  Permissive: Permissiv
+  Select: Select
+  A field must be selected.: Es muss ein Feld ausgewählt werden.
+  You must agree to this condition.: Sie müssen dieser Bedingung zustimmen.
+  The date format is incorrect.: Das Datumsformat ist falsch.
+  Colour picker: Farbwähler
+  Privacy policy: Datenschutz
+  Data protection information: Datenschutz-Hinweise
+  read and accepted.: gelesen und akzeptiert.
+  The selected file is invalid.: Die ausgewählte Datei ist ungültig.
+  Upload text: Upload Text
+  Drag & drop or click files here.: Dateien hier per Drag & Drop ablegen oder klicken.
+  File is too large: Datei ist zu groß
+  File is too large ({{filesize}} MB).: Datei ist zu groß ({{filesize}} MB).
+  Maximum file size:  Maximale Dateigröße {{maxFilesize}} MB.
+  Maximum file size {{maxFilesize}} MB.: Maximale Dateigröße ist {{maxFilesize}}
+  Maximum file size is {filesize}: Maximale Dateigröße ist {filesize}
+  Maximum total size of the file: Maximale Gesamtgröße der Datei
+  Maximum uploads ({{maxFiles}}) exceeded.: Maximale Uploads ({{maxFiles}}) überschritten.
+  Invalid file type: Ungültiger Dateityp
+  Select file: Datei auswählen
+  Credit Card Number: Credit Card Number
+  The name must be entered.: Der Name muss angegeben werden.
+  Credit Card Exp Date: Credit Card Exp Date
+  Credit Card CVC: Credit Card CVC
+  A value must be selected.: Es muss ein Wert ausgewählt werden.
+  Rating: Bewertung
+  star: Stern
+  Heart: Herz
+  Smiley: Smiley
+  Dot: Punkt
+  Hand: Hand
+  Data protection information read and accepted.: Datenschutzinformation gelesen und akzeptiert.
+  Form created: Formular erstellt
+  Form has been successfully created: Formular wurde erfolgreich erstellt
+  Form-Builder: Form-Builder
+  Form settings: Formular-Einstellungen
+  Create: Erstellen
+  Output of created forms: Ausgabe erstellter Formulare
+  Activate: Aktivieren
+  Save attachments: Anhänge speichern
+  Data protection accepted: Datenschutz akzeptiert
+  Data protection not accepted: Datenschutz nicht akzeptiert
+  E-mail for autoresponder: E-Mail für Autoresponder
+install:
+  Installation: Installation
+  Database: Datenbank
+  Database name: Datenbankname
+  Database user: Datenbank Benutzer
+  Database password: Datenbank Passwort
+  Database hostname: Datenbank Hostname
+  Database port: Datenbank Port
+  Charset: Charset
+  Server version: Server Version
+  Create database: Datenbank erstellen
+  next: weiter
+  User name: Benutzername
+  Schema: Schema
+  Password: Passwort
+  Hostname: Hostname
+  Port: Port
+  Email: E-Mail
+  back: zurück
+  Settings: Einstellungen
+  Page name: Seitenname
+  Post category: Beitrags Kategorie
+  Page category: Seiten Kategorie
+  Timezone: Zeitzone
+  Oauth2 defuse key: Oauth2 defuse key
+  App secret: App secret
+  Generate new key: neuen Key generieren
+  Installation not possible: Installation nicht möglich
+  Installation not possible. Your PHP version %s is not compatible. A PHP version %s is required.: Installation nicht möglich. Ihre PHP-Version %s ist nicht kompatibel. Es wird eine PHP-Version %s benötigt.
+  Repeat password: Passwort wiederholen
+  User: Benutzer
+  Super Admin Login: Super Admin Login
+  Install now: Jetzt Installieren
+  Generate password: Passwort generieren
+  Installation failed: Installation Fehlgeschlagen
+  Please check your entries.: Überprüfen Sie Ihre Eingaben.
+  Configuration file not found.: Konfiguration Datei nicht gefunden.
+  Install URL: Installation URL
+  The password must be at least %d characters long: Das Passwort muss mindestens %d Zeichen lang sein
+  Error when creating the database.: Fehler beim erstellen der Datenbank.
+  Error during e-mail validation.: Fehler bei der E-Mail Validierung.
+  App will be installed: App wird Installiert
+  Sender e-mail: Absender E-Mail
+  Sender name: Absender Name
+  Configuration not found.: Konfiguration nicht gefunden.

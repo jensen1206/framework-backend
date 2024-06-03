@@ -1,0 +1,37 @@
+{% apply inline_css %}
+    <style>
+        .dividing-text {
+            position: relative;
+            display: flex;
+            align-items: center;
+            flex: 1 1 auto;
+            &:before {
+                content: '';
+                width: {% if f.config.text_align == 'center' or f.config.text_align == 'end' %}{{ f.config.width }}%{% else %}auto{% endif %};
+                height: {{ f.config.height }};
+                margin-right: .75rem;
+                margin-top: .25rem;
+                background: rgba({{ f.config.color.r }},{{ f.config.color.g }},{{ f.config.color.b }},{{ f.config.color.a }});
+            }
+            &:after {
+                content: '';
+                width: {% if f.config.text_align == 'center' or f.config.text_align == 'start' %}{{ f.config.width }}%{% else %}auto{% endif %};
+                height: {{ f.config.height }};
+                margin-left: .75rem;
+                margin-top: .25rem;
+                background: rgba({{ f.config.color.r }},{{ f.config.color.g }},{{ f.config.color.b }},{{ f.config.color.a }});
+            }
+        }
+    </style>
+    <div id="{% if f.config.container_id %}{{ f.config.container_id }}{% else %}{{ f.id }}{% endif %}"
+         class=" {{ f.config.css_class }}">
+        <div class="app-text-divider d-flex align-items-center w-100 ">
+            <{{ f.config.fontStyle}} class="dividing-text text-nowrap justify-content-{{ f.config.alignment }} lh-1 {{ f.config.text_css }}">{{ f.config.text }}</{{ f.config.fontStyle}}>
+    </div>
+    </div>
+{% endapply %}
+
+
+
+
+

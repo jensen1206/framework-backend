@@ -1,0 +1,74 @@
+{#  <h1>Hi!</h1>
+
+<p>To reset your password, please visit the following link</p>
+
+<a href="{{ url('app_reset_password', {token: resetToken.token}) }}">{{ url('app_reset_password', {token: resetToken.token}) }}</a>
+
+<p>This link will expire in {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.</p>
+
+<p>Cheers!</p>#}
+
+{% apply inky_to_html|inline_css(source('@styles/email/foundation-emails.min.css')) %}
+    <style type="text/css">
+        body,
+        html,
+        .body {
+            background: #f3f3f3 !important;
+        }
+
+        .header {
+            background: #f3f3f3;
+        }
+
+        .footer .small-font {
+            font-size: 12px;
+        }
+
+        .firmen-logo {
+            object-fit: cover;
+        }
+    </style>
+    <spacer size="16"></spacer>
+    <container>
+        <row class="header">
+            <columns>
+                <spacer size="16"></spacer>
+                <h4 class="text-center">{% if site_name is defined %}{{ site_name }}{% else %}{{ ''|appSettings.site_name }}{% endif %}</h4>
+            </columns>
+        </row>
+        <row>
+            <columns>
+                <spacer size="32"></spacer>
+                <spacer size="16"></spacer>
+                <h1 class="text-center">{{ 'register.Reset your password'|trans }}</h1>
+                <spacer size="16"></spacer>
+                <p class="text-center">{{ 'register.Click on the link below to reset your password.'|trans }}</p>
+                <button class="expand large success" href="{{ url('app_reset_password', {token: resetToken.token}) }}">
+                    {{ 'register.Reset your password'|trans }}
+                </button>
+                <spacer size="8"></spacer>
+                <hr/>
+                <p>{{ 'register.This link will expire in'|trans }} {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.</p>
+            </columns>
+        </row>
+        <spacer size="16"></spacer>
+        <row class="footer text-center">
+            <columns large="3">
+                <img width="50" class="firmen-logo" src="{{ email.image('@images/backend-icon.png') }}" alt="Logo">
+            </columns>
+            <columns arge="3">
+                <p class="small-font">
+                    Call us at 800.555.1923<br/>
+                    Email us at support@discount.boat
+                </p>
+            </columns>
+            <columns large="3">
+                <p class="small-font">
+                    123 Maple Rd<br/>
+                    Campbell, CA 95112
+                </p>
+            </columns>
+        </row>
+    </container>
+{% endapply %}
+

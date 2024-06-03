@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html {{ sonata_seo_html_attributes() }} lang="{{ app.request.locale }}">
+<head  {{ sonata_seo_head_attributes() }}>
+
+    {% autoescape false %} {{ sonata_seo_title() }}{% endautoescape %}
+    {% autoescape false %}
+        {{ sonata_seo_metadatas()|html_encode }}
+    {% endautoescape %}
+    {{ sonata_seo_lang_alternates() }}
+    {{ sonata_seo_link_canonical() }}
+    {{ sonata_seo_oembed_links() }}
+    {# }<meta charset="UTF-8">
+    <title>{% block title %}&ndash; {{ ''|appSettings.site_name }}{% endblock %}</title> #}
+   {# {{ include('public/css/public-style.css.twig') }}#}
+    <link rel="icon"
+          href="{{ asset('favicon/facicon.svg') }}">
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+        <link rel="stylesheet" href="{{ path('public_css') }}">
+        <link rel="stylesheet" href="{{ asset('css/public-style.css') }}">
+    {% endblock %}
+    {% block javascripts %}
+        <script src="{{ asset('/js/wow.min.js') }}"></script>
+        {{ encore_entry_script_tags('app') }}
+        {#  <script type="application/javascript" src="{{ asset('js/theme-mode.js') }}"></script> #}
+        <script type="application/javascript" src="{{ path('javascript_public_settings') }}"></script>
+        {{ encore_entry_script_tags('react_app_public_form') }}
+        <script src="{{ asset('js/lightbox/blueimp-gallery.min.js') }}"></script>
+        <script src="{{ asset('js/app-public-map.js') }}"></script>
+        {#   <script type="application/javascript" src="{{ path('app_translation') }}"></script>
+        {% block importmap %}{{ importmap('app') }}{% endblock %} #}
+    {% endblock %}
+</head>
+<body>
+<div id="wrapper" class="d-flex flex-column vh-100">
+    {% block navbar %}{% endblock %}
+    {% block header %}{% endblock %}
+    {% block body %}{% endblock %}
+    {% block footer %}{% endblock %}
+</div>
+{% block footerJavascripts %}
+
+{% endblock %}
+<div id="snackbar-success"></div>
+<div id="snackbar-warning"></div>
+{{ include('includes/blueimp-gallery.html.twig') }}
+<div class="top-button"></div>
+</body>
+</html>
+

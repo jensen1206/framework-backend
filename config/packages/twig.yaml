@@ -1,0 +1,11 @@
+twig:
+  globals:
+    #app_site_name: '%env(APP_SITE_NAME)%'
+  default_path: '%kernel.project_dir%/templates'
+  paths:
+    '%kernel.project_dir%/assets/styles': styles
+    '%kernel.project_dir%/assets/images': images
+  form_themes: [ 'bootstrap_5_layout.html.twig' ]
+when@test:
+  twig:
+    strict_variables: true

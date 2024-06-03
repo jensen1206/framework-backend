@@ -1,0 +1,81 @@
+nelmio_security:
+    # prevents framing of the entire site
+    clickjacking:
+        paths:
+            '^/.*': 'ALLOW'
+            #'^/.*': DENY
+
+    # disables content type sniffing for script resources
+    content_type:
+        nosniff: true
+    #forced_ssl:
+    #    hsts_max_age: 15768000
+    #    hsts_subdomains: true
+    csp:
+        enabled: false
+        hosts: [ ]
+        content_types: [ ]
+        hash:
+            algorithm: sha512
+
+        enforce:
+            level1_fallback: true
+            browser_adaptive:
+                enabled: false
+           # report-uri: '%router.request_context.base_url%/nelmio/csp/report'
+            frame-src: [ 'https://www.youtube.com']
+            default-src:
+                - 'none'
+            object-src:
+                - 'none'
+            base-uri:
+                - 'self'
+                - '*.google.com'
+                - '.*.youtube.com'
+
+            img-src:
+                - 'self'
+                - '%router.request_context.scheme%://%router.request_context.host%'
+                - '*.google.com'
+                - 'secure.gravatar.com'
+                - '*.youtube.com'
+                - 'data:'
+            media-src:
+                - '*'
+            style-src:
+                - 'self'
+                - 'unsafe-inline'
+            script-src:
+                - 'self'
+                - ''
+            child-src:
+                - '*'
+            frame-ancestors:
+                - 'self'
+            form-action:
+                - 'self'
+                #   - '*.google.com'
+            font-src:
+                - 'self'
+            connect-src:
+                - 'self'
+                - ''
+            block-all-mixed-content: true
+
+    # forces Microsoft's XSS-Protection with
+    # its block mode
+    xss_protection:
+        enabled: false
+        mode_block: true
+        # report_uri: '%router.request_context.base_url%/nelmio/xss/report'
+
+    # Send a full URL in the `Referer` header when performing a same-origin request,
+    # only send the origin of the document to secure destination (HTTPS->HTTPS),
+    # and send no header to a less secure destination (HTTPS->HTTP).
+    # If `strict-origin-when-cross-origin` is not supported, use `no-referrer` policy,
+    # no referrer information is sent along with requests.
+    referrer_policy:
+        enabled: false
+        policies:
+            - 'no-referrer'
+            - 'same-origin'

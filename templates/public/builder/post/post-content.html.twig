@@ -1,0 +1,5 @@
+<div id="{% if f.config.container_id %}{{ f.config.container_id }}{% else %}{{ f.id}}{% endif %}" class="{{ f.config.css_class }}">
+   {% autoescape false %}
+       {{ post.postContent }}
+    {% endautoescape %}
+</div>

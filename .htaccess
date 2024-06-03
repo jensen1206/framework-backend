@@ -1,0 +1,21 @@
+<IfModule mod_rewrite.c>
+    RewriteRule ^build/(.*)$ /public/build/$1 [R=301,L,NC]
+    RewriteRule ^js/(.*)$ /public/js/$1 [R=301,L,NC]
+    RewriteRule ^css/(.*)$ /public/css/$1 [R=301,L,NC]
+    RewriteRule ^favicon/(.*)$ /public/favicon/$1 [R=301,L,NC]
+    RewriteRule ^tinymce/(.*)$ /public/tinymce/$1 [R=301,L,NC]
+    RewriteRule ^tiny-plugins/(.*)$ /public/tiny-plugins/$1 [R=301,L,NC]
+    RewriteRule ^uploads/(.*)$ /public/uploads/$1 [R=301,L,NC]
+    RewriteRule ^images/(.*)$ /public/images/$1 [R=301,L,NC]
+    RewriteRule ^bundles/(.*)$ /public/bundles/$1 [R=301,L,NC]
+
+    Options -MultiViews
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ %{ENV:BASE}/public/index.php [L]
+</IfModule>
+<IfModule !mod_rewrite.c>
+    <IfModule mod_alias.c>
+        RedirectMatch 302 ^/$ /public/index.php/
+    </IfModule>
+</IfModule>

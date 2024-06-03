@@ -1,0 +1,73 @@
+{% macro recursiveNavigation(navi, dropdown, slug, count) %}
+
+    {% if navi.active %}
+        {% if not is_granted('IS_AUTHENTICATED_FULLY') and not navi.showLogin or is_granted('IS_AUTHENTICATED_FULLY') and not navi.showNotLogin %}
+            {% set dropActive = false %}
+            {% set childActive = false %}
+            {% set url = '' %}
+            {% set itemActive = false %}
+            {% if navi.__children|length %}
+                {% for child in navi.__children %}
+                    {% set url = child.url|split('/') %}
+                    {% if slug in url %}
+                        {% set childActive = true %}
+                        {% set dropActive = true %}
+                    {% endif %}
+                    {% if slug == child.url|slice(1) %}
+                        {% set dropActive = true %}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+
+            {# Category Slug active #}
+            {% set catActive = false %}
+            {% set catUrl = navi.url|split('/') %}
+            {% if navi.category != '' and dropdown %}
+
+                {% if slug != '' and slug in catUrl %}
+                    {% set dropActive = true %}
+                {% endif %}
+            {% endif %}
+
+            {% if slug in catUrl %}
+                {% set catActive = true %}
+            {% endif %}
+            {# Category Slug active End #}
+            <li class="{{ navi.cssClass }}{% if navi.__children|length %} nav-item dropdown {% if count > 0%}dropdown-submenu dropdown-item- {% if dropActive and slug != '' %}active {% endif %}  {% endif%} {% else %}{% if dropdown %} {% if dropActive  %} active {% endif %} dropdown-item  {% if slug == navi.url|slice(1) %} active{% endif %} {% else %}nav-item{% endif %}{% endif %}">
+                <a {% if navi.__children|length and count <1 %}
+                    role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                {% endif %}
+                        class="{% if navi.__children|length %}{% if dropActive and slug != '' %}active {% endif %}nav-link dropdown-toggle {% else %}nav-link {% if slug == navi.url|slice(1) or catActive and slug != '' %} active{% endif %}{% endif %}"
+                        aria-current="{{ navi.type }}"
+                        {% if navi.newTab %}
+                            target="_blank"
+                        {% endif %}
+                        {% if navi.attr %}
+                            title="{{ navi.attr }}"
+                        {% endif %}
+                        {% if navi.xfn %}
+                            rel="{{ navi.xfn }}"
+                        {% endif %}
+                        href="{{ navi.url }}">
+                    {{ navi.title }}
+                </a>
+                {% if navi.__children|length %}
+                    <ul class="dropdown-menu dropdown-menu-start dropdown-menu {% if count > 0%}submenu{% endif%} dropdown-menu-slide dropdown-menu-lg-end m-0">
+                        {% for child in navi.__children %}
+                            {{ _self.recursiveNavigation(child, true, slug, loop.index) }}
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </li>
+        {% endif %}
+    {% endif %}
+{% endmacro %}
+
+{% if nav %}
+    <ul {% if nav.settings.menu_align == 'center' and nav.settings.img|length %}style="margin-right: {{ nav.settings.size_full }}px" {% endif %} class="{% if nav.settings.menu_align == 'center' and nav.settings.img|length %}nav-img-center{% endif %} navbar-nav justify-content-{{ nav.settings.menu_align }} flex-grow-1">
+        {% for navi in navigation %}
+            {{ _self.recursiveNavigation(navi, false, route_slug, 0) }}
+        {% endfor %}
+    </ul>
+{% endif %}

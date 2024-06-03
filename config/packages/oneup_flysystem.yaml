@@ -1,0 +1,40 @@
+# Read the documentation: https://github.com/1up-lab/OneupFlysystemBundle
+oneup_flysystem:
+  adapters:
+    public_uploads_adapter:
+      local:
+        location: '%kernel.project_dir%/public/%uploads_dir_name%'
+        #directory:  '%kernel.project_dir%/public/uploads'
+
+        #lazy: ~ # boolean (default "false")
+        #writeFlags: ~
+        #linkHandling: ~
+        permissions:
+          file:
+            public: 0o644
+            private: 0o600
+          dir:
+            public: 0o755
+            private: 0o755
+        ##lazyRootCreation: ~ # boolean (default "false")
+    private_uploads_adapter:
+      local:
+        location: '%kernel.project_dir%/var/uploads'
+        permissions:
+          file:
+            public: 0o644
+            private: 0o600
+          dir:
+            public: 0o755
+            private: 0o755
+  filesystems:
+    public_uploads_filesystem:
+      adapter: public_uploads_adapter
+      visibility: 'public'
+      directory_visibility: 'public'
+      #alias: League\Flysystem\Filesystem
+    private_uploads_filesystem:
+      adapter: private_uploads_adapter
+      visibility: 'public'
+      directory_visibility: 'public'
+

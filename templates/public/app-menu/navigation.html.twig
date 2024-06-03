@@ -1,0 +1,56 @@
+{% set navigation = nav.nav %}
+
+<nav style="background-color: rgba({{ nav.settings.nav_bg.r }},{{ nav.settings.nav_bg.g }},{{ nav.settings.nav_bg.b }},{{ nav.settings.nav_bg.a }})"
+     id="nav-main-public-menu" data-height="{{ nav.settings.size_full }}" data-scroll="{{ nav.settings.size_scroll }}"
+     data-mobil="{{ nav.settings.size_mobil }}"
+     class="navbar navbar-expand-{{ nav.settings.menu_breakpoint }} py-3 fixed-top">
+    <div class="navbar-wrapper align-items-{{ nav.settings.menu_breakpoint }}-{{ nav.settings.menu_horizontal_align }} {% if nav.settings.container == 'container' %}container-{{ nav.settings.container_breakpoint }}{% else %}{{ nav.settings.container }}{% endif %}">
+        {% if nav.settings.img|length or nav.settings.brand_text %}
+            <a class="navbar-brand"
+               href="{{ path('app_public_index') }}">
+                {% if nav.settings.img|length %}
+                    <img style="width: {{ nav.settings.size_full }}px;" class="brand-image"
+                         height="auto"
+                         src="{% if nav.settings.img.type == 'image' %}{{ uploaded_asset('mediathek',nav.settings.img.image)|imagine_filter('medium_image_filter') }}{% else %}/uploads/mediathek/{{ nav.settings.img.image }}{% endif %}"
+                         alt="{{ nav.settings.img.alt }}">
+                {% else %}
+                    {% if nav.settings.brand_text %}
+                        {{ nav.settings.brand_text }}
+                    {% endif %}
+                {% endif %}
+            </a>
+        {% endif %}
+        <button class="navbar-toggler 0" type="button"
+                data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                aria-controls="offcanvasNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+             aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+                    <a class="navbar-brand"
+                       href="{{ path('app_public_index') }}">
+                        {% if nav.settings.img|length %}
+                            <img style="width: {{ nav.settings.size_mobil }}px;" class="brand-image"
+                                 height="auto"
+                                 src="{% if nav.settings.img.type == 'image' %}{{ uploaded_asset('mediathek',nav.settings.img.image)|imagine_filter('full_image_filter') }}{% else %}/uploads/mediathek/{{ nav.settings.img.image }}{% endif %}"
+                                 alt="{{ nav.settings.img.alt }}">
+                        {% else %}
+                            {% if nav.settings.brand_text %}
+                                {{ nav.settings.brand_text }}
+                            {% endif %}
+                        {% endif %}
+                    </a>
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                {{ include('public/app-menu/macro-navigation.html.twig') }}
+            </div>
+        </div>
+    </div>
+
+</nav>
+

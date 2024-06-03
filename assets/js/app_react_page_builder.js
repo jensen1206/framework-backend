@@ -1,0 +1,8 @@
+import * as React from 'react';
+import ReactDOM from "react-dom/client";
+import App from "./App/PageBuilder/App.jsx";
+let target = document.getElementById("page-builder-react-app");
+const el = ReactDOM.createRoot(target);
+el.render(
+    <App/>
+);

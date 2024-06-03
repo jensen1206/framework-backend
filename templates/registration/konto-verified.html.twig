@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Login{% endblock %}
+ {% block navbar %}
+     {{ include('public-navbar.twig') }}
+ {% endblock %}
+{% block body %}
+    <main class="flex-shrink-0 flex-fill mt-3" style="height: max-content">
+        <div id="public-content" class="container d-flex align-items-center justify-content-center h-75">
+            <div class="col-xxl-5 col-xl-6 col-lg-8 col-12 mx-auto">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <div class="text-center fs-5">
+                            <i class="bi bi-check2-circle text-green me-2"></i>
+                            {{ 'Registration successful, your account has been activated.'|trans }}
+                        </div>
+                        <hr>
+                        <div class="text-center">
+                           <a href="{{ path('app_login') }}" class="btn btn-success-custom dark">
+                               <i class="bi bi-box-arrow-in-right me-2"></i>
+                                {{ 'Login'|trans }}
+                           </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+{% block footer %}
+    {{ include('public/public-footer.html.twig') }}
+{% endblock %}

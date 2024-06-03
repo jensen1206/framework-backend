@@ -1,0 +1,37 @@
+<div id="{% if f.config.container_id %}{{ f.config.container_id }}{% else %}maps{{ f.id }}{% endif %}"
+     class="app-gmaps {{ f.config.css_class }}">
+    {% set conf = f.config|gmapsIframe %}
+    {% set isDs = '' %}
+    {% set rand = random() %}
+    {% if conf.ds %}
+        {% set isDs = true %}
+    {% else %}
+        {% set isDs = false %}
+    {% endif %}
+    <div id="map-wrapper{{ rand }}" data-height="{{ conf.height }}" data-width="{{ conf.width }}" data-url="{{ conf.url }}" data-type="{{ f.type }}" data-id="{{ rand }}" data-ds="{{ isDs }}"
+        class="app-map-container">
+        {% if conf.ds %}
+            <form class="d-flex">
+                <div class="map-placeholder position-relative d-flex justify-content-center overflow-hidden align-items-center">
+                    {% if conf.ds.image %}
+                        <img alt="" class="map-placeholder-img {% if conf.ds.img_gray %}gray-img{% endif %}"
+                             src="{{ asset('/uploads/mediathek/') }}{{ conf.ds.image.fileName }}"/>
+                    {% else %}
+                        <img alt="" class="map-placeholder-img {% if conf.ds.img_gray %}gray-img{% endif %}" src="{{ asset('/images/blind-karte.svg') }}"/>
+                    {% endif %}
+                    <div class="ds-check-wrapper align-items-center justify-content-center flex-column py-4">
+                        <button disabled type="button" class="btn btn-secondary gmaps-ds-btn {% if conf.ds.btn_uppercase%}text-uppercase{% endif%} {{ conf.ds.btn_css }} z-1 position-relative">
+                            {{ conf.ds.btn_text|raw }}
+                        </button>
+                        <div class="form-check mx-4 mt-3">
+                            <input class="form-check-input gmaps-karte-check" type="checkbox" id="ds-{{ rand }}"/>
+                            <label class="form-check-label text-light fw-normal fst-normal" for="ds-{{ rand }}">
+                                {{ conf.ds.accept_txt|raw }}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        {% endif %}
+    </div>
+</div>

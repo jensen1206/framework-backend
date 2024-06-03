@@ -1,0 +1,9 @@
+{% if header is defined and header %}
+ {% set builder = header %}
+<div class="header">
+    {% if headerSettings is defined and headerSettings %}
+        {% set settings = headerSettings %}
+    {% endif %}
+    {{ include('public/builder/Core/builder-core.html.twig') }}
+</div>
+{% endif %}

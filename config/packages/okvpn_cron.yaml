@@ -1,0 +1,19 @@
+okvpn_cron:
+  timezone: 'Europe/Berlin'
+ # loop_engine: okvpn_cron.react_loop
+  messenger:
+    enable: true
+  #tasks:
+  #  -
+  #    command: "siteSitemap:sync" # Shell command
+  #    cron: "0 0 * * *"
+  #    async: true
+  #    jitter: 60
+      #lock: true
+      #messenger: true
+      #messenger: { routing: lowpriority }
+    #-
+    #  command: "php bin/console cache:clear --env=prod" # Shell command
+    #  cron: "0 1 * * *"
+    #  jitter: 60
+

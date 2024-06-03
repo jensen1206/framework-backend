@@ -1,0 +1,49 @@
+<div id="{% if f.config.container_id %}{{ f.config.container_id }}{% else %}maps{{ f.id }}{% endif %}"
+     class="app-gmaps {{ f.config.css_class }}">
+    {% set conf = f.config|osmLeaflet %}
+    {% set isDs = '' %}
+    {% set rand = random() %}
+    {% if conf.ds %}
+        {% set isDs = true %}
+    {% else %}
+        {% set isDs = false %}
+    {% endif %}
+    {% set isHeight = false %}
+    {% set isWidht = false %}
+     {% if conf.height %}
+         {% set isHeight = true %}
+    {% endif %}
+    {% if conf.width %}
+        {% set isWidht = true %}
+    {% endif %}
+    <div style="{% if isHeight %}height: {{ conf.height }}px{% endif %} {% if isWidht %}; width: {{ conf.width }}px{% endif %}" data-controller="leaflet" data-row="{{ b.id }}" data-builder="{{ builder_id }}" data-grid="{{ g.id }}"
+         data-form="{{ f.id }}" id="map-wrapper{{ rand }}" data-id="{{ rand }}" data-ds="{{ isDs }}"
+         class="app-map-leaflet">
+        {% if conf.ds %}
+            <form class="d-flex">
+                <div class="map-placeholder position-relative d-flex justify-content-center overflow-hidden align-items-center">
+                    {% if conf.ds.image %}
+                        <img alt="" class="map-placeholder-img {% if conf.ds.img_gray %}gray-img{% endif %}"
+                             src="{{ asset('/uploads/mediathek/') }}{{ conf.ds.image.fileName }}"/>
+                    {% else %}
+                        <img alt="" class="map-placeholder-img {% if conf.ds.img_gray %}gray-img{% endif %}"
+                             src="{{ asset('/images/blind-karte.svg') }}"/>
+                    {% endif %}
+                    <div class="ds-check-wrapper  align-items-center justify-content-center flex-column py-4">
+                        <button disabled type="button"
+                                class="btn btn-secondary leaflet-ds-btn {% if conf.ds.btn_uppercase %}text-uppercase{% endif %} {{ conf.ds.btn_css }} z-1 position-relative">
+                            {{ conf.ds.btn_text|raw }}
+                        </button>
+
+                        <div class="form-check mt-4 mx-4">
+                            <input class="form-check-input leaflet-karte-check" type="checkbox" id="ds-{{ rand }}"/>
+                            <label class="form-check-label text-light fw-normal fst-normal" for="ds-{{ rand }}">
+                                {{ conf.ds.accept_txt|raw }}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        {% endif %}
+    </div>
+</div>

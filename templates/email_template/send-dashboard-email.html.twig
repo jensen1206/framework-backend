@@ -1,0 +1,93 @@
+{# {% apply inline_css(source('@styles/email/email-default.css')) %}
+    <h1> Link zum Passwort zurücksetzen. {{ email.toName }}!</h1>
+    <p>
+        E-Mail Adresse: {{ email.to[0].address }}
+    </p>
+    <p>
+        To reset your password, please visit the following link
+        {% if link is defined %}{{ link }}{% endif %}
+        This link will expire in {% if expiration_date is defined %}{{ expiration_date }}{% else %}2{% endif %} Stunden.
+    </p>
+{% endapply %} #}
+
+{% apply inky_to_html|inline_css(source('@styles/email/foundation-emails.min.css')) %}
+    <style type="text/css">
+
+        .header {
+            background: #8a8a8a;
+        }
+
+        .header .columns {
+            padding-bottom: 0;
+        }
+
+        .header p {
+            color: #fff;
+            margin-bottom: 0;
+        }
+
+        .header .wrapper-inner {
+            padding: 20px; /*controls the height of the header*/
+        }
+
+        .header .container {
+            background: #8a8a8a;
+        }
+
+        .wrapper.secondary {
+            background: #f3f3f3;
+        }
+
+    </style>
+    <!-- move the above styles into your custom stylesheet -->
+    <wrapper class="header" bgcolor="#8a8a8a">
+        <container>
+            <row class="collapse">
+                <columns small="6" valign="middle">
+                    {% if email is defined %}
+                    <img alt="" src="{{ email.image('@images/backend-icon.png') }}">
+                    {% endif %}
+                </columns>
+                <columns small="6" valign="middle">
+                    <p class="text-right">{% if site_name is defined %}{{ site_name }}{% endif %}</p>
+                </columns>
+            </row>
+        </container>
+    </wrapper>
+
+    <container>
+        <spacer size="16"></spacer>
+        <row>
+            <columns>
+                {% if content is defined %}
+                    {% autoescape false %}
+                    {{ content }}
+                    {% endautoescape %}
+                {% endif %}
+                <callout class="primary">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit repellendus natus, sint ea optio dignissimos asperiores inventore a molestiae dolorum placeat repellat excepturi mollitia ducimus unde doloremque ad, alias eos!</p>
+                </callout>
+            </columns>
+        </row>
+
+        <wrapper class="secondary">
+            <spacer size="16"></spacer>
+            <row>
+                <columns small="12" large="6">
+                    <h5>Connect With Us:</h5>
+                    <menu class="vertical">
+                        <item style="text-align: left;" href="#">Twitter</item>
+                        <item style="text-align: left;" href="#">Facebook</item>
+                        <item style="text-align: left;" href="#">Instagram</item>
+                    </menu>
+                </columns>
+                <columns small="12" large="6">
+                    <h5>Contact Info:</h5>
+                    <p>Phone: 408-341-0600</p>
+                    <p>Email: <a href="mailto:foundation@zurb.com">foundation@zurb.com</a></p>
+                </columns>
+            </row>
+        </wrapper>
+
+    </container>
+{% endapply %}

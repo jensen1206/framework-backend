@@ -1,0 +1,115 @@
+{% set carousel = f.config.carousel|getCarousel %}
+{% set confCss = '' %}
+{% set confId = '' %}
+{% if f.config.css_class %}
+    {% set confCss = f.config.css_class %}
+{% endif %}
+<div id="{% if f.config.container_id %}{{ f.config.container_id }}{% else %}{{ f.type }}-{{ carousel.id }}{% endif %}"
+     class="carousel slide {% if carousel.animate == 'fade' %}carousel-fade{% endif %} {{ confCss }}"
+     data-bs-touch="{% if carousel.touch_active %}true{% else %}false{% endif %}"
+        {% if carousel.stop_hover %}
+            data-bs-pause="hover"
+        {% endif %}
+        {% set ride = "carousel" %}
+        {% if not carousel.autoplay %}
+            {% set ride = "false" %}
+        {% endif %}
+     data-bs-keyboard="{% if carousel.keyboard_active %}true{% else %}false{% endif %}"
+     data-bs-ride="{{ ride }}">
+    {% if carousel.indicator %}
+        <div class="carousel-indicators">
+            {% for s in carousel.slider %}
+                {% if loop.first %}
+                    <button type="button"
+                            data-bs-target="#{% if f.config.container_id %}{{ f.config.container_id }}{% else %}{{ f.type }}-{{ carousel.id }}{% endif %}"
+                            data-bs-slide-to="0" class="active"
+                            aria-current="true" aria-label="Slide 1"></button>
+                {% else %}
+                    <button type="button"
+                            data-bs-target="#{% if f.config.container_id %}{{ f.config.container_id }}{% else %}{{ f.type }}-{{ carousel.id }}{% endif %}"
+                            data-bs-slide-to="{{ loop.index0 }}"
+                            aria-label="Slide {{ loop.index0 +1 }}"></button>
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endif %}
+    <div class="carousel-inner">
+        {% for i in carousel.slider %}
+            {% if i.image.urls is defined %}
+                {% set size = carousel.image_size %}
+                {% set alt = i.image.alt %}
+                {% if i.alt %}
+                    {% set alt = i.alt %}
+                {% endif %}
+                {% set title = "" %}
+                {% if i.title_hover_active %}
+                    {% if i.title_tag %}
+                        {% set title = i.title_tag %}
+                    {% else %}
+                        {% set title = i.image.title %}
+                    {% endif %}
+                {% endif %}
+                <div class="carousel-item  {% if loop.first %}active {% endif %}"
+                     data-bs-interval="{{ 0+ i.interval }}">
+                    <img title="{{ title }}"
+                         style="height: {{ carousel.height }}; object-fit: cover"
+                         src="{{ i.image.urls[size]['url'] }}"
+                         class="d-block w-100" alt="{{ alt }}">
+                    {% if i.first_caption or i.subline_caption or i.headline_caption or i.slide_button %}
+                        <div class="carousel-caption {% if not i.caption_mobil_active %} d-none d-md-block{% endif %}">
+                            <div class="caption-inner">
+                                <div {% if i.first_id %}id="{{ i.first_id }}"{% endif %}
+                                     class="first-caption animate__animated animate__{{ i.first_ani }} {{ i.first_css }}">
+                                    {{ i.first_caption }}
+                                </div>
+                                {% set tagName = 'h4' %}
+                                {% if i.subline_tag %}
+                                    {% set tagName = i.subline_tag %}
+                                {% endif %}
+                                <{{ tagName }} {% if i.headline_id %}id="{{ i.headline_id }}"{% endif %}
+                                    class="animate__animated animate__{{ i.headline_ani }} {{ i.headline_css }}">
+                                    {{ i.headline_caption }}
+                                </{{ tagName }}>
+                                <div {% if i.subline_id %}id="{{ i.subline_id }}"{% endif %}
+                                     class="subline-caption animate__animated animate__{{ i.subline_ani }} {{ i.subline_css }}">
+                                    {{ i.subline_caption }}
+                                </div>
+                                {% if i.slide_button %}
+                                    <div class="d-flex align-items-center mt-3 justify-content-center">
+                                        {% for sb in i.slide_button %}
+                                            {% set href = '#' %}
+                                            {% if sb.action == 'url' %}
+                                                {% set href = sb.page|pageById %}
+                                            {% endif %}
+                                            {% if sb.action == 'custom' %}
+                                                {% set href = sb.external_url %}
+                                            {% endif %}
+                                            <a href="{{ href }}" {% if sb.blank %} target="_blank"{% endif %}
+                                               class="btn btn-{{ sb.variant }} {{ sb.css_class }} {% if not loop.last %}me-2{% endif %}">
+                                                {% autoescape false %}{{ sb.text }}{% endautoescape %}
+                                            </a>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    {% if carousel.controls %}
+        <button class="carousel-control-prev" type="button"
+                data-bs-target="#{% if f.config.container_id %}{{ f.config.container_id }}{% else %}{{ f.type }}-{{ carousel.id }}{% endif %}"
+                data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button"
+                data-bs-target="#{% if f.config.container_id %}{{ f.config.container_id }}{% else %}{{ f.type }}-{{ carousel.id }}{% endif %}"
+                data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    {% endif %}
+</div>

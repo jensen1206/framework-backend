@@ -1,0 +1,11 @@
+<{{ f.config.selector }} class="{{ f.config.css_class }}" id="{% if f.config.container_id %}{{ f.config.container_id }}{% else %}{{ f.id }}{% endif %}">
+{% autoescape false %}
+    <a {% if f.config.link_post and f.config.new_tab %}target="_blank" {% endif%} {% if f.config.link_post %}href="{{ path('public_post', {'postCategory': post.postCategory.slug, 'slug':post.postSlug}) }}"{% endif %}>
+        {% if f.config.word_limit %}
+            {{ post.siteSeo.seoTitle|striptags|u.truncate(f.config.word_limit, '...', false) }}
+        {% else %}
+            {{ post.siteSeo.seoTitle|striptags }}
+        {% endif %}
+    </a>
+{% endautoescape %}
+</{{ f.config.selector }}>

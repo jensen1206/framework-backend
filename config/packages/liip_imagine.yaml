@@ -1,0 +1,62 @@
+liip_imagine:
+  messenger: true
+  controller:
+    redirect_response_code: 302
+  #    # valid drivers options include "gd" or "gmagick" or "imagick"
+  driver: 'imagick'
+  default_filter_set_settings:
+    format: webp
+  webp:
+    generate: true
+  loaders:
+    flysystem_loader:
+      flysystem:
+        filesystem_service: oneup_flysystem.public_uploads_filesystem_filesystem
+
+  data_loader: flysystem_loader
+  resolvers:
+    flysystem_resolver:
+      flysystem:
+        filesystem_service: oneup_flysystem.public_uploads_filesystem_filesystem
+        cache_prefix: media/cache
+        root_url: '%uploads_base_url%'
+  cache: flysystem_resolver
+  filter_sets:
+    squared_thumbnail_small:
+      format: webp
+      quality: 100
+      filters:
+        auto_rotate: true
+        strip: ~
+        thumbnail:
+          size: [ 300, 300 ]
+          allow_upscale: true
+          mode: outbound
+          #angle: 190
+          #mode: inset
+    medium_image_filter:
+     # format: jpeg
+      format: webp
+      quality: 100
+      filters:
+        auto_rotate: true
+        strip: ~
+        downscale:
+          max: [ 800, 600 ]
+    large_image_filter:
+     # format: jpeg
+      format: webp
+      quality: 100
+      filters:
+        auto_rotate: true
+        downscale:
+          max: [ 1200, 800 ]
+    full_image_filter:
+     # format: jpeg
+      format: webp
+      quality: 100
+      filters:
+        auto_rotate: true
+        strip: ~
+        downscale:
+          max: [ 2400, 1600 ]

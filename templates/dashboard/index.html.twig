@@ -1,0 +1,55 @@
+{% extends 'base-admin.html.twig' %}
+{% block title %}{% if title is defined %}{{ title }}{% else %}Web{% endif %} {{ parent() }}{% endblock %}
+ {% block navbar %}
+     {{ include('admin-navbar-top.html.twig') }}
+ {% endblock %}
+{% block body %}
+    <div id="page-content-wrapper">
+        {% if not is_granted('ROLE_SUPER_ADMIN') %}
+
+        {% endif %}
+
+        <div class="container py-3">
+            {% for message in app.flashes('success-message') %}
+                <div class="alert alert-success text-center my-3 alert-dismissible fade show" role="alert">
+                    {% autoescape false %}{{ message }}{% endautoescape %}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+            {% for message in app.flashes('error-message') %}
+                <div class="alert alert-danger my-3 alert-dismissible text-center fade show" role="alert">
+                    {% autoescape false %}{{ message }}{% endautoescape %}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+            <div class="d-flex flex-column align-items-center justify-content-center h-100"
+                 style="min-height: 55vh">
+                <i class="text-green d-inline-block info-bubble bi bi-chat-square"></i>
+                <h1 class="fw-light text-body">
+                    {% if is_granted('ROLE_SUPER_ADMIN') %}SU Admin{% endif %}
+                    <span class="fw-normal text-green">Dashboard</span>
+                    {% if is_granted('ROLE_USER') and not is_granted('ROLE_ADMIN') and not is_granted('ROLE_SUPER_ADMIN') %}
+                        {{ app.user.email }}
+                    {% endif %}
+                </h1>
+
+                {% if not is_granted('ROLE_SUPER_ADMIN') and not app.user.isVerified %}
+                    <div class="text-center fs-4 mt-3">
+                        <i class="bi bi-exclamation-triangle text-danger me-2"></i>
+                        {{ 'Your account is not activated.'|trans }}
+                    </div>
+                {% endif %}
+                {% if not is_granted('ROLE_SUPER_ADMIN') %}
+                    {% for message in app.flashes('activated-message') %}
+                        <div class="text-center text-muted my-2">
+                            <i class="bi bi-check2-circle text-green me-2"></i>
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block footer %}
+{% endblock %}

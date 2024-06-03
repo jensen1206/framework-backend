@@ -1,0 +1,8 @@
+<div style="padding: 1rem 1.5rem">
+    {% if content is defined %}
+        {% autoescape false %}
+            {{ content }}
+        {% endautoescape %}
+    {% endif %}
+</div>
+

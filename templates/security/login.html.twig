@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}{{ 'login.Please sign in'|trans }}{% endblock %}
+ {% block navbar %}
+     {{ include('public-navbar.twig') }}
+ {% endblock %}
+{% block body %}
+    <main class="flex-shrink-0 flex-fill mt-3" style="height: max-content">
+        <div id="public-content" class="container d-flex align-items-center justify-content-center h-75">
+            <div class="col-xxl-5 col-xl-6 col-lg-8 col-12 mx-auto">
+                <div class="card shadow-sm">
+                    {% for message in app.flashes('success') %}
+                        <div class="alert alert-success mb-0 alert-dismissible fade rounded-bottom-0 show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                    <form method="post">
+                        <input type="hidden" name="_target_path" value="{{ path('app_logged_in') }}"/>
+                        {% if error %}
+                            <div class="alert mb-0 rounded-bottom-0 alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
+                        <div class="card-header">
+                            <div class="fs-5 py-3 font-weight-normal">{{ 'login.Please sign in'|trans }}</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-floating mb-3">
+                                <input type="text"
+                                       required
+                                       autofocus
+                                       autocomplete="username"
+                                       value="{{ last_username }}"
+                                       name="_username"
+                                       class="form-control mb-3"
+                                       id="inputEmail"
+                                       placeholder="name@example.com">
+                                <label for="inputEmail">{{ 'login.Email address'|trans }}</label>
+                            </div>
+
+                            <div class="form-floating">
+                                <input type="password"
+                                       autocomplete="current-password"
+                                       class="form-control mb-3" id="inputPassword"
+                                       required
+                                       name="_password"
+                                       placeholder="Password">
+
+                                <label for="inputPassword">{{ 'login.Password'|trans }}</label>
+                            </div>
+
+                            <input type="hidden" name="_csrf_token"
+                                   value="{{ csrf_token('authenticate') }}"
+                            >
+                            {# <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" name="_remember_me" id="remember_me">
+                                <label class="form-check-label"
+                                       for="remember_me">{{ 'register.Stay logged in'|trans }}</label>
+                            </div> #}
+                            <button class="btn btn-secondary" type="submit">
+                                <i class="bi bi-box-arrow-in-right me-2"></i>
+                                {{ 'login.Sign in'|trans }}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="text-center mt-2">
+                    <a class="me-2" href="{{ path('app_public_index') }}">{{ 'Homepage'|trans }}</a>
+                    {% if ''|registerSettings.show_forgotten_password %}
+                        <a class="me-2"
+                           href="{{ path('app_forgot_password_request') }}">{{ 'register.Forgot password'|trans }}</a>
+                    {% endif %}
+                    {% if ''|registerSettings.registration_active %}
+                        <a class="me-2" href="{{ path('app_register') }}">{{ 'register.Register'|trans }}</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+{% block footer %}
+    {{ include('public/public-footer.html.twig') }}
+{% endblock %}

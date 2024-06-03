@@ -1,0 +1,119 @@
+{% if gallery %}
+    {% set xxlGutter = gallery.breakpoints.xxl.gutter %}
+    {% set xxlColumns = gallery.breakpoints.xxl.columns %}
+
+    {% set xlGutter = gallery.breakpoints.xl.gutter %}
+    {% set xlColumns = gallery.breakpoints.xl.columns %}
+
+    {% set lgGutter = gallery.breakpoints.lg.gutter %}
+    {% set lgColumns = gallery.breakpoints.lg.columns %}
+
+    {% set mdGutter = gallery.breakpoints.md.gutter %}
+    {% set mdColumns = gallery.breakpoints.md.columns %}
+
+    {% set smGutter = gallery.breakpoints.sm.gutter %}
+    {% set smColumns = gallery.breakpoints.sm.columns %}
+
+    {% set xsGutter = gallery.breakpoints.xs.gutter %}
+    {% set xsColumns = gallery.breakpoints.xs.columns %}
+
+    {% set isNotRepeat = true %}
+    {% if gallery.lazy_load_animation and gallery.animation_repeat %}
+        {% set isNotRepeat = false %}
+    {% endif %}
+
+    <div id="{{ f.config.container_id }}" class="gallery {{ f.config.css_class }}">
+        {% if f.config.show_designation is defined and f.config.show_designation %}
+            <div {% if gallery.lazy_load_animation %}data-type-animation="{{ gallery.animation }}"{% endif %}
+                 class="gallery-designation fs-4 {% if not gallery.description %}mb-3{% endif %} {% if gallery.lazy_load_animation %}app-animation{% endif %}">
+                {{ gallery.designation }}
+            </div>
+        {% endif %}
+        {% if f.config.show_description is defined and f.config.show_description and gallery.description is defined and gallery.description %}
+            <p {% if gallery.lazy_load_animation %}data-type-animation="{{ gallery.animation }}"{% endif %}
+               class="gallery-description {% if gallery.lazy_load_animation %}app-animation{% endif %}">
+                {{ gallery.description }}
+            </p>
+        {% endif %}
+
+        <div class="{% if gallery.galleryType == 'masonry' %}builder-selector-grid builder-gallery{% endif %} row row-cols-{{ xsColumns }} g-{{ xsGutter }} row-cols-xxl-{{ xxlColumns }} g-xxl-{{ xxlGutter }} row-cols-xl-{{ xlColumns }} g-xl-{{ xlGutter }} row-cols-lg-{{ lgColumns }} g-lg-{{ lgGutter }} row-cols-md-{{ mdColumns }} g-md-{{ mdGutter }} row-cols-sm-{{ smColumns }} g-sm-{{ smGutter }}">
+            {% for i in f.images %}
+                {% set size = f.config.size %}
+                {% set imgSrc = '' %}
+                {% set imgSrcFull = '' %}
+                {% set href = '' %}
+                {% set imgLightBox = '' %}
+                {% set lightboxActiv = '' %}
+                {% set lightboxControl = '' %}
+                {% set newTab = '' %}
+                {% if i.type == 'data' %}
+                    {% set imgSrc = asset('uploads/mediathek/') %}
+                    {% set imgSrcFull = asset('uploads/mediathek/') %}
+                {% endif %}
+                {% if i.type == 'image' %}
+                    {% set imgSrc = i.urls[size]['url'] %}
+                    {% set imgSrcFull = i.urls['xl-large']['url'] %}
+                {% endif %}
+
+                {% if f.config.action == 'individual' %}
+                    {% if i.new_tab %}
+                        {% set newTab = '_blank' %}
+                    {% endif %}
+                    {% if i.action == 'custom' %}
+                        {% set href = i.url %}
+                    {% endif %}
+                    {% if i.action == 'url' %}
+                        {% set href = i.site_id|postById %}
+                    {% endif %}
+                    {% if i.action == 'lightbox' %}
+                        {% set lightboxControl = i.lightbox_type %}
+                        {% set lightboxActiv = 1 %}
+                        {% if i.type == 'data' %}
+                            {% set href = imgSrc ~ i.image %}
+                            {% set imgSrc = imgSrc ~ i.image %}
+                        {% else %}
+                            {% set href = imgSrcFull %}
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+                {% if f.config.action == 'lightbox' %}
+                    {% set lightboxControl = f.config.lightbox_type %}
+                    {% set lightboxActiv = 1 %}
+                    {% if i.type == 'data' %}
+                        {% set href = imgSrc ~ i.image %}
+                        {% set imgSrc = imgSrc ~ i.image %}
+                    {% else %}
+                        {% set href = imgSrcFull %}
+                    {% endif %}
+                {% endif %}
+                {% if i.type == 'data' %}
+                    {% set imgSrc = imgSrc ~ i.fileName %}
+                {% endif %}
+                {% set imgWidth = gallery.width %}
+                {% set imgHeight = gallery.height %}
+                {% set imgStyle = false %}
+                {% if gallery.galleryType == 'gallery' %}
+                    {% set imgStyle = true %}
+                    {% if gallery.crop %}
+                        {% set imgHeight = gallery.width %}
+                    {% endif %}
+                {% endif %}
+                <div {% if gallery.lazy_load_animation %}data-type-animation="{{ gallery.animation }}"{% endif %}
+                     class="col grid-item text-center {% if gallery.lazy_load_animation %}app-animation{% endif %}" {% if isNotRepeat %}data-animation-no-repeat="true"{% endif %}>
+                    <div class="d-inline-block">
+                        <a title="{{ i.title }}" {% if newTab %}target="{{ newTab }}"{% endif %}
+                           class="{% if lightboxActiv %}img-link{% endif %}"
+                                {% if lightboxActiv %}data-control="{{ lightboxControl }}"{% endif %}  {% if href %}href="{{ href }}"{% endif %}>
+                            <img {% if imgStyle %}style="width:{{ imgWidth }}px; height: {{ imgHeight }}px; object-fit: cover" {% endif %}
+                                 loading="lazy"
+                                 class="img-fluid  rounded{% if gallery.lazy_load %}  lazy-image{% endif %} {% if i.type == 'data' %}gallery-data-img{% endif %}"
+                                 data-src="{{ imgSrc }}"
+                                 alt="{{ i.alt }}">
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
+

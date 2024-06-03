@@ -1,0 +1,3 @@
+<div id="{% if f.config.container_id %}{{ f.config.container_id }}{% else %}{{ f.id}}{% endif %}" class="app-divider d-flex justify-content-{{ f.config.alignment }}">
+    <hr class="builder-hr  {{ f.config.css_class }}" style="width: {{ f.config.width }}% ;border-top-width: {{ f.config.height }}; border-style: {{ f.config.style }}; border-color:rgba({{ f.config.color.r }}, {{ f.config.color.g }},{{ f.config.color.b }},{{ f.config.color.a }});"/>
+</div>

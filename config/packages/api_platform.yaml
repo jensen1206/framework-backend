@@ -1,0 +1,91 @@
+api_platform:
+    swagger:
+        api_keys:
+            apiKey:
+                name: Authorization
+                type: header
+    title: 'Rockets APP API'
+    description: 'Jens Wiecker'
+    version: '1.0.0'
+
+    defaults:
+        pagination_client_enabled: true
+        collection:
+            pagination:
+                enabled_parameter_name: pagination # optional
+
+
+    # Enable ReDoc.
+    enable_re_doc: true
+
+    # Enable the docs.
+    enable_docs: true
+    # Enable the entrypoint.
+    enable_entrypoint: true
+    # Enable Swagger UI.
+    enable_swagger: true
+    enable_swagger_ui: true
+
+    show_webby: true
+    openapi:
+        contact:
+            name: Jens Wiecker
+            email: wiecker@hummelt.com
+
+    # Enable the data collector and the WebProfilerBundle integration.
+    enable_profiler: true
+    patch_formats:
+        json: ['application/merge-patch#json']
+    formats:
+        jsonld: [ 'application/ld+json' ]
+        json: [ 'application/json' ]
+        html: [ 'text/html' ]
+        jsonhal: [ 'application/hal+json' ]
+    graphql:
+        # Enabled by default with installed webonyx/graphql-php.
+        enabled: false
+
+        # The default IDE (graphiql or graphql-playground) used when going to the GraphQL endpoint. False to disable.
+        default_ide: 'graphiql'
+
+        graphiql:
+            # Enabled by default with installed webonyx/graphql-php and Twig.
+            enabled: false
+
+        graphql_playground:
+            # Enabled by default with installed webonyx/graphql-php and Twig.
+            enabled: false
+
+        # The nesting separator used in the filter names.
+        nesting_separator: _
+
+        collection:
+            pagination:
+                enabled: true
+    mapping:
+        # The list of paths with files or directories where the bundle will look for additional resource files.
+        paths: ['%kernel.project_dir%/src/Entity']
+    oauth:
+        # To enable or disable OAuth.
+        enabled: false
+
+        # The OAuth client ID.
+        clientId: '5VT8VCDG7T27Q961Q9K4KNK2N8'
+
+        # The OAuth client secret.
+        clientSecret: 'uVREYejwZWkCRSQnUy9NhFJJRO4aUBbZGrxYm7BZAstDWGgXDD5KPHLW1HECc3LqIdA82KKG6'
+
+        # The OAuth type.
+        type: 'oauth2'
+
+        # The OAuth flow grant type. authorizationCode
+        flow: 'authorizationCode'
+
+        # The OAuth token URL. Make sure to check the specification tokenUrl is not needed for an implicit flow.
+        tokenUrl: '/token'
+
+        # The OAuth authentication URL.
+        authorizationUrl: '/authorize'
+
+        # The OAuth scopes.
+        scopes: ['BLOCK_READ','MEDIA']

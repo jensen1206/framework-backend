@@ -1,0 +1,500 @@
+Homepage: Homepage
+User: Benutzer
+Overview: Übersicht
+add: hinzufügen
+Profile: Profil
+Logout: Logout
+Login: Login
+Settings: Einstellungen
+Registered users: Registrierte Benutzer
+New users: neuen Benutzer
+Name: Name
+Company: Firma
+Title: Titel
+E-mail: E-Mail
+Phone: Telefon
+Mobile: Mobil
+Active: Aktiv
+Edit: Bearbeiten
+Delete: Löschen
+active: aktiv
+edit: bearbeiten
+delete: löschen
+User Roles: Benutzerrollen
+System settings: Systemeinstellungen
+System: System
+Basic settings: Grundeinstellungen
+Minimum requirement for use: Mindestvoraussetzung für die Verwendung
+Mediathek: Mediathek
+DB Backups: DB Backups
+create: erstellen
+Size: Größe
+Created: Erstellt
+AGB: AGB
+Download: Download
+Designation: Bezeichnung
+Privacy: Datenschutz
+Imprint: Impressum
+Upload Settings: Upload-Einstellungen
+Upload: Upload
+Image Library: Image Library
+max upload size (MB): max Upload Größe (MB)
+Image max width: Image max width
+Image max height: Image max height
+Medium max width: Medium max width
+Medium max height: Medium max height
+Thumbnail max width: Thumbnail max width
+Thumbnail max height: Thumbnail max height
+Thumbnail Crop: Thumbnail Crop
+Auto Orient: Auto Orient
+Save EXIF data: EXIF Daten speichern
+Ajax transmission error: Ajax Übertragungsfehler
+Settings saved successfully.: Einstellungen erfolgreich gespeichert.
+Settings could not be saved.: Einstellungen konnten nicht gespeichert werden.
+Saved: Gespeichert
+Settings saved: Einstellungen gespeichert
+There are no settings available.: Es sind keine Einstellungen verfügbar.
+Dashboard: Dashboard
+SMTP: SMTP
+Email: E-Mail
+Email SMTP settings: E-Mail SMTP Einstellungen
+SMTP settings: SMTP Einstellungen
+Name or company of the sender: Name oder Firma des Absenders
+If the entry is left empty, the page title will be used.: Wenn der Eintrag leer bleibt, wird der Seitentitel verwendet.
+Reply to: Reply to
+Sender e-mail: Absender E-Mail
+In most cases, the provider e-mail must be entered here.: In den meisten Fällen, muss hier die Provider-E-Mail eingegeben werden.
+SMTP host: SMTP Host
+SMTP port: SMTP Port
+SMTP secure: SMTP secure
+Username: Benutzername
+Password: Passwort
+SMTP authentication: SMTP Authentifizierung
+Save email: E-Mail speichern
+Email sending will be activated if the SMTP test was successful.: Der E-Mail-Versand wird aktiviert, wenn der SMTP-Test erfolgreich war.
+E-mail dispatch activated: E-Mail Versand aktiviert
+Email sending not enabled: E-Mail Versand nicht aktiviert
+SMTP test: SMTP Test
+Separate multiple recipients by comma or semicolon.: Trennen Sie mehrere Empfänger durch Komma oder Semikolon.
+Email status: E-Mail status
+E-mail is being sent.: E-Mail wird gesendet.
+at: um
+on: am
+Clock: Uhr
+Details: Details
+Authentication: Authentifizierung
+
+Options for saving emails: Optionen zum Speichern von E-Mails
+Registration confirmation: Anmeldebestätigung
+Registration confirmation administrator: Anmeldebestätigung Administrator
+Password forgotten: Passwort vergessen
+Password changed: Passwort geändert
+Password created: Passwort erstellt
+Account activated: Konto aktiviert
+Account deactivated: Konto deaktiviert
+Account deleted: Konto gelöscht
+Cronjob: Cronjob
+Email sent: E-Mail gesendet
+System email sent: System E-Mail gesendet
+Allowed image file types: Erlaubte Bild Dateitypen
+Allowed file types: Erlaubte Dateitypen
+show: anzeigen
+Show: Anzeigen
+Show all emails: Alle E-Mails anzeigen
+No new e-mails: keine neuen E-Mails
+Send email: E-Mail senden
+Cancel: Abbrechen
+Close: Schließen
+Sent: Gesendet
+Sender: Absender
+Recipient: Empfänger
+Subject: Betreff
+Message: Nachricht
+Sent from: Gesendet von
+Type: Typ
+Registration: Registrierung
+Activate: Aktivieren
+Activities: Aktivitäten
+All activities: alle Aktivitäten
+no new activities: keine neuen Aktivitäten
+Time: Zeit
+unknown: unbekannt
+new: neue
+Filemanager: Filemanager
+Server: Server
+
+
+##Registrierung Settings
+registrierung:
+  Register: Registrieren
+  Show forgotten password: Passwort vergessen anzeigen
+  Anyone can register: Jeder kann sich registrieren
+  Confirm registration with e-mail: Registrierung mit E-Mail bestätigen
+  Default role of a new user: Standardrolle eines neuen Benutzers
+  E-mail for notifications: E-Mail für Benachrichtigungen
+  Send notification on new registration: Benachrichtigung bei neuer Registrierung senden
+  Activate new registration manually: neue Registrierung manuell aktivieren
+  The e-mail dispatch is not active.: Der E-Mailversand ist nicht aktiv.
+  SMTP settings: SMTP Einstellungen
+  Create password email link: E-Mail Link zum Passwort erstellen
+  User immediately active: Benutzer sofort aktiv
+  separate with coma or semicolon: mit Komma oder Semikolon trennen
+
+## Messages
+message:
+  back to the overview: zurück zur Übersicht
+  Create user: Benutzer erstellen
+  Edit user: Benutzer bearbeiten
+  Save changes: Änderungen speichern
+  select: auswählen
+  Delete user: Benutzer löschen
+  All data will be deleted. The deletion cannot be reversed.: Alle Daten werden gelöscht. Das Löschen kann nicht rückgängig gemacht werden.
+  An error has occurred.: Es ist ein Fehler aufgetreten.
+  Please check the form entries.: Bitte überprüfen Sie die Formulareingaben.
+  Page settings have been saved successfully.: Seiten Einstellungen wurden erfolgreich gespeichert.
+##JS UPLOAD
+upload:
+  Drag and drop profile picture here or: Profilbild hier per Drag & Drop ablegen oder
+  Drag and drop image here or: Bild hier per Drag & Drop ablegen oder
+  or: oder
+  Upload error: Fehler beim Upload
+  try again: erneut versuchen
+  tap to cancel: zum Abbrechen antippen
+  click to delete: zum Löschen klicken
+  remove: entfernen
+  File is too big: Datei ist zu groß
+  Maximum file size is {filesize}: Maximale Dateigröße ist {filesize}
+  Maximum total size exceeded: Maximale Gesamtgröße überschritten
+  Maximum total file size is {filesize}: Maximale Gesamtgröße der Datei ist {filesize}
+  Invalid file type: Ungültiger Dateityp
+  Expect {allButLastType} or {lastType}: Erwartet {allButLastType} oder {lastType}
+  Browse: durchsuchen
+  File here or: Datei hier ablegen oder
+
+##Formular Profile
+profil:
+  Profile picture: Profilbild
+  Company/Organization: Firma/Organisation
+  User role: Benutzerrolle
+  Title: Titel
+  First name: Vorname
+  Last name: Nachname
+  Street: Strasse
+  House number: Hausnummer
+  Zip code: Postleitzahl
+  City: Ort
+  Phone: Telefon
+  Mobile: Mobil
+  Password: Passwort
+  Repeat password: Passwort wiederholen
+  Create password: Passwort erstellen
+  Select image: Bild auswählen
+  User active: Benutzer aktiv
+  User can change profile data: Benutzer kann Profildaten ändern
+  Note: Notiz
+  invalid password: ungültiges Passwort
+  The password must be at least {{ limit }} characters long: Das Passwort muss mindestens {{ limit }} Zeichen lang sein
+  The email {{ value }} is not a valid email address.: Die E-Mail {{ value }} ist keine gültige E-Mail-Adresse.
+  E-mail address: E-Mail-Adresse
+  Change Password: Password ändern
+  already present: schon vorhanden
+  Profile saved successfully.: Profil erfolgreich gespeichert.
+  Send link to create password: Link zum Passwort erstellen senden
+  Password set: Passwort gesetzt
+## E-Mail Templates
+templates:
+  Email templates: E-Mail Templates
+## Grundeinstellungen
+system:
+  Dashboard Visibility Admin System Settings: Dashboard Sichtbarkeit Admin Systemeinstellungen
+  Backend settings: Backend Einstellungen
+  oAuth2 security: oAuth2-Sicherheit
+  Database backup: Datenbank Backup
+  Navigation menu: Navigationsmenü
+  Activity Log: Activity Log
+  new registration: neue Registrierung
+  manual activation: manuelle Aktivierung
+  Notification: Benachrichtigung
+  Registration: Registrierung
+  Email SMTP settings: E-Mail SMTP Einstellungen
+  Upload settings: Upload Einstellungen
+  DB Backups: DB Backups
+  Create new template: Neue Vorlage erstellen
+  Sent emails: Gesendete E-Mails
+  Media library category: Mediathek Kategorie
+  Media library overview: Mediathek Übersicht
+  Mediathek Upload: Mediathek Upload
+  Google-Maps GPS: Google-Maps GPS
+  Database backups: Datenbank-Sicherungen
+  Create new backup: neues Backup erstellen
+  Page title: Seitentitel
+  Administrator email address: Administrator-E-Mail-Adresse
+  Privacy site: Datenschutz Seite
+  AGB site: AGB Seite
+  Imprint site: Impressum Seite
+  Logo upload: Logo Upload
+  Email signature: E-Mail Signatur
+  Image size: Bildgröße
+  Change image: Bild ändern
+  Dashboard Logo: Dashboard Logo
+  Login Logo: Login Logo
+  Access data: Zugangsdaten
+  send: senden
+  E-mail template: E-Mail Template
+  Create password link: Link zum Passwort erstellen
+  Email changed: E-Mail geändert
+  Password forgotten: Passwort vergessen
+  Activation link: Aktivierungslink
+  Placeholder valid for registration or password forgotten: Platzhalter gültig für Registrierung oder Passwort vergessen
+  Placeholder for dashboard user: Platzhalter für Dashboard-Benutzer
+  Placeholders can always be used: Platzhalter können immer verwendet werden
+  No new registrations: keine neuen Registrierungen
+  Delete all emails: Alle E-Mails löschen
+  Activate account: Konto aktivieren
+  Registration link expiration time: Ablaufzeit Registrierungslink
+  Specification in hours: Angabe in Stunden
+  Confirmation e-mail changed: Bestätigung E-Mail geändert
+  The <b>unlock</b> code is <b>no longer valid</b>. Please register again.: Der Freischaltcode ist <b>nicht mehr gültig</b>. Bitte registrieren Sie sich erneut.
+  The <b>link</b> is no longer valid. Contact the <b>administrator!</b>: Der <b>Link</b> ist nicht mehr gültig. Wenden Sie sich an den <b>Administrator!</b>
+  This e-mail address is <b>not</b> known.<br> Try again. ( 3 attempts ): Diese E-Mail-Adresse ist <b>nicht</b> bekannt. Versuchen Sie es erneut. ( 3 Versuche )
+  last chance: letzte Chance
+  At the moment this service cannot be performed.: Zur Zeit kann dieser Service nicht ausgeführt werden.
+  Please enter the email address you used to create your account. We will then send you a link to reset your password.: Bitte geben Sie die E-Mail-Adresse ein, mit der Sie Ihr Konto erstellt haben. Wir senden Ihnen dann einen Link, mit dem Sie Ihr Passwort zurücksetzen können.
+  The e-mail address is not known.: Die E-Mail-Adresse ist nicht bekannt.
+  Thank you for your registration.: Vielen Dank für Ihre Registrierung.
+  The password was updated.: Das Passwort wurde aktualisiert.
+  The password was successfully saved and the account was activated.: Das Passwort wurde erfolgreich gespeichert und das Konto aktiviert.
+  Form fields: Formularfelder
+  Required field: Pflichtfeld
+  no required field: kein Pflichtfeld
+  do not show: nicht anzeigen
+  Password Leak Checker active: Passwort Leak Checker aktiv
+  Checks if the password is affected by a data leak.: Prüft ob das Passwort von einem Daten-Leak betroffen ist.
+  Log settings: Log Einstellungen
+  Delete all activities: alle Aktivitäten löschen
+  Activities overview: Aktivitäten Übersicht
+  Log entry deleted: Logeintrag gelöscht
+  delete all entries: alle Einträge löschen
+  Delete log entry: Logeintrag löschen
+  All entries have been deleted.: Alle Einträge wurden gelöscht.
+  Deleted: Gelöscht
+  The file was successfully deleted.: Die Datei wurde erfolgreich gelöscht.
+  Category: Kategorie
+  Save: Speichern
+  save: speichern
+  Description: Beschreibung
+  Image Details: Bild Details
+  Image: Bild
+  Exif data: Exif Daten
+  Copyright: Copyright
+  last modified: zuletzt geändert
+  Count: Anzahl
+  Web page settings: Webseiten Einstellungen
+  Pages: Seiten
+  Create page: Seite erstellen
+  Site status: Status der Website
+  Sites: Webseiten
+  Websites overview: Webseiten Übersicht
+  Pages title: Seiten Titel
+  Private: Privat
+  Draft: Entwurf
+  Public: Öffentlich
+  Slug: Slug
+  Parent site: Übergeordnete Website
+  Order: Reihenfolge
+  Text excerpt: Textauszug
+  Allow comments: Kommentare erlauben
+  Page attributes: Seiten-Attribute
+  Character Limit: Zeichenbegrenzung
+  Article image: Beitragsbild
+  Password protected: Passwortgeschützt
+  Page Settings: Seiten Einstellungen
+  Menu: Menü
+  Extra Css: Extra Css
+  Individual links: Individuelle Links
+  URL: URL
+  Link text: Link-Text
+  Sent E-mails: Gesendete E-mails
+  Dump File: Dump File
+  Send database file: Datenbank-File senden
+  If Public is active, the file is displayed in the file manager and is visible to all registered users.: Wenn Öffentlich aktiviert ist, wird die Datei im Dateimanager angezeigt und ist für alle registrierten Benutzer sichtbar.
+  Output options: Ausgabe-Optionen
+  Uploaded on: Hochgeladen am
+  Owner: Besitzer
+  File name: Dateiname
+  File url: Datei-Url
+  Uploaded: Hochgeladen
+  open in new window: in neuem Fenster öffnen
+  Settings are only valid for the Image data type.: Die Einstellungen sind nur für den Datentyp Image gültig.
+  Gallery Item extra-Css: Galerie Item extra-Css
+  Gallery Container extra-Css: Galerie Container extra-Css
+  oAuth Settings: oAuth Einstellungen
+  Create new certificates: Neue Zertifikate erstellen
+  Executed: Ausgeführt
+  The action was successfully executed.: Die Aktion wurde erfolgreich ausgeführt.
+  The password you entered is wrong!: Das eingegebene Passwort ist falsch!
+  Password to execute: Passwort zum ausführen
+  Enter password to execute: Passwort zum ausführen eingeben
+  Enter the password to execute.: Geben Sie das Passwort zum ausführen ein.
+  The password entered is incorrect!: Das eingegebene Passwort ist falsch!
+  Execute: Ausführen
+  Properties of the JSON Web Key Set: Eigenschaften des JSON-Webschlüsselsatzes
+  Certificates: Zertifikate
+  default Scopes: Standard-Geltungsbereiche
+  Generate Defuse Crypto Key: Defuse Crypto Key generieren
+  Crypto Key successfully created.: Crypto Key erfolgreich erstellt.
+  Client ID: Client ID
+  Client Secret: Client Secret
+  Redirect uris: Redirect uris
+  Scope: Geltungsbereiche
+  Grants: Bewilligungen
+  API active: API aktiv
+  API Scope: API Anwendungsbereiche
+  Copied!: Kopiert!
+  API is active: API ist aktiv
+  API is not active: API ist nicht aktiv
+  Copy: Kopieren
+  Status: Status
+  status: status
+  Login as: Login als
+  Authorisations: Berechtigungen
+  2FA Login has been deactivated.: 2FA Login wurde deaktiviert.
+  2FA Login has been activated.: 2FA Login wurde aktiviert.
+  Use Authy or Google Authenticator to Scan the QR Code.: Verwenden Sie Authy oder Google Authenticator zum Scannen des QR-Codes.
+  URL for authentication app: URL für Authentifizierung-App
+  Authy or Google Authenticator: Authy oder Google Authenticator
+  deactivate 2FA: 2FA deaktivieren
+  All settings in your authentication app will be lost. The settings cannot be restored.: Alle Einstellungen in Ihrer Authentifizierung-App gehen dabei verloren. Die Einstellungen können nicht wieder hergestellt werden.
+## Medien
+medien:
+  Media: Medien
+  File: Datei
+  File type: Dateityp
+  Multiple selection: Mehrfachauswahl
+  Assign to a category: einer Kategorie zuordnen
+  Delete selected: ausgewählte löschen
+  execute: ausführen
+  File size: Dateigröße
+  Exif: Exif
+  Uploaded documents: Hochgeladene Dokumente
+  last modification: letzte Bearbeitung
+  Custom: Benutzerdefiniert
+  HDR (no original saved): HDR ( nicht im Original) gespeichert
+  HDR (original saved): HDR (Original gespeichert)
+  Daylight: Tageslicht
+  Fluorescent: Fluoreszierend
+  Tungsten (Incandescent): Wolfram (Glühlampe)Blitzlicht
+  Flash: Blitzlicht
+  Fine Weather: Schönes Wetter
+  Cloudy: Bewölkt
+  Shade: Schatten
+  Daylight Fluorescent: Tageslicht Fluoreszierend
+  Day White Fluorescent: Tag Weiß Fluoreszierend
+  Cool White Fluorescent: Kalt weiß Leuchtstoffröhre
+  White Fluorescent: Weiß fluoreszierend
+  Warm White Fluorescent: Warm weiß Leuchtstoffröhre
+  Standard Light A: Standard Light A
+  Standard Light B: Standard Light B
+  Standard Light C: Standard Light C
+  ISO Studio Tungsten: ISO Studio Wolfram
+  other: andere
+  Wide: Breit
+  Field: Feld
+  centre: Mitte
+  Flexible spot: Flexible spot
+  Extended Flexible Spot: Erweit. Flexible Spot
+  AF lock Extended Flexible Spot: AF-Verriegel.:Erw. Flexible Spot
+  Not Defined: Nicht definiert
+  M (Manual): M (Manual)
+  P (Program): P (Programmautomatik)
+  Aperture Priority: Blendenpriorität
+  Shutter Priority: Verschlusszeitenpriorität
+  Creative (Slow speed): Kreativ (langsame Geschwindigkeit)
+  Action (High speed): Aktion (hohe Geschwindigkeit)
+  Portrait: Portrait
+  Landscape: Landschaft
+  Bulb: Bulb
+  alt: alt
+  Messmodus: Messmodus
+  Camera: Kamera
+  Model: Model
+  Recorded: Aufgenommen
+  Lens: Objektiv
+  Blende: Blende
+  Digitized: Digitalisiert
+  Exposure: Belichtung
+  Software: Software
+  Focal length: Brennweite
+  Image width: Bild Breite
+  Image height: Bildhöhe
+  White balance: Weißabgleich
+  Program: Programm
+  Light source: Lichtquelle
+  in: in
+  Upload: Upload
+  Create a new category: neue Kategorie erstellen
+  Create category: Kategorie erstellen
+  Edit category: Kategorie bearbeiten
+  Cancel upload: Upload abbrechen
+  Gallery edition: Galerie-Ausgabe
+  Approach Details: Angang Details
+  Insert file(s): Datei(en) einfügen
+  Lightbox: Lightbox
+  Lightbox single: Lightbox single
+  Lightbox slide: Lightbox slide
+  Thumbnail: Thumbnail
+  Medium: Medium
+  Large: Large
+  Full: Full
+  Output: Ausgabe
+## AJAX
+ajax:
+  E-mail address invalid: E-Mail-Adresse ungültig
+  invalid user role: ungültige Benutzerrolle
+  Method not found!: Methode nicht gefunden!
+  Backup created: Backup erstellt
+  Database backup was successfully created.: Datenbank-Backup wurde erfolgreich erstellt.
+  Database backup failed.: Datenbank Backup fehlgeschlagen.
+  Error: Fehler
+  Create email template: E-Mail Template erstellen
+  Add template: Template hinzufügen
+  Email templates: E-Mail Templates
+  Template name: Bezeichnung der Vorlage
+  Email subject: Betreff der E-Mail
+  Create template: Template erstellen
+  Template Type: Template Vorlage Typ
+  Email Standard Template: E-Mail Standard Template
+  Email Signature: E-Mail Signature
+  Email Autoresponder: E-Mail Autoresponder
+  System Email: System-E-Mail
+  Email template was created successfully.: E-Mail Template wurde erfolgreich erstellt.
+  Delete template: Template löschen
+  Delete email template: E-Mail Template löschen
+  The template will be deleted irrevocably. The deletion cannot be undone.: Das Template wird unwiderruflich gelöscht.<br> Das Löschen kann nicht rückgängig gemacht werden.
+  Please check your input.: Bitte überprüfen Sie Ihre Eingaben.
+  Recipient e-mail: Empfänger E-Mail
+  Insert signature: Signatur einfügen
+  Delete email: E-Mail löschen
+  The deletion cannot be undone.: Das Löschen kann nicht rückgängig gemacht werden.
+  E-mail deleted: E-Mail gelöscht
+  The email was successfully deleted.: Die E-Mail wurde erfolgreich gelöscht.
+  User deleted: Benutzer gelöscht
+  The user and all data successfully deleted.: Der Benutzer und alle Daten erfolgreich gelöscht.
+  The user cannot be deleted.: Der Benutzer kann nicht gelöscht werden.
+  The email address is invalid.: Die E-Mail-Adresse ist ungültig.
+  The e-mail address already exists.: Die E-Mail-Adresse ist schon vorhanden.
+  Changes saved: Änderungen gespeichert
+  The changes have been saved successfully.: Die Änderungen wurden erfolgreich gespeichert.
+  All emails have been successfully deleted.: Alle E-Mails wurden erfolgreich gelöscht.
+  Delete document: Dokument löschen
+  Delete selected: Ausgewählte löschen
+  Media library option: Mediathek Option
+  Data successfully deleted.: Daten erfolgreich gelöscht.
+  Category created: Kategorie erstellt,
+  Category was created successfully.: Kategorie wurde erfolgreich erstellt.
+  Delete category: Kategorie löschen
+  All documents of this category will be moved to the default category.: Alle Dokumente dieser Kategorie werden in die Standard Kategorie verschoben.
+  Category deleted: Kategorie gelöscht
+  Category was successfully deleted.: Kategorie wurde erfolgreich gelöscht.
+  The file is irrevocably deleted.<br> The deletion cannot be undone.: Die Datei wird unwiderruflich gelöscht.<br> Das Löschen kann nicht rückgängig gemacht werden.
+  Delete file: Datei löschen

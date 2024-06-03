@@ -1,0 +1,19 @@
+<div class="{{ f.config.css_class }}"
+     id="{% if f.config.container_id %}{{ f.config.container_id }}{% else %}{{ f.id }}{% endif %}">
+    {% set catLoop = '' %}
+    {% if category is defined %}
+        {% set catLoop = category %}
+    {% else %}
+        {% if post is defined %}
+            {% set catLoop = post.postCategory %}
+        {% endif %}
+    {% endif %}
+    {% if not catLoop and f.config.category is defined %}
+        {% if f.config.category|postCategory %}
+            {% set catLoop = f.config.category|postCategory %}
+        {% endif %}
+    {% endif %}
+    {% if catLoop %}
+        {% if f.config.word_limit is defined and f.config.word_limit %}{{ catLoop.description|u.truncate(f.config.word_limit, '...', false) }}{% else %}{{ catLoop.description }}{% endif %}
+    {% endif %}
+</div>

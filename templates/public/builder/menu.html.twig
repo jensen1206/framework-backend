@@ -1,0 +1,24 @@
+{% macro recursiveMenu(navi, config) %}
+    <li class="{{ config.li_css }}">
+      <a {% if navi.url != '#' %}href="{{ navi.url }}"{% endif %}>{{ navi.title }}</a>
+        {% if navi.__children|length %}
+            <ul class="{{ config.ul_css }}">
+                {% for child in navi.__children %}
+                    {{ _self.recursiveMenu(child, config) }}
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </li>
+{% endmacro %}
+
+{% if f.config|appMenu %}
+    <div id="{% if f.config.container_id %}{{ f.config.container_id }}{% else %}{{ f.id }}{% endif %}"
+         class="{{ f.config.css_class }}">
+        <ul class="{{ f.config.ul_css }}">
+            {% set menu = f.config|appMenu %}
+            {% for navi in menu %}
+                {{ _self.recursiveMenu(navi, f.config) }}
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}

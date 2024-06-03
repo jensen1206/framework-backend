@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% if title is defined %}{{ title }}{% else %}{{ 'Homepage'|trans }}{% endif %} {{ parent() }}{% endblock %}
+ {% block navbar %}
+     {{ include('public-navbar.twig') }}
+ {% endblock %}
+{% block body %}
+    <main class="flex-shrink-0 flex-fill mt-3" style="height: max-content">
+        <div id="public-content" class="container d-flex align-items-center justify-content-center">
+            <div class="container">
+                <h1 class="text-start fs-2 text-muted"> 404</h1>
+                <div class="mt-4 text-center">
+                    <hr>
+                    <div class="d-flex flex-column align-items-center fs-4 justify-content-center">
+                        <div> Seite <b>nicht</b> gefunden!</div>
+                        <i style="font-size: 60px" class="bi bi-emoji-tear text-warning mt-3"></i>
+                    </div>
+                    <hr>
+                    <div class="text-start">
+                        <h5>Diese Seite konnte nicht gefunden werden.</h5>
+                        <p>Gründe dafür könnten sein, dass Sie eine falsche oder veraltete URL aufgerufen haben – bitte
+                            überprüfen Sie diese noch einmal. Oder aber wir haben die betreffende Seite archiviert,
+                            verschoben oder umbenannt.</p>
+                        <p>Vielleicht können Sie den von Ihnen gewünschten Inhalt über unsere Startseite finden.</p>
+                        <a href="{{ path('app_public_index') }}" class="btn btn-secondary">
+                          Startseite
+                        </a>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </main>
+
+{% endblock %}
+{% block footer %}
+    {{ include('public/public-footer.html.twig') }}
+{% endblock %}

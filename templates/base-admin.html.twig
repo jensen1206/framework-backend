@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}" data-bs-theme="auto">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}&ndash; {{ ''|appSettings.site_name }}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="text/html; charset=UTF-8; X-Content-Type-Options=nosniff" http-equiv="Content-Type"/>
+    <link rel="icon"
+          href="{{ asset('favicon/facicon.svg') }}">
+    {% block stylesheets %}
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            {{ encore_entry_link_tags('dashboard') }}
+        {% endif %}
+    {% endblock %}
+    {% block javascripts %}
+        <script src="{{ asset('js/theme-mode.js') }}"></script>
+        <script src="{{ path('javascript_public_settings') }}"></script>
+        <script src="{{ path('app_translation') }}"></script>
+        <script src="{{ asset('js/lightbox/blueimp-gallery.min.js') }}"></script>
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            {{ encore_entry_script_tags('dashboard') }}
+        {% endif %}
+    {% endblock %}
+</head>
+<body>
+
+<div id="wrapper"
+     class="{% if is_granted('IS_AUTHENTICATED_FULLY') %}h-100 w-100{% else %}d-flex flex-column h-100 w-100 {% endif %}">
+
+    {% for message in app.flashes('backend_error') %}
+    <div style="top: 90px; right: 8px" class="alert-msg position-absolute z-2 alert alert-danger" role="alert">
+        {{ message|raw }}
+    </div>
+    {% endfor %}
+    {% block navbar %}{% endblock %}
+    {{ include('admin-sidebar.html.twig') }}
+    {% block header %}{% endblock %}
+    {% block body %} {% endblock %}
+    {% block footer %}{% endblock %}
+</div>
+
+<div id="snackbar-success"></div>
+<div id="snackbar-warning"></div>
+{{ include('includes/blueimp-gallery.html.twig') }}
+{% block modal %}{% endblock %}
+</body>
+</html>

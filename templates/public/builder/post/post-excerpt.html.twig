@@ -1,0 +1,24 @@
+<div id="{% if f.config.container_id %}{{ f.config.container_id }}{% else %}{{ f.id }}{% endif %}"
+     class="{{ f.config.css_class }}">
+    {% set limit = '' %}
+    {% set excerpt = '' %}
+    {% if post.postExcerpt %}
+        {% set excerpt = post.postExcerpt %}
+    {% else %}
+        {% set excerpt = post.postContent %}
+    {% endif %}
+    {% if f.config.word_limit %}
+        {% set limit = f.config.word_limit %}
+    {% else %}
+        {% if post.excerptLimit %}
+            {% set limit = post.excerptLimit %}
+        {% endif %}
+    {% endif %}
+    {% autoescape false %}
+        {% if limit %}
+            {{ excerpt|striptags|u.truncate(limit, '...', false) }}
+        {% else %}
+            {{ excerpt|striptags }}
+        {% endif %}
+    {% endautoescape %}
+</div>

@@ -1,0 +1,15 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+app_public_slug:
+    path:       /{slug}
+    controller: App\Controller\PublicController::site_by_slug
+    methods:    GET|HEAD
+
+
+oauth2:
+    resource: '@LeagueOAuth2ServerBundle/Resources/config/routes.php'
+    type: php

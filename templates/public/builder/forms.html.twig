@@ -1,0 +1,3 @@
+<div id="{% if f.config.container_id %}{{ f.config.container_id }}{% else %}{{ f.id}}{% endif %}" class="app-form {{ f.config.css_class }}">
+    <div id="formular-builder-{{ random() }}" class="app-formular-builder app-formular-{{ f.config.formular }}" data-builder="{{ f.config.formular }}"></div>
+</div>

@@ -1,0 +1,25 @@
+{% extends 'base-admin.html.twig' %}
+{% block title %}{% if title is defined %}{{ title }}{% else %}Web{% endif %} {{ parent() }}{% endblock %}
+ {% block navbar %}
+     {{ include('admin-navbar-top.html.twig') }}
+ {% endblock %}
+{% block body %}
+    <div id="page-content-wrapper">
+      {#  <img alt="" width="150" src="{{ account.imagePath|imagine_filter('squared_thumbnail_small')}}">#}
+        {% if is_granted('ACCOUNT_SHOW', account) %}
+            <div class="container py-3">
+                <div data-id="{{ account.id }}" id="account-react-app"></div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+ {% block javascripts %}
+     {{ parent() }}
+     {{ encore_entry_script_tags('react_app_accounts') }}
+     <script src="{{ path('javascript_account_settings') }}"></script>
+     <script src="{{ path('javascript_upload_settings') }}"></script>
+ {% endblock %}
+{% block modal %}
+    {{ parent() }}
+{% endblock %}
+

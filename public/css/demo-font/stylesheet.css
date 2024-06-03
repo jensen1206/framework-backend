@@ -1,0 +1,72 @@
+@font-face {
+    font-family: 'Lora';
+    src: local('Lora Medium'), local('Lora-Medium'),
+      url('Lora/Lora-Medium.ttf') format('truetype'),
+	  url('Lora/Lora-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Lora';
+    src: local('Lora Medium Italic'), local('Lora-MediumItalic'),
+      url('Lora/Lora-MediumItalic.ttf') format('truetype'),
+	  url('Lora/Lora-MediumItalic.woff') format('woff');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Lora';
+    src: local('Lora Regular'), local('Lora-Regular'),
+      url('Lora/Lora-Regular.ttf') format('truetype'),
+	  url('Lora/Lora-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Lora';
+    src: local('Lora SemiBold'), local('Lora-SemiBold'),
+      url('Lora/Lora-SemiBold.ttf') format('truetype'),
+	  url('Lora/Lora-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Lora';
+    src: local('Lora Bold'), local('Lora-Bold'),
+      url('Lora/Lora-Bold.ttf') format('truetype'),
+	  url('Lora/Lora-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Lora';
+    src: local('Lora SemiBold Italic'), local('Lora-SemiBoldItalic'),
+      url('Lora/Lora-SemiBoldItalic.ttf') format('truetype'),
+	  url('Lora/Lora-SemiBoldItalic.woff') format('woff');
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Lora';
+    src: local('Lora Bold Italic'), local('Lora-BoldItalic'),
+      url('Lora/Lora-BoldItalic.ttf') format('truetype'),
+	  url('Lora/Lora-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Lora';
+    src: local('Lora Italic'), local('Lora-Italic'),
+      url('Lora/Lora-Italic.ttf') format('truetype'),
+	  url('Lora/Lora-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}

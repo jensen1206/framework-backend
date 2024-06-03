@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% set is_success = false %}
+{% block title %}{{ 'register.Register'|trans }}{% endblock %}
+ {% block navbar %}
+     {{ include('public-navbar.twig') }}
+ {% endblock %}
+{% block body %}
+    <main class="flex-shrink-0 flex-fill my-3" style="height: max-content">
+        <div id="public-content" class="container d-flex align-items-center justify-content-center h-100">
+            <div class="col-xl-8 col-lg-10 col-12 mx-auto">
+                <div class="card shadow-sm">
+                    {% for message in app.flashes('success') %}
+                        {% set is_success = true %}
+                        <div class="alert alert-success fade rounded-bottom-0 show" role="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                    {% if is_success %}
+                        <div class="card-body">
+                            <a class="btn btn-success-custom dark" href="{{ path('app_login') }}">
+                                <i class="bi bi-box-arrow-in-right me-1"></i>
+                                {{ 'login.Sign in'|trans }}
+                            </a>
+                        </div>
+                    {% else %}
+                        {% for flash_error in app.flashes('verify_email_error') %}
+                            <div class="alert m-0 rounded-bottom-0 alert-danger" role="alert">
+                                {% autoescape false %}
+                                    <i class="bi bi-exclamation-circle me-1"></i>  {{ flash_error }}
+                                {% endautoescape %}
+                            </div>
+                        {% endfor %}
+                        <div class="card-header">
+                            <div class="py-3 fs-5">{{ 'register.Register'|trans }}</div>
+                        </div>
+                        <div class="card-body">
+                            {{ form_errors(registrationForm) }}
+                            {{ form_start(registrationForm) }}
+                            <div class="row g-2">
+                                {#  {{ form_start(registrationForm) }}
+                                {{ form_row(registrationForm.email) }}
+                                {{ form_row(registrationForm.plainPassword, {}) }}
+                                {{ form_row(registrationForm.agreeTerms) }}
+                                {{ form_row(registrationForm.register_btn) }}
+                                {{ form_end(registrationForm) }} #}
+                                {% if ''|registerSettings.show_company %}
+                                    {{ form_row(registrationForm.company) }}
+                                {% endif %}
+                                {% if ''|registerSettings.show_title %}
+                                    {{ form_row(registrationForm.title) }}
+                                {% endif %}
+                                {% if ''|registerSettings.show_name %}
+                                    {{ form_row(registrationForm.first_name) }}
+                                    {{ form_row(registrationForm.last_name) }}
+                                {% endif %}
+                                {% if ''|registerSettings.show_street %}
+                                    {{ form_row(registrationForm.street) }}
+                                    {{ form_row(registrationForm.hnr) }}
+                                {% endif %}
+                                {% if ''|registerSettings.show_city %}
+                                    {{ form_row(registrationForm.zip) }}
+                                    {{ form_row(registrationForm.country) }}
+                                {% endif %}
+                                {% if ''|registerSettings.show_phone %}
+                                    {{ form_row(registrationForm.phone) }}
+                                {% endif %}
+                                {% if ''|registerSettings.show_mobile %}
+                                    {{ form_row(registrationForm.mobile) }}
+                                {% endif %}
+                                {{ form_row(registrationForm.email) }}
+                                {{ form_row(registrationForm.plainPassword, {}) }}
+
+                                {{ form_row(registrationForm.register_btn) }}
+                            </div>
+                            {{ form_end(registrationForm) }}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+{% block footer %}
+    {{ include('public/public-footer.html.twig') }}
+{% endblock %}

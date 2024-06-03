@@ -1,0 +1,99 @@
+security:
+  role_hierarchy:
+    ROLE_SUPER_ADMIN: [ ROLE_ALLOWED_TO_SWITCH ,ROLE_ADMIN, ROLE_OAUTH2_BASIC ]
+    ROLE_ADMIN: [ ROLE_ALLOWED_TO_SWITCH ]
+    ROLE_OAUTH2_SUPER_ADMIN: [ROLE_OAUTH2_PROFILE, ROLE_OAUTH2_MEDIA, ROLE_OAUTH2_BLOCK_READ, ROLE_OAUTH2_BLOCK_WRITE]
+    ROLE_OAUTH2_ADMIN: [ROLE_OAUTH2_PROFILE, ROLE_OAUTH2_MEDIA, ROLE_OAUTH2_BLOCK_READ, ROLE_OAUTH2_BLOCK_WRITE]
+  # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
+  password_hashers:
+    Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
+  # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
+  providers:
+    # used to reload user from session & other features (e.g. switch_user)
+    app_user_provider:
+      entity:
+        class: App\Entity\User
+        #property: email
+  firewalls:
+    api_token:
+      pattern: ^/api/token$
+      security: false
+
+    image_resolver:
+      pattern: ^/media/cache/resolve
+      security: false
+    api:
+      pattern: ^/api
+      security: true
+      stateless: true
+      oauth2: true
+    dev:
+      pattern: ^/(_(profiler|wdt)|css|images|js)/
+      security: false
+    main:
+      two_factor:
+        auth_form_path: 2fa_login
+        check_path: 2fa_login_check
+        enable_csrf: true
+        default_target_path: app_logged_in
+        always_use_default_target_path: true
+      lazy: true
+      switch_user: true
+      provider: app_user_provider
+      login_throttling:
+        max_attempts: 5
+        interval: '15 minutes'
+      form_login:
+        login_path: app_login
+        check_path: app_login
+        enable_csrf: true
+        default_target_path: app_logged_in
+        use_referer: true
+      #custom_authenticator: App\Security\LoginFormAuthenticator
+
+      logout:
+        path: app_logout
+        # where to redirect after logout
+        #target: app_logged_out
+      remember_me:
+        secret: '%kernel.secret%'
+        lifetime: 604800
+        path: /
+        always_remember_me: false
+        signature_properties: [ 'password', 'updatedAt' ]
+        token_provider:
+          doctrine: true
+
+      # activate different ways to authenticate
+      # https://symfony.com/doc/current/security.html#the-firewall
+
+      # https://symfony.com/doc/current/security/impersonating_user.html
+      # switch_user: true
+
+  # Easy way to control access for large sections of your site
+  # Note: Only the *first* access control that matches will be used
+  access_control:
+
+    - { path: ^/dashboard, roles: ROLE_USER }
+    - { path: ^/admin, roles: IS_AUTHENTICATED_FULLY }
+    - { path: ^/login, roles: PUBLIC_ACCESS }
+    - { path: ^/logout, role: PUBLIC_ACCESS }
+    - { path: ^/user, roles: ROLE_USER }
+    #- { path: ^(/(login|register|reset-password)), roles: PUBLIC_ACCESS }
+    - { path: ^/authorize, roles: [PUBLIC_ACCESS, IS_AUTHENTICATED_REMEMBERED ] }
+    - { path: ^/token, role: PUBLIC_ACCESS }
+    - { path: ^/.well-known, roles: PUBLIC_ACCESS }
+    - { path: ^/2fa, role: IS_AUTHENTICATED_2FA_IN_PROGRESS }
+
+when@test:
+  security:
+    password_hashers:
+      # By default, password hashers are resource intensive and take time. This is
+      # important to generate secure password hashes. In tests however, secure hashes
+      # are not important, waste resources and increase test times. The following
+      # reduces the work factor to the lowest possible values.
+      Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface:
+        algorithm: auto
+        cost: 4 # Lowest possible value for bcrypt
+        time_cost: 3 # Lowest possible value for argon
+        memory_cost: 10 # Lowest possible value for argon

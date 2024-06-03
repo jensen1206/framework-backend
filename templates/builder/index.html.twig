@@ -1,0 +1,20 @@
+{% extends 'base-admin.html.twig' %}
+{% block title %}{% if title is defined %}{{ title }}{% else %}Web{% endif %} {{ parent() }}{% endblock %}
+ {% block navbar %}
+     {{ include('admin-navbar-top.html.twig') }}
+ {% endblock %}
+{% block body %}
+    <div id="page-content-wrapper">
+        {% if is_granted('MANAGE_SITE_BUILDER', account) %}
+            <div class="container-fluid py-3">
+                <div id="page-builder-react-app"></div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+ {% block javascripts %}
+     {{ encore_entry_script_tags('react_page_builder') }}
+     <script src="{{ path('javascript_form_builder_settings') }}"></script>
+     <script src="{{ path('javascript_form_builder_plugin_settings') }}"></script>
+     {{ parent() }}
+ {% endblock %}
