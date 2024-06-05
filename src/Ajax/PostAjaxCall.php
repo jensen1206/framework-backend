@@ -10,6 +10,7 @@ use App\Entity\PostCategory;
 use App\Entity\PostSites;
 use App\Entity\SiteCategory;
 use App\Entity\SiteSeo;
+use App\Entity\Tag;
 use App\Settings\Settings;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
@@ -77,8 +78,10 @@ class PostAjaxCall
 
         $query = $this->em->createQueryBuilder()
             ->from(PostSites::class, 'p')
-            ->select('p, c, s')
+            ->select('p, ca, t, c, s')
             ->leftJoin('p.postCategory', 'c')
+            ->leftJoin('p.categories', 'ca')
+            ->leftJoin('p.tags', 't')
             ->leftJoin('p.siteSeo', 's')
             ->andWhere('p.id=:id')
             ->setParameter('id', $id);
@@ -130,8 +133,6 @@ class PostAjaxCall
             $loopArr[] = $item;
         }
 
-
-
         $category = $this->em->getRepository(FormBuilder::class)->findBy(['type' => 'category']);
         $catArr = [];
         foreach ($category as $tmp) {
@@ -142,11 +143,51 @@ class PostAjaxCall
             $catArr[] = $item;
         }
         $record = $site[0];
+        $catIds = [];
+        if(isset($record['categories']) && $record['categories']) {
+            foreach ($record['categories'] as $cat) {
+               $catIds[] = $cat['id'];
+            }
+        }
+        $tagIds = [];
+        foreach($record['tags'] as $tmp) {
+            $tagIds[] = $tmp['id'];
+        }
+        $tagSelects = [];
+        $tags = $this->em->getRepository(Tag::class)->findAll();
+        foreach($tags as $tmp) {
+            if(in_array($tmp->getId(), $tagIds)) {
+                continue;
+            }
+            $item = [
+                'id' => $tmp->getId(),
+                'label' => $tmp->getDesignation()
+            ];
+            $tagSelects[] = $item;
+        }
+
+        $categoryArr = [];
+        $catSelects = $this->em->getRepository(PostCategory::class)->findBy([], ['position' => 'ASC']);
+        foreach ($catSelects as $tmp) {
+            if(in_array($tmp->getId(), $catIds)) {
+                continue;
+            }
+            $item = [
+                'id' => $tmp->getId(),
+                'label' => $tmp->getTitle()
+            ];
+            $categoryArr[] = $item;
+        }
+
+
+
         $record['siteCategory'] = $record['postCategory']['id'];
         $record['siteDate'] = $record['postDate']->format('d.m.Y H:i:s');
         $seo = $record['siteSeo'];
         $seo['createdAt'] = $seo['createdAt']->format('d.m.Y H:i:s');
         unset($record['siteSeo']);
+
+
 
         // $this->responseJson->builder_select = $builderArr;
         $this->responseJson->select_post_design = $designArr;
@@ -157,11 +198,109 @@ class PostAjaxCall
         $this->responseJson->site = $record;
         $this->responseJson->seo = $seo;
         $this->responseJson->category_selects = $this->get_cat_selects();
+        $this->responseJson->categories_select = $categoryArr;
+        $this->responseJson->tag_selects = $tagSelects;
         $this->responseJson->xCardTypesSelect = $this->xCardTypes;
         $this->responseJson->ogTypesSelect = $this->ogTypes;
         $this->responseJson->selectSiteStatus = $this->select_site_status();
         $this->responseJson->status = true;
         $this->responseJson->handle = $handle;
+        return $this->responseJson;
+    }
+
+
+
+    private function add_tag():object
+    {
+        $designation = filter_var($this->data->get('designation'), FILTER_UNSAFE_RAW);
+        $postId = filter_var($this->data->get('post'), FILTER_VALIDATE_INT);
+        $tags = $this->em->getRepository(Tag::class)->findBy(['designation' => $designation]);
+        if(!$postId || !$designation){
+            $this->responseJson->msg = $this->translator->trans('Ajax transmission error') . ' (Ajx-SE ' . __LINE__ . ')';
+            return $this->responseJson;
+        }
+
+        $this->responseJson->check_tag = true;
+        if($tags){
+            $this->responseJson->check_tag = false;
+            return $this->responseJson;
+        }
+
+        $tag = new Tag();
+        $tag->setDesignation(trim($designation));
+        $this->em->persist($tag);
+
+        $post = $this->em->getRepository(PostSites::class)->find($postId);
+        if(!$post){
+            $this->responseJson->msg = $this->translator->trans('Ajax transmission error') . ' (Ajx-SE ' . __LINE__ . ')';
+            return $this->responseJson;
+        }
+        $post->addTag($tag);
+        $this->em->persist($post);
+        $this->em->flush();
+        $item = [
+            'id' => $tag->getId(),
+            'designation' => $tag->getDesignation()
+        ];
+
+        $this->responseJson->msg = $this->translator->trans('system.New tag was created');
+        $this->responseJson->status = true;
+        $this->responseJson->record = $item;
+        return $this->responseJson;
+    }
+
+    private function update_tag():object
+    {
+        $designation = filter_var($this->data->get('designation'), FILTER_UNSAFE_RAW);
+        $id = filter_var($this->data->get('id'), FILTER_VALIDATE_INT);
+        if(!$designation || !$id){
+            $this->responseJson->msg = $this->translator->trans('Ajax transmission error') . ' (Ajx-SE ' . __LINE__ . ')';
+            return $this->responseJson;
+        }
+        $tag = $this->em->getRepository(Tag::class)->find($id);
+        if(!$tag){
+            $this->responseJson->msg = $this->translator->trans('Ajax transmission error') . ' (Ajx-SE ' . __LINE__ . ')';
+            return $this->responseJson;
+        }
+        $this->responseJson->check_tag = true;
+        if(strtolower($tag->getDesignation()) != trim(strtolower($designation))) {
+            $check = $this->em->getRepository(Tag::class)->findBy(['designation' => trim($designation)]);
+            if($check){
+                $this->responseJson->check_tag = false;
+                return $this->responseJson;
+            }
+        }
+        $tag->setDesignation(trim($designation));
+        $this->em->persist($tag);
+        $this->em->flush();
+        $record = [
+            'id' => $id,
+            'designation' => trim($designation)
+        ];
+        $this->responseJson->msg = $this->translator->trans('The changes have been saved successfully.');
+        $this->responseJson->status = true;
+        $this->responseJson->record = $record;
+        return $this->responseJson;
+    }
+
+    private function delete_tag():object
+    {
+        $id = filter_var($this->data->get('id'), FILTER_VALIDATE_INT);
+        if(!$id){
+            $this->responseJson->msg = $this->translator->trans('Ajax transmission error') . ' (Ajx-SE ' . __LINE__ . ')';
+            return $this->responseJson;
+        }
+        $tag = $this->em->getRepository(Tag::class)->find($id);
+        if(!$tag){
+            $this->responseJson->msg = $this->translator->trans('Ajax transmission error') . ' (Ajx-SE ' . __LINE__ . ')';
+            return $this->responseJson;
+        }
+        $this->em->remove($tag);
+        $this->em->flush();
+
+        $this->responseJson->status = true;
+        $this->responseJson->msg = $this->translator->trans('system.Tag successfully deleted.');
+        $this->responseJson->id = $id;
         return $this->responseJson;
     }
 
@@ -245,6 +384,7 @@ class PostAjaxCall
         $post->setPostSlug($slug);
         $post->setSiteSeo($siteSeo);
         $post->setPostCategory($cat);
+        $post->addCategory($cat);
         $post->setSiteType('post');
         $post->setPostStatus('publish');
         $this->em->persist($post);
@@ -274,6 +414,7 @@ class PostAjaxCall
             $this->responseJson->msg = $this->translator->trans('Ajax transmission error') . ' (Ajx-SC ' . __LINE__ . ')';
             return $this->responseJson;
         }
+
         $this->em->remove($site);
         $this->em->flush();
 
@@ -310,6 +451,51 @@ class PostAjaxCall
             $this->responseJson->msg = $this->translator->trans('Ajax transmission error') . ' (Ajx-SE ' . __LINE__ . ')';
             return $this->responseJson;
         }
+        $catRepo = $this->em->getRepository(PostCategory::class);
+        $catIds = [];
+        foreach ($data['categories'] as $tmp) {
+               $catIds[] = $tmp['id'];
+        }
+
+        $postCatIds = [];
+        foreach ($site->getCategories() as $tmp) {
+            if(!in_array($tmp->getId(), $catIds)) {
+                $cat = $catRepo->find($tmp->getId());
+                $site->removeCategory($cat);
+                continue;
+            }
+            $postCatIds[] = $tmp->getId();
+        }
+
+        foreach ($catIds as $tmp) {
+            if(!in_array($tmp, $postCatIds)) {
+                $cat = $catRepo->find($tmp);
+                $site->addCategory($cat);
+            }
+        }
+
+        $tagRepo = $this->em->getRepository(Tag::class);
+        $tagIds = [];
+        foreach ($data['tags'] as $tmp) {
+            $tagIds[] = $tmp['id'];
+        }
+
+        $postTagsIds = [];
+        foreach ($site->getTags() as $tmp) {
+            if(!in_array($tmp->getId(), $tagIds)) {
+                $tag = $tagRepo->find($tmp->getId());
+                $site->removeTag($tag);
+                continue;
+            }
+            $postTagsIds[] = $tmp->getId();
+        }
+        foreach ($tagIds as $tmp) {
+            if(!in_array($tmp, $postTagsIds)) {
+                $tag = $tagRepo->find($tmp);
+                $site->addTag($tag);
+            }
+        }
+
         $slug = $data['postSlug'];
         $slug = Urlizer::urlize($slug, '-');
         if ($site->getPostSlug() != $slug) {

@@ -13,6 +13,7 @@ import PostTable from "./sections/PostTable";
 import AddPostModal from "./sections/AddPostModal";
 import SiteSeo from "../AppSites/Sections/SiteSeo";
 import PostDetails from "./sections/PostDetails";
+
 const v5NameSpace = 'c21db5fa-2d43-4af1-b660-0f5e39eb6a83';
 export default class App extends React.Component {
     constructor(props) {
@@ -25,8 +26,11 @@ export default class App extends React.Component {
             xCardTypesSelect: [],
             ogTypesSelect: [],
             builderActive: true,
-            galleryActive:false,
+            galleryActive: false,
             categorySelect: [],
+            categoriesSelect: [],
+            tagSelects: [],
+            tags: [],
             postLayoutSelect: [],
             selectHeader: [],
             selectFooter: [],
@@ -58,18 +62,24 @@ export default class App extends React.Component {
         this.onSetPost = this.onSetPost.bind(this);
         this.onToggleBuilder = this.onToggleBuilder.bind(this);
         this.onSetGallerySortable = this.onSetGallerySortable.bind(this);
+        this.onSetCategoryTagSelects = this.onSetCategoryTagSelects.bind(this);
+        this.filterArrayElementById = this.filterArrayElementById.bind(this);
 
     }
-
-    onToggleBuilder(target){
+    filterArrayElementById(array, id) {
+        return array.filter((element) => {
+            return element.id !== id;
+        })
+    }
+    onToggleBuilder(target) {
         let builder = false;
         let gallery = false;
-        switch (target){
+        switch (target) {
             case 'builder':
-                  builder = true;
+                builder = true;
                 break;
             case 'gallery':
-                  gallery = true;
+                gallery = true;
                 break;
         }
 
@@ -79,15 +89,39 @@ export default class App extends React.Component {
         })
     }
 
-    onSetDrawTable(state){
+    onSetDrawTable(state) {
         this.setState({
             drawTable: state
         })
     }
+
     onSetCategorySelect(cat) {
         this.setState({
             categorySelect: cat
         })
+    }
+
+    onSetCategoryTagSelects(e, select, type) {
+        let upd = this.state.site;
+        switch (type) {
+            case 'category':
+               // upd.categories = e;
+                this.setState({
+                    categoriesSelect: select
+                })
+                this.onSetPost(e, 'categories')
+                break;
+            case 'tag':
+                //upd.tags = e;
+                this.setState({
+                    tagSelects: select
+                })
+                this.onSetPost(e, 'tags')
+                break;
+        }
+      /*  this.setState({
+            site: upd
+        })*/
     }
 
     setShowAddPostModal(state) {
@@ -96,7 +130,7 @@ export default class App extends React.Component {
         })
     }
 
-    sortableCallback(list){
+    sortableCallback(list) {
         let formData = {
             'method': 'set_site_position',
             'ids': JSON.stringify(list),
@@ -116,7 +150,7 @@ export default class App extends React.Component {
             }
         })
 
-        if(type === 'formBuilder'){
+        if (type === 'formBuilder') {
             this.setState({
                 getFormBuilderData: true
             })
@@ -160,19 +194,20 @@ export default class App extends React.Component {
             _this.sendAxiosFormdata(formData).then()
         }, 1000);
     }
-    setToggleCollapse(target, draw = false){
-        let table= false;
+
+    setToggleCollapse(target, draw = false) {
+        let table = false;
         let details = false;
         let seo = false;
         switch (target) {
             case 'table':
-                  table = true;
+                table = true;
                 break;
             case 'details':
                 details = true;
                 break;
             case 'seo':
-                 seo = true;
+                seo = true;
                 break;
         }
 
@@ -203,6 +238,7 @@ export default class App extends React.Component {
             }
         });
     }
+
     async sendAxiosFormdata(formData, isFormular = false, url = postSettings.ajax_url) {
         if (formData) {
             await axios.post(url, SetAjaxData(formData, isFormular, postSettings))
@@ -212,6 +248,8 @@ export default class App extends React.Component {
                             if (data.status) {
                                 this.setState({
                                     categorySiteSelect: data.category_selects,
+                                    categoriesSelect: data.categories_select,
+                                    tagSelects: data.tag_selects,
                                     xCardTypesSelect: data.xCardTypesSelect,
                                     ogTypesSelect: data.ogTypesSelect,
                                     selectHeader: data.select_header,
@@ -245,12 +283,12 @@ export default class App extends React.Component {
                             })
                             break;
                         case 'delete_post':
-                              if(data.status){
+                            if (data.status) {
                                 this.setState({
                                     drawTable: true
                                 })
-                              }
-                              AppTools.swalAlertMsg(data)
+                            }
+                            AppTools.swalAlertMsg(data)
                             break;
                         case 'update_post':
                             this.setState({
@@ -261,12 +299,23 @@ export default class App extends React.Component {
                                 }
                             })
                             break;
+                        case 'delete_tag':
+                            if(data.status){
+                                this.setState({
+                                    tagSelects: this.filterArrayElementById([...this.state.tagSelects], data.id)
+                                })
+                                AppTools.success_message(data.msg)
+                            } else {
+                                AppTools.warning_message(data.msg)
+                            }
+                            break;
                     }
                 }).catch(err => console.error(err));
         }
     }
+
     render() {
-        return(
+        return (
             <React.Fragment>
                 <h3 className="fw-semibold text-body pb-3">
                     {trans['posts']['Posts']}
@@ -319,6 +368,8 @@ export default class App extends React.Component {
                             site={this.state.site}
                             title={this.state.seo.seoTitle}
                             categorySelect={this.state.categorySiteSelect}
+                            categoriesSelect={this.state.categoriesSelect}
+                            tagSelects={this.state.tagSelects}
                             selectSiteStatus={this.state.selectSiteStatus}
                             postLayoutSelect={this.state.postLayoutSelect}
                             selectHeader={this.state.selectHeader}
@@ -331,6 +382,9 @@ export default class App extends React.Component {
                             onSetSiteSeo={this.onSetSiteSeo}
                             onToggleBuilder={this.onToggleBuilder}
                             onSetGallerySortable={this.onSetGallerySortable}
+                            onSetCategoryTagSelects={this.onSetCategoryTagSelects}
+                            onDeleteSwalHandle={this.onDeleteSwalHandle}
+                            sendAxiosFormdata={this.sendAxiosFormdata}
                         />
                     </div>
                 </Collapse>

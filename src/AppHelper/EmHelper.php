@@ -40,7 +40,9 @@ class EmHelper
         private readonly string                 $uploadsDirName,
         private readonly string                 $publicPath,
         private readonly string                 $fontsDir,
-        private readonly string                 $uploadedAssetsBaseUrl
+        private readonly string                 $uploadedAssetsBaseUrl,
+        private readonly string                 $projectDir,
+        private readonly string                 $envVarDir
     )
     {
     }
@@ -312,7 +314,7 @@ class EmHelper
         $siteMapUri = $this->urlGenerator->generate('app_sitemap');
         $siteMapUrl = $selfUrl . $siteMapUri;
 
-        $assetsUrl = $selfUrl . '/' . $this->uploadsDirName . '/'. $this->uploaderHelper::MEDIATHEK ;
+        $assetsUrl = $selfUrl . '/' . $this->uploadsDirName . '/' . $this->uploaderHelper::MEDIATHEK;
         $robots = 'User-agent: *' . "\r\n";
         $robots .= 'Sitemap: ' . $selfUrl . '/sitemap.xxl' . "\r\n";
         $robotsFile = $this->publicPath . 'robots.txt';
@@ -347,26 +349,26 @@ class EmHelper
 
             $imgTitle = '';
             $img = '';
-            if($post['siteImg']) {
+            if ($post['siteImg']) {
                 $mediathek = $mediathekRepo->findOneBy(['fileName' => $post['siteImg']]);
-                if($mediathek) {
+                if ($mediathek) {
                     $imgTitle = $mediathek->getTitle();
-                    if($mediathek->getType() == 'image') {
+                    if ($mediathek->getType() == 'image') {
                         $uriI = $this->uploaderHelper->getLargeXlFilterPath($this->uploaderHelper::MEDIATHEK);
                         $img = $uriI . '/' . $post['siteImg'];
                     } else {
-                        $img = $assetsUrl . '/' .$post['siteImg'];
+                        $img = $assetsUrl . '/' . $post['siteImg'];
                     }
                 }
             }
-            if(!$imgTitle) {
+            if (!$imgTitle) {
                 $imgTitle = $post['siteSeo']['seoTitle'];
             }
 
             $gallery = [];
-            if($post['postGallery']) {
+            if ($post['postGallery']) {
                 foreach ($post['postGallery'] as $tmp) {
-                    if($tmp['type'] == 'image') {
+                    if ($tmp['type'] == 'image') {
                         $imgUri = $tmp['urls']['xl-large']['url'];
                     } else {
                         $imgUri = $tmp['urls']['full']['url'];
@@ -394,28 +396,28 @@ class EmHelper
         $siteArr = [];
         foreach ($sites as $site) {
             $uri = '';
-            if($site['routeName']) {
+            if ($site['routeName']) {
                 $uri = $this->urlGenerator->generate($site['routeName']);
             } else {
-                if($site['siteSlug']) {
+                if ($site['siteSlug']) {
                     $uri = $this->urlGenerator->generate('app_public_slug', ['slug' => $site['siteSlug']]);
                 }
             }
             $imgTitle = '';
             $img = '';
-            if($site['siteImg']) {
+            if ($site['siteImg']) {
                 $mediathek = $mediathekRepo->findOneBy(['fileName' => $site['siteImg']]);
-                if($mediathek) {
+                if ($mediathek) {
                     $imgTitle = $mediathek->getTitle();
-                    if($mediathek->getType() == 'image') {
+                    if ($mediathek->getType() == 'image') {
                         $uriI = $this->uploaderHelper->getLargeXlFilterPath($this->uploaderHelper::MEDIATHEK);
                         $img = $uriI . '/' . $site['siteImg'];
                     } else {
-                        $img = $assetsUrl . '/' .$site['siteImg'];
+                        $img = $assetsUrl . '/' . $site['siteImg'];
                     }
                 }
             }
-            if(!$imgTitle){
+            if (!$imgTitle) {
                 $imgTitle = $site['siteSeo']['seoTitle'];
             }
             $item = [
@@ -458,6 +460,33 @@ class EmHelper
         return true;
     }
 
+    public function set_env($key, $value): void
+    {
+        $envFile = $this->projectDir . DIRECTORY_SEPARATOR . '.env';
+        $helper = Helper::instance();
+        $envFileArr = [];
+        if (is_file($this->envVarDir . 'env.json')) {
+            $json = json_decode(file_get_contents($this->envVarDir . 'env.json'), true);
+            $json[$key] = $value;
+            $vars = json_encode($json, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_HEX_QUOT | JSON_HEX_TAG | JSON_UNESCAPED_SLASHES);
+            file_put_contents($this->envVarDir . 'env.json', $vars);
+        }
+        if (is_file($envFile)) {
+            $files = file($envFile);
+            foreach ($files as $file) {
+                $searchFile = $helper->pregWhitespace($file);
+                if (str_starts_with($searchFile, $key)) {
+                    $addFile = sprintf('%s="%s"', $key, $value) . "\r\n";
+                } else {
+                    $addFile = $file;
+                }
+                $envFileArr[] = $addFile;
+            }
 
-
+            file_put_contents($envFile, '');
+            foreach ($envFileArr as $val) {
+                file_put_contents($envFile, $val, FILE_APPEND | LOCK_EX);
+            }
+        }
+    }
 }

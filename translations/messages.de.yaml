@@ -321,6 +321,10 @@ system:
   Enter only extension without dot. Separate with a comma or semicolon.: Nur Endung ohne Punkt eingeben. Mit Komma oder Semikolon trennen.
   Entry successfully deleted.: Eintrag erfolgreich gelöscht.
   Add images: Bilder hinzufügen
+  Add category: Kategorie hinzufügen
+  Remove category: Kategorie entfernen
+  not assigned to a category: keiner Kategorie zugewiesen
+  no tags assigned: keine Tags zugewiesen
   Delete field: Feld löschen
   Default authorisations: Standard-Berechtigungen
   No custom fields available: keine Benutzerdefinierte Felder vorhanden
@@ -329,6 +333,16 @@ system:
   Please check your entry.: Bitte überprüfen Sie Ihre Eingabe.
   System: System
   Title: Titel
+  Add tag: Tag hinzufügen
+  Delete tag: Tag löschen
+  Remove tag: Tag entfernen
+  Create tag: Tag erstellen
+  Tag update: Tag update
+  Tag successfully deleted.: Tag erfolgreich gelöscht.
+  The tag is deleted from all posts.: Der Tag wird aus allen Beiträgen gelsöcht.
+  Tag already exists: Tag ist schon vorhanden
+  New tag was created: neuer Tag wurde erstellt
+  Categories: Kategorien
   Add to menu: zum Menü hinzufügen
   Page created: Seite erstellt
   Page was successfully created.: Seite wurde erfolgreich erstellt.
@@ -434,6 +448,8 @@ system:
   Deleted: Gelöscht
   The file was successfully deleted.: Die Datei wurde erfolgreich gelöscht.
   Category: Kategorie
+  Design category: Design Kategorie
+  Tags: Tags
   Save: Speichern
   Saved sections: Gespeicherte Sektionen
   Add section: Sektion hinzufügen

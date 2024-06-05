@@ -146,7 +146,7 @@ trait Settings
             ],
             'register' => [
                 'show_forgotten_password' => true,
-                'registration_active' => true,
+                'registration_active' => false,
                 'registration_method' => 1,
                 'send_notification' => false,
                 'send_after_validate' => false,

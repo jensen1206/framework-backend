@@ -149,10 +149,15 @@ export default class PostDetails extends React.Component {
                         selectFooter={this.props.selectFooter}
                         site={this.props.site}
                         categorySelect={this.props.categorySelect}
+                        categoriesSelect={this.props.categoriesSelect}
+                        tagSelects={this.props.tagSelects}
                         onSetShowOffcanvas={this.onSetShowOffcanvas}
                         onSetPost={this.props.onSetPost}
                         spinner={this.props.spinner}
                         onSetAppImage={this.onSetAppImage}
+                        onSetCategoryTagSelects={this.props.onSetCategoryTagSelects}
+                        onDeleteSwalHandle={this.props.onDeleteSwalHandle}
+                        sendAxiosFormdata={this.props.sendAxiosFormdata}
                     />
 
                     <FileMangerModal
