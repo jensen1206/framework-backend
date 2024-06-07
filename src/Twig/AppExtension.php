@@ -128,6 +128,9 @@ class AppExtension extends AbstractExtension implements ServiceSubscriberInterfa
     public function getPageById($id): string
     {
         $page = $this->em->getRepository(AppSites::class)->find($id);
+        if(!$page){
+            return '#';
+        }
         if ($page->getSiteSlug()) {
             return $this->urlGenerator->generate('app_public_slug', ['slug' => $page->getSiteSlug()]);
         } else {
