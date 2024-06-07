@@ -1,1 +1,0 @@
-(self.webpackChunk=self.webpackChunk||[]).push([[4965],{81161:(e,n,t)=>{"use strict";t(48246);var o=t(94184);t(19755);window.$=t(19755),window.bootstrap=o},48246:()=>{document.addEventListener("DOMContentLoaded",(function(){}))}},e=>{e.O(0,[9755,1001,9089],(()=>{return n=81161,e(e.s=n);var n}));e.O()}]);

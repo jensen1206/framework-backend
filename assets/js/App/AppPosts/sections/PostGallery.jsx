@@ -48,8 +48,9 @@ export default class PostGallery extends React.Component {
         this.onUpdateSortable = this.onUpdateSortable.bind(this);
 
         this.findArrayElementById = this.findArrayElementById.bind(this);
-        this.filterArrayElementByImportId = this.filterArrayElementByImportId.bind(this);
         this.filterArrayElementById = this.filterArrayElementById.bind(this);
+        this.filterArrayElementByImportId = this.filterArrayElementByImportId.bind(this);
+
 
     }
 
@@ -59,15 +60,15 @@ export default class PostGallery extends React.Component {
         })
     }
 
-    filterArrayElementByImportId(array, id) {
-        return array.filter((element) => {
-            return element.importId !== id;
-        })
-    }
-
     filterArrayElementById(array, id) {
         return array.filter((element) => {
             return element.id !== id;
+        })
+    }
+
+    filterArrayElementByImportId(array, id) {
+        return array.filter((element) => {
+            return element.importId !== id;
         })
     }
 

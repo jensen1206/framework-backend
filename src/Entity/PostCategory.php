@@ -58,6 +58,9 @@ class PostCategory
     #[ORM\Column(nullable: true)]
     private ?int $postFooter = null;
 
+    #[ORM\ManyToMany(targetEntity: PostSites::class, mappedBy: 'categories')]
+    private $posts;
+
     #[ORM\Column]
     private ?DateTimeImmutable $createdAt = null;
 
@@ -65,6 +68,7 @@ class PostCategory
     {
         $this->createdAt = new DateTimeImmutable();
         $this->postSites = new ArrayCollection();
+        $this->posts = new ArrayCollection();
         $this->type = 'category';
         $this->position = 0;
     }
@@ -257,6 +261,29 @@ class PostCategory
     {
         $this->postFooter = $postFooter;
 
+        return $this;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getPost(): Collection
+    {
+        return $this->posts;
+    }
+    public function addPost(PostSites $posts): self
+    {
+        if (!$this->posts->contains($posts)) {
+            $this->posts[] = $posts;
+            $posts->addCategory($this);
+        }
+        return $this;
+    }
+    public function removePost(PostSites $posts): self
+    {
+        if ($this->posts->removeElement($posts)) {
+            $posts->removeCategory($this);
+        }
         return $this;
     }
 }

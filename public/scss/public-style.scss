@@ -4,111 +4,17 @@ $btnHover: #43484E;
 body {
   #public-content {
     height: 100%;
+    position:  relative;
+    padding-top: 100px;
   }
-  .header-caption {
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
-  }
-  .text-orange {
-    color: $orange;
-  }
-
   a {
     text-decoration: none;
   }
-  .builder-strips {
-    position:  relative;
-    &:before {
-      content: '';
-      height: 100%;
-      position: absolute;
-      width: 100%;
-      z-index: 0;
-      left: 0;
-      bottom: 0;
-      background-image: url(../images/pattern.png);
-      background-repeat: repeat;
-      opacity: 0.15;
-    }
-  }
-  #public-content {
-      position:  relative;
 
-    }
-  .pattern {
-    height: 100%;
-    position: absolute;
-    width: 100%;
-    z-index: 1;
-    left: 0;
-    bottom: 0;
-    background-image: url(../images/pattern.png);
-    background-repeat: repeat;
-    opacity: 0.15;
-  }
-
-   .btn-orange{
-     .btn-secondary {
-       background-color: $orange;
-       border-color: #f07200;
-       color: #fff;
-       text-transform: uppercase;
-       font-weight: 800;
-       line-height: 35px;
-       padding-right: 2rem;
-       padding-left: 2rem;
-       display: inline-block;
-
-       &:hover {
-         background-color: $btnHover;
-         border-color: $btnHover;
-       }
-     }
-  }
 }
 
-.news-box {
-  .button {
-    margin-top: auto;
-  }
-}
 
-ul li::marker,
-ol li::marker {
-  color: $orange;
-}
 
-.contact {
-  background-color: #f6f6f6;
-}
-
-.title-one {
-  color: #666666;
-  display: inline-block;
-  font-weight: 600;
-  padding-bottom: 10px;
-  text-align: center;
-  text-transform: uppercase;
-  position: relative;
-  &:before {
-    color: #fc7700;
-    content: "||";
-    left: -40px;
-    position: absolute;
-    top: 0;
-  }
-  &:after {
-    color: #fc7700;
-    content: "||";
-    position: absolute;
-    right: -40px;
-    top: -2px;
-  }
-}
-
-.kontakt-width {
-  min-width: 2.25rem;
-  display: inline-block;
-}
 
 .nav-link:not(.dropdown-item .nav-link)  {
   margin-right: .25rem;
@@ -146,26 +52,6 @@ ol li::marker {
   .offcanvas-header {
     background-color: #f6f6f6;
   }
-}
-
-.text-blue {
-  color: #337ab7;
-}
-
-.growe-list {
-  li {
-    margin-bottom: 1rem;
-  }
-}
-
-.products {
-  .spacer {
-    margin-top: auto;
-  }
-}
-
-.text-site {
-  color: #666;
 }
 
 .blockquote {

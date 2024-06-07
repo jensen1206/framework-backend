@@ -360,12 +360,28 @@ class InstallAjaxCall
             try {
                 $conn->getDatabase();
             } catch (ConnectionException|\Doctrine\DBAL\Exception $e) {
-                @$this->bus->dispatch(new RunCommandMessage('app:install_database'));
+               // @$this->bus->dispatch(new RunCommandMessage('app:install_database'));
+                $this->bus->dispatch(new RunCommandMessage('doctrine:database:create'));
             }
         }
 
         @$this->bus->dispatch(new RunCommandMessage('doctrine:schema:update --force'));
 
+        $dir = $this->projectDir . DIRECTORY_SEPARATOR . 'var' . DIRECTORY_SEPARATOR . 'keys';
+        $filesystem = new Filesystem();
+        try {
+            $filesystem->mkdir(
+                Path::normalize($dir),
+            );
+        } catch (IOExceptionInterface $exception) {
+            $this->responseJson->msg = "An error occurred while creating your directory at " . $exception->getPath();
+            return $this->responseJson;
+        }
+        $bit = 2048;
+        $command = sprintf('openssl genrsa -out %s/private.key %d', $dir, (int) $bit);
+        exec($command);
+        $command = sprintf('openssl rsa -in %s/private.key -pubout -out %s/public.key', $dir, $dir);
+        exec($command);
 
         $user = $this->em->getRepository(User::class)->findByRole('SUPER_ADMIN');
         if (!$user) {

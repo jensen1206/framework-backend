@@ -5,11 +5,15 @@ import Form from 'react-bootstrap/Form';
 import {v5 as uuidv5} from 'uuid';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Collapse from 'react-bootstrap/Collapse';
-
+import Button from 'react-bootstrap/Button';
+import InputGroup from 'react-bootstrap/InputGroup';
+import AddTagModal from "./AddTagModal";
 const v5NameSpace = '15cb1620-d8ac-11ee-a817-325096b39f47';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import SetAjaxResponse from "../../AppComponents/SetAjaxResponse";
-
+import Swal from "sweetalert2";
+import withReactContent from 'sweetalert2-react-content'
+const reactSwal = withReactContent(Swal);
 export default class PostOffcanvas extends React.Component {
     constructor(props) {
         super(props);
@@ -19,11 +23,186 @@ export default class PostOffcanvas extends React.Component {
             collapseExcerpt: false,
             collapseAttributes: false,
             collapseFile: false,
-            collapseCustom: false
+            collapseCustom: false,
+            collapseCategories: false,
+            collapseTags: false,
+            selectedCat: '',
+            selectedTag: '',
+            showAddTagModal: false,
+            resetName: false,
+            tagId: '',
+            tagDesignation: ''
         }
 
         this.setCollapse = this.setCollapse.bind(this);
+        this.onChangeCatSelect = this.onChangeCatSelect.bind(this);
+        this.onAddCategory = this.onAddCategory.bind(this);
+        this.onDeleteCategory = this.onDeleteCategory.bind(this);
+        this.onAddTag = this.onAddTag.bind(this);
+        this.onDeleteTag = this.onDeleteTag.bind(this);
+        this.setShowAddTagModal = this.setShowAddTagModal.bind(this);
+        this.setResetName = this.setResetName.bind(this);
+        this.onCreatedTag = this.onCreatedTag.bind(this);
+        this.onUpdateTag = this.onUpdateTag.bind(this);
+        this.onGetUpdateInsertTag = this.onGetUpdateInsertTag.bind(this);
+        this.deleteTag = this.deleteTag.bind(this);
 
+        this.findArrayElementById = this.findArrayElementById.bind(this);
+        this.filterArrayElementById = this.filterArrayElementById.bind(this);
+    }
+
+    findArrayElementById(array, id) {
+        return array.find((element) => {
+            return element.id === id;
+        })
+    }
+
+    filterArrayElementById(array, id) {
+        return array.filter((element) => {
+            return element.id !== id;
+        })
+    }
+
+    setShowAddTagModal(state) {
+        this.setState({
+            showAddTagModal: state
+        })
+    }
+
+    setResetName(state) {
+        this.setState({
+            resetName: state
+        })
+    }
+
+    onChangeCatSelect(id) {
+        this.setState({
+            selectedCat: id
+        })
+    }
+
+    onAddCategory() {
+        const cat = [...this.props.categoriesSelect]
+        const find = this.findArrayElementById(cat, parseInt(this.state.selectedCat));
+        const del = this.filterArrayElementById(cat, parseInt(this.state.selectedCat))
+        const categories = [...this.props.site.categories, {
+            'id': find.id,
+            'title': find.label
+        }];
+        this.setState({
+            selectedCat: ''
+        })
+        this.props.onSetCategoryTagSelects(categories, del, 'category')
+
+    }
+
+    onDeleteCategory(id) {
+        const del = [...this.props.site.categories];
+        const find = this.findArrayElementById(del, parseInt(id));
+        const select = [...this.props.categoriesSelect, {
+            'id': find.id,
+            'label': find.title
+        }]
+        const newCats = this.filterArrayElementById(del, parseInt(id))
+        this.props.onSetCategoryTagSelects(newCats, select, 'category')
+
+    }
+
+    onChangeTagSelect(id) {
+        this.setState({
+            selectedTag: id
+        })
+    }
+
+    onAddTag() {
+        const tag = [...this.props.tagSelects]
+        const find = this.findArrayElementById(tag, parseInt(this.state.selectedTag));
+        const del = this.filterArrayElementById(tag, parseInt(this.state.selectedTag))
+        const tags = [...this.props.site.tags, {
+            'id': find.id,
+            'designation': find.label
+        }];
+        this.setState({
+            selectedTag: ''
+        })
+        this.props.onSetCategoryTagSelects(tags, del, 'tag')
+    }
+
+    onCreatedTag(data) {
+        const tags = [...this.props.site.tags, {
+            'id': data.id,
+            'designation': data.designation
+        }];
+        this.props.onSetCategoryTagSelects(tags, this.props.tagSelects, 'tag')
+    }
+
+    onUpdateTag(data) {
+        const tags = [...this.props.site.tags];
+        const find = this.findArrayElementById(tags, data.id);
+        find.designation = data.designation
+        this.props.onSetCategoryTagSelects(tags, this.props.tagSelects, 'tag')
+
+    }
+
+    onGetUpdateInsertTag(id, designation){
+      this.setState({
+          tagId: id,
+          tagDesignation: designation,
+          showAddTagModal: true,
+          resetName: true
+      })
+    }
+
+    onDeleteTag(id) {
+        const del = [...this.props.site.tags];
+        const find = this.findArrayElementById(del, parseInt(id));
+        const select = [...this.props.tagSelects, {
+            'id': find.id,
+            'label': find.designation
+        }]
+        const newTags = this.filterArrayElementById(del, parseInt(id))
+        this.props.onSetCategoryTagSelects(newTags, select, 'tag')
+
+    }
+
+    deleteTag() {
+        let swal = {
+            'title': `${trans['system']['Delete tag']}?`,
+            'msg': trans['system']['The tag is deleted from all posts.'],
+            'btn': trans['system']['Delete tag']
+        }
+
+        let formData = {
+            'method': 'delete_tag',
+            'id': this.state.selectedTag
+        }
+
+
+
+        this.onDeleteSwalHandle(formData, swal)
+    }
+
+    onDeleteSwalHandle(formData, swal) {
+        reactSwal.fire({
+            title: swal.title,
+            reverseButtons: true,
+            html: `<span class="swal-delete-body">${swal.msg}</span>`,
+            confirmButtonText: swal.btn,
+            cancelButtonText: trans['swal']['Cancel'],
+            customClass: {
+                popup: 'swal-delete-container'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                this.props.sendAxiosFormdata(formData).then()
+                this.setState({
+                    selectedTag: ''
+                })
+            }
+        });
     }
 
     setCollapse(type) {
@@ -46,6 +225,16 @@ export default class PostOffcanvas extends React.Component {
             case 'custom':
                 this.setState({
                     collapseCustom: !this.state.collapseCustom
+                })
+                break;
+            case 'cat':
+                this.setState({
+                    collapseCategories: !this.state.collapseCategories
+                })
+                break;
+            case 'tag':
+                this.setState({
+                    collapseTags: !this.state.collapseTags
                 })
                 break;
         }
@@ -95,38 +284,38 @@ export default class PostOffcanvas extends React.Component {
                             </Col>
                             <Col xs={12}>
                                 {this.props.selectSiteStatus ?
-                                <FloatingLabel controlId={uuidv5('selectSiteStatus', v5NameSpace)}
-                                               label={trans['system']['Site status']}>
-                                    <Form.Select
-                                        className="no-blur"
-                                        value={this.props.site.postStatus || ''}
-                                        onChange={(e) => this.props.onSetPost(e.target.value, 'postStatus')}
-                                        aria-label={trans['system']['Site status']}>
-                                        {(this.props.selectSiteStatus).map((select, index) =>
-                                            <option key={index} value={select.value}>
-                                                {select.label}
-                                            </option>
-                                        )}
-                                    </Form.Select>
-                                </FloatingLabel>: ''}
+                                    <FloatingLabel controlId={uuidv5('selectSiteStatus', v5NameSpace)}
+                                                   label={trans['system']['Site status']}>
+                                        <Form.Select
+                                            className="no-blur"
+                                            value={this.props.site.postStatus || ''}
+                                            onChange={(e) => this.props.onSetPost(e.target.value, 'postStatus')}
+                                            aria-label={trans['system']['Site status']}>
+                                            {(this.props.selectSiteStatus).map((select, index) =>
+                                                <option key={index} value={select.value}>
+                                                    {select.label}
+                                                </option>
+                                            )}
+                                        </Form.Select>
+                                    </FloatingLabel> : ''}
 
                             </Col>
                             <Col xs={12}>
                                 {this.props.categorySelect ?
-                                <FloatingLabel controlId={uuidv5('selectSiteCategory', v5NameSpace)}
-                                               label={trans['system']['Category']}>
-                                    <Form.Select
-                                        className="no-blur"
-                                        value={this.props.site.siteCategory || ''}
-                                        onChange={(e) => this.props.onSetPost(e.target.value, 'siteCategory')}
-                                        aria-label={trans['system']['Category']}>
-                                        {(this.props.categorySelect).map((select, index) =>
-                                            <option key={index} value={select.id}>
-                                                {select.label}
-                                            </option>
-                                        )}
-                                    </Form.Select>
-                                </FloatingLabel>:''}
+                                    <FloatingLabel controlId={uuidv5('selectSiteCategory', v5NameSpace)}
+                                                   label={trans['system']['Design category']}>
+                                        <Form.Select
+                                            className="no-blur"
+                                            value={this.props.site.siteCategory || ''}
+                                            onChange={(e) => this.props.onSetPost(e.target.value, 'siteCategory')}
+                                            aria-label={trans['system']['Design category']}>
+                                            {(this.props.categorySelect).map((select, index) =>
+                                                <option key={index} value={select.id}>
+                                                    {select.label}
+                                                </option>
+                                            )}
+                                        </Form.Select>
+                                    </FloatingLabel> : ''}
                             </Col>
                             {/*} <Col xs={12}>
                                 {this.props.postLayoutSelect ?
@@ -202,6 +391,161 @@ export default class PostOffcanvas extends React.Component {
                             </Col> {*/}
                             <Col xs={12}>
                                 <div
+                                    onClick={() => this.setCollapse('cat')}
+                                    className="cursor-pointer border rounded bg-body-tertiary  p-3">
+                                    <div className="d-flex align-items-center">
+                                        <div>
+                                            {trans['system']['Categories']}
+                                        </div>
+                                        <i className={`ms-auto bi ${this.state.collapseCategories ? 'bi-chevron-up' : 'bi-chevron-down'}`}></i>
+                                    </div>
+                                </div>
+                                <Collapse
+                                    in={this.state.collapseCategories}>
+                                    <div className="mt-2 py-1 bg-body-tertiary border rounded"
+                                         id={uuidv5('colCat', v5NameSpace)}>
+
+                                        {this.props.site.categories ?
+                                            <React.Fragment>
+                                                {this.props.categoriesSelect ?
+                                                    <div className="px-2">
+                                                        <FloatingLabel controlId={uuidv5('selectCategory', v5NameSpace)}
+                                                                       label={trans['system']['Category']}>
+                                                            <Form.Select
+                                                                className="no-blur"
+                                                                value={this.state.selectedCat || ''}
+                                                                onChange={(e) => this.onChangeCatSelect(e.target.value)}
+                                                                aria-label={trans['system']['Category']}>
+                                                                <option value="">{trans['system']['select']}</option>
+                                                                {(this.props.categoriesSelect).map((select, index) =>
+                                                                    <option key={index} value={select.id}>
+                                                                        {select.label}
+                                                                    </option>
+                                                                )}
+                                                            </Form.Select>
+                                                        </FloatingLabel>
+                                                        <button
+                                                            onClick={this.onAddCategory}
+                                                            disabled={this.state.selectedCat === ''}
+                                                            className={`btn  mt-2 btn-sm ${this.state.selectedCat ? 'btn-secondary dark' : 'btn-outline-secondary'}`}>
+                                                            <i className="bi bi-node-plus me-2"></i>
+                                                            {trans['system']['Add category']}
+                                                        </button>
+                                                    </div>
+                                                    : ''}
+                                                <hr className="mb-2 "/>
+                                                {this.props.site.categories.length ?
+                                                    <div className="d-md-flex d-grid px-2 flex-wrap">
+                                                        {this.props.site.categories.map((s, i) => {
+                                                            return (
+                                                                <small key={i}
+                                                                       className="ps-2 me-1 mb-1 border small-lg rounded d-flex  align-items-center">
+                                                                    <span className="d-inline-block me-2"> {s.title} </span>
+                                                                    <span onClick={() => this.onDeleteCategory(s.id)}
+                                                                          title={trans['system']['Remove category']}
+                                                                          className="px-1 ms-auto fs-6 overflow-hidden d-inline-block bg-danger text-light text-danger cursor-pointer">
+                                                                <i className="bi bi-x"></i>
+                                                            </span>
+                                                                </small>
+                                                            )
+                                                        })}
+                                                    </div>
+                                                    : <small
+                                                        className="d-block px-2">{trans['system']['not assigned to a category']}</small>
+                                                }
+                                                <hr className="mt-2"/>
+                                            </React.Fragment>
+
+                                            : ''}
+                                    </div>
+                                </Collapse>
+                            </Col>
+                            <Col xs={12}>
+                                <div
+                                    onClick={() => this.setCollapse('tag')}
+                                    className="cursor-pointer border rounded bg-body-tertiary  p-3">
+                                    <div className="d-flex align-items-center">
+                                        <div>
+                                            {trans['system']['Tags']}
+                                        </div>
+                                        <i className={`ms-auto bi ${this.state.collapseTags ? 'bi-chevron-up' : 'bi-chevron-down'}`}></i>
+                                    </div>
+                                </div>
+                                <Collapse
+                                    in={this.state.collapseTags}>
+                                    <div className="mt-2 py-2 bg-body-tertiary border rounded"
+                                         id={uuidv5('colTags', v5NameSpace)}>
+
+                                        {this.props.site.tags ?
+                                            <React.Fragment>
+                                                <div className="px-2">
+                                                    <button onClick={() => this.onGetUpdateInsertTag('', '')}
+                                                        className="btn btn-success-custom dark mb-2 btn-sm">
+                                                        <i className="bi bi-plus me-1"></i>
+                                                        {trans['system']['Create tag']}
+                                                    </button>
+                                                    <InputGroup>
+                                                        <Form.Select
+                                                            id={uuidv5('selectTags', v5NameSpace)}
+                                                            className="no-blur"
+                                                            value={this.state.selectedTag || ''}
+                                                            onChange={(e) => this.onChangeTagSelect(e.target.value)}
+                                                            aria-label="Default select example">
+                                                            <option value="">{trans['system']['select']}</option>
+                                                            {this.props.tagSelects.map((s, i) => {
+                                                                return (
+                                                                    <option key={i} value={s.id}>{s.label}</option>
+                                                                )
+                                                            })}
+                                                        </Form.Select>
+                                                        <Button
+                                                            onClick={this.onAddTag}
+                                                            disabled={!this.state.selectedTag}
+                                                            title={trans['system']['Add tag']}
+                                                            variant={`${this.state.selectedTag ? 'success-custom dark' : 'btn-outline-secondary'}`}>
+                                                            <i className="bi bi-node-plus"></i>
+                                                        </Button>
+                                                        <Button
+                                                            onClick={this.deleteTag}
+                                                            disabled={!this.state.selectedTag}
+                                                            title={trans['system']['Delete tag']}
+                                                            variant={`${this.state.selectedTag ? 'danger dark' : 'btn-outline-secondary'}`}>
+                                                            <i className="bi bi-trash"></i>
+                                                        </Button>
+                                                    </InputGroup>
+                                                </div>
+
+                                                <hr className="mb-2 "/>
+                                                {this.props.site.tags.length ?
+                                                    <div className="d-md-flex d-grid px-2 flex-wrap">
+                                                        {this.props.site.tags.map((s, i) => {
+                                                            return (
+                                                                <small key={i}
+                                                                       className="ps-2 me-1 mb-1 border small-lg rounded d-flex  align-items-center">
+                                                                    <span onClick={() => this.onGetUpdateInsertTag(s.id, s.designation)}
+                                                                        className="d-inline-block cursor-pointer me-2">
+                                                                        {s.designation}
+                                                                    </span>
+                                                                    <span onClick={() => this.onDeleteTag(s.id)}
+                                                                          title={trans['system']['Remove tag']}
+                                                                          className="px-1 ms-auto fs-6 overflow-hidden d-inline-block bg-danger text-light text-danger cursor-pointer">
+                                                                <i className="bi bi-x"></i></span>
+                                                                </small>
+                                                            )
+                                                        })}
+                                                    </div>
+                                                    : <small className="d-block px-2">
+                                                        {trans['system']['no tags assigned']}
+                                                    </small>
+                                                }
+                                                <hr className="mt-2"/>
+                                            </React.Fragment> : ''}
+
+                                    </div>
+                                </Collapse>
+                            </Col>
+                            <Col xs={12}>
+                                <div
                                     onClick={() => this.setCollapse('file')}
                                     className="cursor-pointer border rounded bg-body-tertiary  p-3">
                                     <div className="d-flex align-items-center">
@@ -227,7 +571,8 @@ export default class PostOffcanvas extends React.Component {
                                                 </div>
                                             </React.Fragment>
                                             :
-                                            <div className="placeholder-account-image mb-3 p-1 border rounded mx-auto"></div>
+                                            <div
+                                                className="placeholder-account-image mb-3 p-1 border rounded mx-auto"></div>
                                         }
                                         <div className="mt-auto text-center pb-2 mx-3 mb-2">
                                             <button
@@ -335,6 +680,17 @@ export default class PostOffcanvas extends React.Component {
                         </Row>
                     </Offcanvas.Body>
                 </Offcanvas>
+                <AddTagModal
+                    showAddTagModal={this.state.showAddTagModal}
+                    resetName={this.state.resetName}
+                    site={this.props.site}
+                    tagId={this.state.tagId}
+                    tagDesignation={this.state.tagDesignation}
+                    setShowAddTagModal={this.setShowAddTagModal}
+                    setResetName={this.setResetName}
+                    onCreatedTag={this.onCreatedTag}
+                    onUpdateTag={this.onUpdateTag}
+                />
             </React.Fragment>
         )
     }

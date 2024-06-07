@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\PostSitesRepository;
 use DateTimeImmutable;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -67,6 +69,12 @@ class PostSites
     #[ORM\ManyToOne(targetEntity: PostCategory::class, inversedBy: 'postSites')]
     private ?PostCategory $postCategory;
 
+    #[ORM\ManyToMany(targetEntity: Tag::class, inversedBy: "posts")]
+    private  $tags;
+
+    #[ORM\ManyToMany(targetEntity: PostCategory::class, inversedBy: "posts")]
+    private  $categories;
+
 
     public function __construct()
     {
@@ -77,6 +85,8 @@ class PostSites
         $this->postExcerpt = '';
         $this->postGallery = [];
         $this->postDate = new DateTimeImmutable();
+        $this->tags = new ArrayCollection();
+        $this->categories = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -284,6 +294,46 @@ class PostSites
     {
         $this->footer = $footer;
 
+        return $this;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getTags(): Collection
+    {
+        return $this->tags;
+    }
+    public function addTag(Tag $tag): self
+    {
+        if (!$this->tags->contains($tag)) {
+            $this->tags[] = $tag;
+        }
+        return $this;
+    }
+    public function removeTag(Tag $tag): self
+    {
+        $this->tags->removeElement($tag);
+        return $this;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getCategories(): Collection
+    {
+        return $this->categories;
+    }
+    public function addCategory(PostCategory $categories): self
+    {
+        if (!$this->categories->contains($categories)) {
+            $this->categories[] = $categories;
+        }
+        return $this;
+    }
+    public function removeCategory(PostCategory $category): self
+    {
+        $this->categories->removeElement($category);
         return $this;
     }
 }

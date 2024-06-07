@@ -10,6 +10,7 @@ use App\Entity\PluginSections;
 use App\Entity\PostCategory;
 use App\Entity\PostSites;
 use App\Entity\SiteCategory;
+use App\Entity\Tag;
 use App\Entity\User;
 use App\Service\PublicSiteSeo;
 use App\Service\ScssCompiler;
@@ -26,9 +27,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Serializer\Exception\ExceptionInterface;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Uid\Uuid;
 use Symfony\Contracts\Translation\TranslatorInterface;
-
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 
 class PublicController extends AbstractController
@@ -47,7 +51,7 @@ class PublicController extends AbstractController
 
     )
     {
-        if($this->emHelper->system_is_installed('SUPER_ADMIN')) {
+        if ($this->emHelper->system_is_installed('SUPER_ADMIN')) {
             $this->scss_compiler();
         }
     }
@@ -56,13 +60,13 @@ class PublicController extends AbstractController
     public function index(Request $request): Response
     {
         $locale = $request->getLocale();
-        if(!$this->emHelper->system_is_installed('SUPER_ADMIN')) {
+        if (!$this->emHelper->system_is_installed('SUPER_ADMIN')) {
             return $this->redirect($this->generateUrl('app_install'));
         }
-       /* $user = $this->em->getRepository(User::class)->findByRole('SUPER_ADMIN');
-        if (!$user) {
-            return $this->redirect($this->generateUrl('app_registration_su_admin'));
-        }*/
+        /* $user = $this->em->getRepository(User::class)->findByRole('SUPER_ADMIN');
+         if (!$user) {
+             return $this->redirect($this->generateUrl('app_registration_su_admin'));
+         }*/
         $this->publicSiteSeo->set_seo($request, 'app_public_index');
         $site = $this->em->getRepository(AppSites::class)->findOneBy(['routeName' => 'app_public_index']);
         $formBuilder = [];
@@ -106,9 +110,10 @@ class PublicController extends AbstractController
                 }
             }
         }
-        if(!$site) {
+        if (!$site) {
             return $this->render('public/index.html.twig', [
                 'type' => 'page',
+
             ]);
         }
 
@@ -122,22 +127,23 @@ class PublicController extends AbstractController
             'footer' => $formFooter,
             'footerSettings' => $formFooterSettings,
             'type' => 'page',
-            'site_content' => $siteContent
+            'site_content' => $siteContent,
+
         ]);
     }
 
     #[Route('/{slug}', name: 'app_public_slug')]
     public function site_by_slug(Request $request): Response
     {
-      // dd($request);
-            if ($request->get('slug') == 'cron') {
-               // $pid = posix_getpid();
+        // dd($request);
+        if ($request->get('slug') == 'cron') {
+            // $pid = posix_getpid();
             //    $exe = exec("readlink -f /proc/$pid/exe");
-                 //   dd($exe , PHP_BINARY);
-               // $cmd = 'php /var/www/html/bin/console okvpn:cron > /dev/null 2>&1 &';
-              //  dd($this->getParameter('projectDir'));
+            //   dd($exe , PHP_BINARY);
+            // $cmd = 'php /var/www/html/bin/console okvpn:cron > /dev/null 2>&1 &';
+            //  dd($this->getParameter('projectDir'));
 
-            }
+        }
 
         $user = $this->em->getRepository(User::class)->findByRole('SUPER_ADMIN');
         if (!$user) {
@@ -158,7 +164,7 @@ class PublicController extends AbstractController
         if ($site) {
             if ($site->getHeader()) {
                 $header = $this->em->getRepository(AppSites::class)->find($site->getHeader());
-                if($header) {
+                if ($header) {
                     $headerBuilder = $this->em->getRepository(FormBuilder::class)->find($header->getFormBuilder());
                     if ($headerBuilder) {
                         $headerForm = $headerBuilder->getForm();
@@ -169,7 +175,7 @@ class PublicController extends AbstractController
             }
             if ($site->getFooter()) {
                 $footer = $this->em->getRepository(AppSites::class)->find($site->getFooter());
-                if($footer) {
+                if ($footer) {
                     $footerBuilder = $this->em->getRepository(FormBuilder::class)->find($footer->getFormBuilder());
                     if ($footerBuilder) {
                         $footerForm = $footerBuilder->getForm();
@@ -193,6 +199,7 @@ class PublicController extends AbstractController
         if (!$site) {
             return $this->render('public/404.html.twig', [
                 'title' => '404',
+                'slug' => $slug
             ]);
         }
         $builderArr = [];
@@ -217,7 +224,8 @@ class PublicController extends AbstractController
             'footer' => $formFooter,
             'footerSettings' => $formFooterSettings,
             'settings' => $formSettings,
-            'site_content' => $siteContent
+            'site_content' => $siteContent,
+            'slug' => $slug
         ]);
 
     }
@@ -237,13 +245,16 @@ class PublicController extends AbstractController
           ]);
       }*/
 
+    /**
+     * @throws ExceptionInterface
+     */
     #[Route('/{postCategory}/{slug}', name: 'public_post')]
     public function public_post_site(Request $request): Response
     {
 
         $slug = $request->get('slug');
         $postCategory = $request->get('postCategory');
-        if($postCategory == 'logged-out') {
+        if ($postCategory == 'logged-out') {
             $id = $request->get('id');
             if ($id == $slug) {
                 $this->addFlash('success', $this->translator->trans('system.You have successfully logged out.'));
@@ -255,92 +266,154 @@ class PublicController extends AbstractController
         }
         $category = '';
         $data = [];
-        $siteCatStatus = false;
         $postCatStatus = false;
-        $catSlug = '';
-        if ($postCategory == $this->getParameter('post_category_name')) {
+        $postTagStatus = false;
+        if ($postCategory == $request->server->get('APP_POST_TAG_NAME')) {
+            $tag = $this->em->getRepository(Tag::class)->findOneBy(['slug' => $slug]);
+            if($tag) {
+                foreach ($tag->getPost() as $p) {
+                    $category = $p->getPostCategory();
+                    break;
+                }
+                $catSlug = $request->server->get('APP_POST_CATEGORY_NAME') . '-' . $category->getId();
+                $this->publicSiteSeo->set_seo($request, null, null, null, $catSlug);
+                $postTagStatus = true;
+            }
+
+
+        }
+        if ($postCategory == $request->server->get('APP_POST_CATEGORY_NAME')) {
             $category = $this->em->getRepository(PostCategory::class)->findOneBy(['slug' => $slug]);
-            $postCatStatus = true;
-            if (!$category) {
-                return $this->render('public/404.html.twig', [
-                    'title' => '404',
-                ]);
+            if($category){
+                $postCatStatus = true;
+                $catSlug = $request->server->get('APP_POST_CATEGORY_NAME') . '-' . $category->getId();
+                $this->publicSiteSeo->set_seo($request, null, null, null, $catSlug);
             }
         }
+
         $formHeader = [];
         $formHeaderSettings = [];
         $formFooter = [];
         $formFooterSettings = [];
 
-        if ($postCategory == $this->getParameter('category_name')) {
-            $category = $this->em->getRepository(SiteCategory::class)->findOneBy(['slug' => $slug]);
-            $siteCatStatus = true;
-            $postCatStatus = false;
-            if (!$category) {
-                return $this->render('public/404.html.twig', [
-                    'title' => '404',
-                ]);
-            }
+        /* if ($postCategory == $this->getParameter('category_name')) {
+             $category = $this->em->getRepository(SiteCategory::class)->findOneBy(['slug' => $slug]);
+
+             $siteCatStatus = true;
+             $postCatStatus = false;
+             if (!$category) {
+                 return $this->render('public/404.html.twig', [
+                     'title' => '404',
+                 ]);
+             }
+         }*/
+        if ($postTagStatus) {
+            $builderDb = $this->em->getRepository(FormBuilder::class)->find($category->getCategoryDesign());
+            $query = $this->em->createQueryBuilder()
+                ->from(Tag::class, 't')
+                ->select('t, p')
+                ->leftJoin('t.posts', 'p')
+                ->andWhere('t.slug=:slug')
+                ->setParameter('slug', $slug);
+            $result = $query->getQuery()->getArrayResult();
+            $tags = $result[0] ?? [];
+
+            $query = $this->em->createQueryBuilder()
+                ->from(PostCategory::class, 'c')
+                ->select('c')
+                ->andWhere('c.slug=:slug')
+                ->setParameter('slug', $category->getSlug());
+            $result = $query->getQuery()->getArrayResult();
+            $category = $result[0] ?? [];
+            $category['title'] = $tags['designation'];
+            $category['slug'] = $slug;
+
+            $data = [
+                'post_id' => $category['id'],
+                'category' => $category,
+                'loop_type' => 'tag',
+                'catId' => $category['id'],
+                'type' => $builderDb->getType(),
+                'settings' => $builderDb->getForm()['settings'],
+                'builder' => $builderDb->getForm()['builder'],
+                'builder_id' => $builderDb->getFormId(),
+                'builder_active' => true,
+                'header' => $formHeader,
+                'headerSettings' => $formHeaderSettings,
+                'footer' => $formFooter,
+                'footerSettings' => $formFooterSettings,
+                'slug' => $slug
+            ];
+            return $this->render('public/index.html.twig', $data);
+            //dd($data);
         }
         if ($postCatStatus) {
-            $catSlug = $this->getParameter('post_category_name') . '-' . $category->getId();
-
-            $this->publicSiteSeo->set_seo($request, null, null, null, $catSlug);
-            if ($category->getCategoryDesign()) {
-                $builderDb = $this->em->getRepository(FormBuilder::class)->find($category->getCategoryDesign());
-                if ($category->getCategoryHeader()) {
-                    $header = $this->em->getRepository(AppSites::class)->find($category->getCategoryHeader());
-                    if ($header->getFormBuilder()) {
-                        $builderHeader = $this->em->getRepository(FormBuilder::class)->find($header->getFormBuilder());
-                        if ($builderHeader) {
-                            $header = $builderHeader->getForm();
-                            $formHeader = $header['builder'];
-                            $formHeaderSettings = $header['settings'];
-                        }
-                    }
-                }
-                if ($category->getCategoryFooter()) {
-                    $footer = $this->em->getRepository(AppSites::class)->find($category->getCategoryFooter());
-                    if ($footer->getFormBuilder()) {
-                        $builderFooter = $this->em->getRepository(FormBuilder::class)->find($footer->getFormBuilder());
-                        if ($builderFooter) {
-                            $footer = $builderFooter->getForm();
-                            $formFooter = $footer['builder'];
-                            $formFooterSettings = $footer['settings'];
-                        }
-                    }
-                }
-
-                $data = [
-                    'post_id' => $category->getId(),
-                    'category' => $category,
-                    'type' => $builderDb->getType(),
-                    'settings' => $builderDb->getForm()['settings'],
-                    'builder' => $builderDb->getForm()['builder'],
-                    'builder_id' => $builderDb->getFormId(),
-                    'builder_active' => true,
-                    'header' => $formHeader,
-                    'headerSettings' => $formHeaderSettings,
-                    'footer' => $formFooter,
-                    'footerSettings' => $formFooterSettings,
-                ];
-                return $this->render('public/index.html.twig', $data);
+            $cat = $this->em->getRepository(PostCategory::class)->find($category->getId());
+            $ids = [];
+            $catId = '';
+            foreach ($cat->getPost() as $p) {
+                $ids[] = $p->getId();
+                $catId = $p->getPostCategory()->getId();
             }
+
+            $postCat = $this->em->getRepository(PostCategory::class)->find($catId);
+            if ($postCat) {
+                if ($postCat->getCategoryDesign()) {
+                    $builderDb = $this->em->getRepository(FormBuilder::class)->find($postCat->getCategoryDesign());
+                    if ($postCat->getCategoryHeader()) {
+                        $header = $this->em->getRepository(AppSites::class)->find($postCat->getCategoryHeader());
+                        if ($header->getFormBuilder()) {
+                            $builderHeader = $this->em->getRepository(FormBuilder::class)->find($header->getFormBuilder());
+                            if ($builderHeader) {
+                                $header = $builderHeader->getForm();
+                                $formHeader = $header['builder'];
+                                $formHeaderSettings = $header['settings'];
+                            }
+                        }
+                    }
+                    if ($postCat->getCategoryFooter()) {
+                        $footer = $this->em->getRepository(AppSites::class)->find($postCat->getCategoryFooter());
+                        if ($footer->getFormBuilder()) {
+                            $builderFooter = $this->em->getRepository(FormBuilder::class)->find($footer->getFormBuilder());
+                            if ($builderFooter) {
+                                $footer = $builderFooter->getForm();
+                                $formFooter = $footer['builder'];
+                                $formFooterSettings = $footer['settings'];
+                            }
+                        }
+                    }
+
+
+
+                    $data = [
+                        'post_id' => $category->getId(),
+                        'category' => $category,
+                        'loop_type' => 'category',
+                        'catId' => $catId,
+                        'type' => $builderDb->getType(),
+                        'settings' => $builderDb->getForm()['settings'],
+                        'builder' => $builderDb->getForm()['builder'],
+                        'builder_id' => $builderDb->getFormId(),
+                        'builder_active' => true,
+                        'header' => $formHeader,
+                        'headerSettings' => $formHeaderSettings,
+                        'footer' => $formFooter,
+                        'footerSettings' => $formFooterSettings,
+                        'slug' => $slug
+                    ];
+
+                    return $this->render('public/index.html.twig', $data);
+                }
+            }
+
             $posts = $this->em->getRepository(PostSites::class)->findBy(['postCategory' => $category]);
             return $this->render('public/category-no-design.html.twig', [
                 'category' => $category,
-                'posts' => $posts
+                'posts' => $posts,
+                'slug' => $slug
             ]);
         }
-        if ($siteCatStatus) {
-            $catSlug = $this->getParameter('category_name') . '-' . $category->getId();
-            $this->publicSiteSeo->set_seo($request, null, $catSlug, null, null);
-            $sites = $this->em->getRepository(AppSites::class)->findBy(['siteCategory' => $category, 'siteStatus' => 'publish', 'siteType' => 'page'], ['position' => 'asc']);
-            return $this->render('public/category.html.twig', [
-                'title' => $category->getTitle(),
-                'sites' => $sites
-            ]);
-        }
+
 
         $category = $this->em->getRepository(PostCategory::class)->findOneBy(['slug' => $postCategory]);
         $post = $this->em->getRepository(PostSites::class)->findOneBy(['postSlug' => $slug, 'postStatus' => 'publish']);
@@ -350,6 +423,7 @@ class PublicController extends AbstractController
         } else {
             return $this->render('public/404.html.twig', [
                 'title' => '404',
+                'slug' => $slug
             ]);
         }
 
@@ -390,6 +464,7 @@ class PublicController extends AbstractController
                 'headerSettings' => $formHeaderSettings,
                 'footer' => $formFooter,
                 'footerSettings' => $formFooterSettings,
+                'slug' => $slug
             ];
         }
 
@@ -405,6 +480,7 @@ class PublicController extends AbstractController
         $this->publicSiteSeo->set_seo($request);
         return $this->render('public/privacy/privacy.html.twig', [
             'title' => $this->translator->trans('app.Data protection'),
+            'slug' => 'privacy'
         ]);
     }
 
@@ -414,6 +490,7 @@ class PublicController extends AbstractController
         $this->publicSiteSeo->set_seo($request);
         return $this->render('public/privacy/imprint.html.twig', [
             'title' => $this->translator->trans('Imprint'),
+            'slug' => 'imprint'
         ]);
     }
 
@@ -423,6 +500,7 @@ class PublicController extends AbstractController
         $this->publicSiteSeo->set_seo($request);
         return $this->render('public/privacy/terms.html.twig', [
             'title' => $this->translator->trans('General Terms and conditions'),
+            'slug' => 'terms'
         ]);
     }
 
@@ -443,21 +521,21 @@ class PublicController extends AbstractController
     public function cronJobMessanger(Request $request): Response
     {
         $selfUrl = $request->getHost();
-       /* if($selfUrl == 'localhost') {
-            $path = 'php';
-        } else {
-          //  $path = PHP_BINARY;
-            $path = PHP_BINARY;
-            $re = '/\d(.+)/m';
-            preg_match($re, $path, $matches);
-            $version = $matches[0] ?? '';
-            $path = 'php'.$version;
-            $path = str_replace('-fpm','', $path);
-        }*/
+        /* if($selfUrl == 'localhost') {
+             $path = 'php';
+         } else {
+           //  $path = PHP_BINARY;
+             $path = PHP_BINARY;
+             $re = '/\d(.+)/m';
+             preg_match($re, $path, $matches);
+             $version = $matches[0] ?? '';
+             $path = 'php'.$version;
+             $path = str_replace('-fpm','', $path);
+         }*/
         $path = $request->server->get('PHP_VERSION_DATA');
-        $cmd = sprintf('%s %s/bin/console messenger:stop-workers',$path, $this->getParameter('projectDir'));
+        $cmd = sprintf('%s %s/bin/console messenger:stop-workers', $path, $this->getParameter('projectDir'));
         exec($cmd);
-        $cmd = sprintf('%s %s/bin/console messenger:consume scheduler_send_mail > /dev/null 2>&1 &',$path, $this->getParameter('projectDir'));
+        $cmd = sprintf('%s %s/bin/console messenger:consume scheduler_send_mail > /dev/null 2>&1 &', $path, $this->getParameter('projectDir'));
         exec($cmd);
         //dd($request->get('key'), $request->get('slug'), $this->get_cronjob_key($request->get('key')));
 

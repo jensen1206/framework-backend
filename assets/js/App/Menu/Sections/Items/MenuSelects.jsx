@@ -196,7 +196,8 @@ export default class MenuSelects extends React.Component {
                                         </Row>
                                     </Accordion.Body>
                                 </Accordion.Item>
-                                <Accordion.Item eventKey={3}>
+
+                                {/*}  <Accordion.Item eventKey={3}>
                                     <Accordion.Header
                                         onClick={(e) => this.onToggleAccordion(e)}>
                                         {trans['menu']['Pages Categories']}
@@ -232,7 +233,8 @@ export default class MenuSelects extends React.Component {
                                             {trans['system']['Add to menu']}
                                         </button>
                                     </Accordion.Body>
-                                </Accordion.Item>
+                                </Accordion.Item> {*/}
+
                                 <Accordion.Item eventKey={4}>
                                     <Accordion.Header
                                         onClick={(e) => this.onToggleAccordion(e)}>

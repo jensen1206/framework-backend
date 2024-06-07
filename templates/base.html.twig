@@ -21,6 +21,7 @@
         <link rel="stylesheet" href="{{ asset('css/public-style.css') }}">
     {% endblock %}
     {% block javascripts %}
+        <script src="{{ asset('/js/public-script.js') }}"></script>
         <script src="{{ asset('/js/wow.min.js') }}"></script>
         {{ encore_entry_script_tags('app') }}
         {#  <script type="application/javascript" src="{{ asset('js/theme-mode.js') }}"></script> #}
@@ -33,7 +34,7 @@
     {% endblock %}
 </head>
 <body>
-<div id="wrapper" class="d-flex flex-column vh-100">
+<div data-slug="{% if slug is defined %}{{ slug }}{% else %}home{% endif %}" id="wrapper" class="d-flex flex-column vh-100 {% if slug is defined %}{{ slug }}{% else %}home{% endif %}">
     {% block navbar %}{% endblock %}
     {% block header %}{% endblock %}
     {% block body %}{% endblock %}

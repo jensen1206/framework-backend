@@ -1,5 +1,6 @@
 <div id="{% if f.config.container_id %}{{ f.config.container_id }}{% else %}{{ f.id}}{% endif %}" class="{{ f.config.css_class }}">
-        {% if f.config.format %}
+      {% if f.config.tag_icon is defined %}{{ f.config.tag_icon|raw }}{% endif %}
+      {% if f.config.format %}
             {{ post.postDate|date(f.config.format) }}
         {% endif %}
 </div>

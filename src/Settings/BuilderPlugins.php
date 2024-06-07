@@ -849,7 +849,8 @@ trait BuilderPlugins
                         'config' => [
                             'css_class' => '',
                             'container_id' => '',
-                            'format' => 'd.m.Y'
+                            'format' => 'd.m.Y',
+                            'tag_icon' => '<i class="bi bi-clock me-2"></i>',
                         ],
                         'options' => [],
                     ],
@@ -887,6 +888,72 @@ trait BuilderPlugins
                             'height' => '200px',
                             'slider_img_size' => 'medium',
                             'slider_object_position' => 'center'
+                        ],
+                        'options' => [],
+                    ],
+                    '6' => [
+                        'id' => uniqid(),
+                        'type' => 'category-tags',
+                        //'section' => 'contents',
+                        'active' => true,
+                        'designation' => $this->translator->trans('builder.Post category tags'),
+                        'description' => $this->translator->trans('builder.Output of the assigned categories'),
+                        'icon' => 'bi bi-tags',
+                        'data' => [
+                            'input' => '<div class="text-center d-flex align-items-center flex-column justify-content-center my-3"><i class="fs-1 bi bi-tags"></i>' . $this->translator->trans('builder.Post category tags') . '</div>'
+                        ],
+                        'animation' => [
+                            'type' => '',
+                            'iteration' => 1,
+                            'duration' => '0.5s',
+                            'delay' => '0.1s',
+                            'count' => 1,
+                            'offset' => 5,
+                            'no_repeat' => false
+                        ],
+                        'backend' => [],
+                        'config' => [
+                            'css_class' => '',
+                            'container_id' => '',
+                            'wrapper_css' => 'd-flex flex-wrap align-items-center',
+                            'item_css' => 'tag-item',
+                            'show_link' => true,
+                            'separator' => '<i class="bi bi-dot"></i>',
+                            'tag_icon' => '<i class="bi bi-grid me-2"></i>',
+                            'tags' => []
+                        ],
+                        'options' => [],
+                    ],
+                    '7' => [
+                        'id' => uniqid(),
+                        'type' => 'post-tags',
+                        //'section' => 'contents',
+                        'active' => true,
+                        'designation' => $this->translator->trans('builder.Post tags'),
+                        'description' => $this->translator->trans('builder.Output of the assigned tags'),
+                        'icon' => 'bi bi-tags-fill',
+                        'data' => [
+                            'input' => '<div class="text-center d-flex align-items-center flex-column justify-content-center my-3"><i class="fs-1 bi bi-tags-fill"></i>' . $this->translator->trans('builder.Post tags') . '</div>'
+                        ],
+                        'animation' => [
+                            'type' => '',
+                            'iteration' => 1,
+                            'duration' => '0.5s',
+                            'delay' => '0.1s',
+                            'count' => 1,
+                            'offset' => 5,
+                            'no_repeat' => false
+                        ],
+                        'backend' => [],
+                        'config' => [
+                            'css_class' => '',
+                            'container_id' => '',
+                            'wrapper_css' => 'd-flex flex-wrap align-items-center',
+                            'item_css' => 'tag-item',
+                            'show_link' => true,
+                            'separator' => '<i class="bi bi-dot"></i>',
+                            'tag_icon' => '<i class="bi bi-tag me-2"></i>',
+                            'tags' => []
                         ],
                         'options' => [],
                     ],
@@ -1063,6 +1130,9 @@ trait BuilderPlugins
                         ],
                         'options' => [],
                     ],
+
+
+
                 ]
             ]
         ];

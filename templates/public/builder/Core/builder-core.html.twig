@@ -222,7 +222,6 @@
                                     {% endif %}
 
                                     {% for f in g.forms %}
-
                                         <div {% if f.animation is defined and f.animation.type %}data-wow-delay="{{ f.animation.delay }}"{% endif %}
                                                 {% if f.animation is defined and f.animation.type %}data-wow-duration="{{ f.animation.duration }}"{% endif %}
                                                 {% if f.animation is defined and f.animation.type %}data-wow-iteration="{{ f.animation.iteration }}"{% endif %}
@@ -230,11 +229,12 @@
                                                 {% if f.animation is defined and f.animation.type %}data-animation-no-repeat="{{ f.animation.no_repeat }}"{% endif %}
                                                 {% if f.animation is defined and f.animation.type %}data-type-animation="{{ f.animation.type }}"{% endif %}
                                              class="{{ f.type }} {% if f.animation is defined %}app-animation{% else %}builder-app{% endif %}">
-                                            {% if f.type == 'medien-carousel' %}
-                                                {{ include('public/builder/carousel.html.twig') }}
-                                            {% endif %}
+
                                             {% if f.type == 'spacer' %}
                                                 {{ include('public/builder/spacer.html.twig') }}
+                                            {% endif %}
+                                            {% if f.type == 'medien-carousel' %}
+                                                {{ include('public/builder/carousel.html.twig') }}
                                             {% endif %}
                                             {% if f.type == 'tinymce' %}
                                                 {{ include('public/builder/text.html.twig') }}
@@ -334,6 +334,12 @@
                                                 {% if f.type == 'post-date' %}
                                                     {{ include('public/builder/post/post-date.html.twig') }}
                                                 {% endif %}
+                                            {% endif %}
+                                            {% if f.type == 'category-tags' %}
+                                                {{ include('public/builder/category/category-title-tag.html.twig') }}
+                                            {% endif %}
+                                            {% if f.type == 'post-tags' %}
+                                                {{ include('public/builder/category/category-tags.html.twig') }}
                                             {% endif %}
                                             {% if f.type == 'post-category' %}
                                                 {{ include('public/builder/category/category-title.html.twig') }}
