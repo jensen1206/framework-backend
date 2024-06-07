@@ -9,8 +9,10 @@ use App\Entity\PostSites;
 use App\Entity\SystemSettings;
 use App\Entity\Tag;
 use App\Entity\User;
+use App\Repository\PostCategoryRepository;
 use App\Settings\Settings;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Query\ResultSetMapping;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
@@ -53,17 +55,26 @@ class DashboardController extends AbstractController
                 }
             }
         }
-        $tag1 = new Tag();
-        $tag1->setDesignation('dinosaurs');
-        $tag2 = new Tag();
-        $tag2->setDesignation('monster trucks');
+        $cat = $this->em->getRepository(PostCategory::class)->find(1);
+        $ids = [];
+        foreach ($cat->getPost() as $p) {
+            $ids[] = $p->getId();
+        }
 
-        $post = $this->em->getRepository(PostSites::class)->find(4);
-        $tt = $this->em->getRepository(Tag::class)->find(1);
-        $tt2 = $this->em->getRepository(Tag::class)->find(2);
-        $post->addTag($tt);
-        $post->addTag($tt2);
-        $this->em->persist($post);
+        $query = $this->em->createQueryBuilder()
+            ->from(PostSites::class, 'p')
+            ->select('p, c, ca, s')
+            ->andWhere('p.siteType=:type')
+            ->setParameter('type', 'post')
+            ->leftJoin('p.postCategory', 'c')
+            ->leftJoin('p.categories', 'ca')
+            ->leftJoin('p.siteSeo', 's')
+            ->andWhere('p.id IN (:cats)')
+            ->setParameter('cats',$ids);
+        $query->orderBy('p.postDate', 'ASC');
+        $t =  $query->getQuery()->getArrayResult();
+        ;
+
        // $this->em->flush();
 
        // $pc = $this->em->getRepository(PostCategory::class)->find(2);

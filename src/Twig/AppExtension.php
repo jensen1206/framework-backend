@@ -2,6 +2,7 @@
 
 namespace App\Twig;
 
+use ApiPlatform\Metadata\Post;
 use App\AppHelper\EmHelper;
 use App\AppHelper\Helper;
 use App\AppHelper\NavHelper;
@@ -17,9 +18,12 @@ use App\Entity\MediaSlider;
 use App\Entity\PostCategory;
 use App\Entity\PostSites;
 use App\Entity\SystemSettings;
+use App\Entity\Tag;
 use App\Entity\User;
 use App\Service\UploaderHelper;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Container\NotFoundExceptionInterface;
@@ -84,6 +88,7 @@ class AppExtension extends AbstractExtension implements ServiceSubscriberInterfa
             new TwigFilter('featureImage', [$this, 'getFeatureImage']),
             new TwigFilter('builderDesign', [$this, 'getBuilderDesign']),
             new TwigFilter('categoryLoop', [$this, 'getCategoryLoop']),
+            new TwigFilter('categoryPostLoop', [$this, 'getCategoryPostLoop']),
             new TwigFilter('postCategory', [$this, 'getPostCategory']),
             new TwigFilter('categoryImage', [$this, 'getCategoryImage']),
             new TwigFilter('appMenu', [$this, 'getAppMenu']),
@@ -336,10 +341,11 @@ class AppExtension extends AbstractExtension implements ServiceSubscriberInterfa
 
         $query = $this->em->createQueryBuilder()
             ->from(PostSites::class, 'p')
-            ->select('p, c, s')
+            ->select('p, c, ca, s')
             ->andWhere('p.siteType=:type')
             ->setParameter('type', 'post')
             ->leftJoin('p.postCategory', 'c')
+            ->leftJoin('p.categories', 'ca')
             ->leftJoin('p.siteSeo', 's')
             ->andWhere('c.id IN (:cats)')
             ->setParameter('cats', $catLoads);
@@ -367,6 +373,73 @@ class AppExtension extends AbstractExtension implements ServiceSubscriberInterfa
         }
 
         return $query->getQuery()->getArrayResult();
+    }
+
+
+    public function getCategoryPostLoop($config, $id, $type, $slug): array
+    {
+
+        $ids = [];
+        if($type == 'category') {
+            $cat = $this->em->getRepository(PostCategory::class)->find($id);
+            foreach ($cat->getPost() as $p) {
+                $ids[] = $p->getId();
+            }
+        }
+        if($type == 'tag') {
+            $query = $this->em->createQueryBuilder()
+                ->from(Tag::class, 't')
+                ->select('t, p')
+                ->leftJoin('t.posts', 'p')
+                ->andWhere('t.slug=:slug')
+                ->setParameter('slug', $slug);
+            $result = $query->getQuery()->getArrayResult();
+            $tags = $result[0] ?? [];
+            if($tags){
+                foreach ($tags['posts'] as $tmp) {
+                    $ids[] = $tmp['id'];
+                }
+            }
+        }
+
+        if (isset($config['load_limit']) && $config['load_limit'] > 0) {
+            // $query->setMaxResults($config['load_limit']);
+            array_splice($ids, $config['load_limit']);
+        }
+        $query = $this->em->createQueryBuilder()
+            ->from(PostSites::class, 'p')
+            ->select('p, c, ca,t, s')
+            ->andWhere('p.siteType=:type')
+            ->setParameter('type', 'post')
+            ->leftJoin('p.postCategory', 'c')
+            ->leftJoin('p.tags', 't')
+            ->leftJoin('p.categories', 'ca')
+            ->leftJoin('p.siteSeo', 's')
+            ->andWhere('p.id IN (:posts)')
+            ->setParameter('posts',$ids)
+            ;
+
+
+        if ($config['order_by'] == 'date') {
+            $query->orderBy('p.postDate', $config['order']);
+        }
+        if ($config['order_by'] == 'position') {
+            $query->orderBy('p.position', $config['order']);
+        }
+        if ($config['order_by'] == 'name') {
+            $query->orderBy('s.seoTitle', $config['order']);
+        }
+        if ($config['order_by'] == 'category_position') {
+            $query->orderBy('c.position', $config['order']);
+            $query->addOrderBy('p.postDate', 'DESC');
+        }
+        if ($config['order_by'] == 'category_name') {
+            $query->orderBy('c.title', $config['order']);
+            $query->addOrderBy('p.postDate', 'DESC');
+        }
+
+        return $query->getQuery()->getArrayResult();
+
     }
 
     public function getPostGallery($id, $form): array

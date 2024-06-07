@@ -1,4 +1,5 @@
 <div id="{% if f.config.container_id %}{{ f.config.container_id }}{% else %}{{ f.id}}{% endif %}" class="{{ f.config.css_class }}">
     {% set href = path('public_post', {'postCategory':app.request.server.get('APP_POST_CATEGORY_NAME'), 'slug': post.postCategory.slug}) %}
     <a href="{{ href }}">{{ post.postCategory.title }}</a>
+
 </div>

@@ -4,7 +4,7 @@
      {{ include('public-navbar.twig') }}
  {% endblock %}
 {% block body %}
-    <main class="flex-shrink-0 flex-fill" style="height: max-content; overflow-x: hidden">
+    <main class="main">
         <div id="public-content">
             {% if builder_active is defined and builder_active %}
                 {% for b in builder %}

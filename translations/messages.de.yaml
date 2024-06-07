@@ -339,7 +339,7 @@ system:
   Create tag: Tag erstellen
   Tag update: Tag update
   Tag successfully deleted.: Tag erfolgreich gelöscht.
-  The tag is deleted from all posts.: Der Tag wird aus allen Beiträgen gelsöcht.
+  The tag is deleted from all posts.: Der Tag wird aus allen Beiträgen gelöscht.
   Tag already exists: Tag ist schon vorhanden
   New tag was created: neuer Tag wurde erstellt
   Categories: Kategorien
@@ -585,6 +585,7 @@ system:
   Add Custom Field: Benutzerdefiniertes Feld hinzufügen
   Manage Menu: Menü Verwalten
   Manage Fonts: Fonts verwalten
+  Edit design: Design bearbeiten
   Delete fonts: Fonts löschen
   Add menu: Menü hinzufügen
   Page menu: Seiten-Menü
@@ -1052,7 +1053,14 @@ builder:
   Layouts: Layouts
   Plugins: Plugins
   Page settings: Seiten-Einstellungen
-
+  Category Tags: Kategorie Tags
+  Post category tags: Beitrag Kategorie Tags
+  Output of the assigned categories: Ausgabe der zugewiesenen Kategorien
+  Tags: Tags
+  Tag separator: Tag separator
+  Tag Icon: Tag Icon
+  Post tags: Beitrag Tags
+  Output of the assigned tags: Ausgabe der zugewiesenen Tags
   Click on to add a new line to the layout.: Klicken Sie auf , um eine neue Zeile zum Layout hinzuzufügen.
   Import layout: Layout Importieren
   Upload json File: Upload json File
@@ -1194,6 +1202,7 @@ plugins:
   Button: Button
   Post button: Beitrags Button
   Link to the post: Link zum Beitrag
+  Link to category: Link zur Kategorie
   Bootstrap Button: Bootstrap Button
   Button Text: Button Text
   Button variant: Button Variant

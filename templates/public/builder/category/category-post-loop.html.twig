@@ -79,12 +79,14 @@
                     {% set loadCat = {'0': {'id': category.id} } %}
                 {% endif %}
             {% endif %}
+            {# {% set categoryLoop = loadCat|categoryLoop(f.config) %} #}
 
-            {% set categoryLoop = loadCat|categoryLoop(f.config) %}
-
-            {% for post in categoryLoop %}
-                {{ include('public/builder/category/category-loop-column.html.twig') }}
-            {% endfor %}
+            {% if loop_type is defined and category.slug %}
+                {% set categoryLoop = f.config|categoryPostLoop(category.id, loop_type, category.slug) %}
+                {% for post in categoryLoop %}
+                    {{ include('public/builder/category/category-loop-column.html.twig') }}
+                {% endfor %}
+            {% endif %}
         </div>
 
         {% set page = '' %}
@@ -100,7 +102,8 @@
         {% endif %}
         {% if f.config.lazy_load_active and f.config.load_more_type == 'button' and builder_id is defined %}
             <div class="load-more-btn">
-                <button data-controller="post-loop" data-page="1" data-loop="{{ loop.index }}" data-builder="{{ builder_id }}" data-grid="{{ g.id }}" data-form="{{ f.id }}"
+                <button data-controller="post-loop" data-page="1" data-loop="{{ loop.index }}"
+                        data-builder="{{ builder_id }}" data-grid="{{ g.id }}" data-form="{{ f.id }}"
                         class="mt-3 load-post-btn loop-button-{{ loop.index }} btn btn-secondary {{ f.config.load_more_css }}">
                     {{ f.config.load_more_txt }}
                 </button>

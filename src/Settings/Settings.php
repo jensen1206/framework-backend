@@ -1051,73 +1051,80 @@ trait Settings
                 'id' => uniqid(),
                 'default' => 1,
                 'section' => 'design',
+                'label' => $this->translator->trans('system.Edit design'),
+                'role' => 'MANAGE_DESIGN_SETTINGS'
+            ],
+            '47' => [
+                'id' => uniqid(),
+                'default' => 1,
+                'section' => 'design',
                 'label' => $this->translator->trans('system.Manage Fonts'),
                 'role' => 'MANAGE_FONTS'
             ],
-            '47' => [
+            '48' => [
                 'id' => uniqid(),
                 'default' => 0,
                 'section' => 'design',
                 'label' => $this->translator->trans('system.Delete fonts'),
                 'role' => 'DELETE_FONTS'
             ],
-            '48' => [
+            '49' => [
                 'id' => uniqid(),
                 'default' => 0,
                 'section' => 'design',
                 'label' => $this->translator->trans('system.Manage header'),
                 'role' => 'MANAGE_HEADER'
             ],
-            '49' => [
+            '50' => [
                 'id' => uniqid(),
                 'default' => 0,
                 'section' => 'design',
                 'label' => $this->translator->trans('system.Manage footer'),
                 'role' => 'MANAGE_FOOTER'
             ],
-            '50' => [
+            '51' => [
                 'id' => uniqid(),
                 'default' => 1,
                 'section' => 'tools',
                 'label' => $this->translator->trans('system.Manage Tools'),
                 'role' => 'MANAGE_TOOLS'
             ],
-            '51' => [
+            '52' => [
                 'id' => uniqid(),
                 'default' => 1,
                 'section' => 'tools',
                 'label' => $this->translator->trans('system.Manage Map data protection'),
                 'role' => 'MANAGE_MAPS_PROTECTION'
             ],
-            '52' => [
+            '53' => [
                 'id' => uniqid(),
                 'default' => 1,
                 'section' => 'forms',
                 'label' => $this->translator->trans('system.Manage forms'),
                 'role' => 'MANAGE_FORMS'
             ],
-            '53' => [
+            '54' => [
                 'id' => uniqid(),
                 'default' => 1,
                 'section' => 'forms',
                 'label' => $this->translator->trans('forms.Create form'),
                 'role' => 'ADD_FORMS'
             ],
-            '54' => [
+            '55' => [
                 'id' => uniqid(),
                 'default' => 1,
                 'section' => 'forms',
                 'label' => $this->translator->trans('forms.Delete form'),
                 'role' => 'DELETE_FORMS'
             ],
-            '55' => [
+            '56' => [
                 'id' => uniqid(),
                 'default' => 0,
                 'section' => 'log',
                 'label' => $this->translator->trans('system.Manage consumer'),
                 'role' => 'MANAGE_CONSUMER'
             ],
-            '56' => [
+            '57' => [
                 'id' => uniqid(),
                 'default' => 1,
                 'section' => 'tools',

@@ -18,6 +18,9 @@ class Tag
     #[ORM\Column(length: 255)]
     private ?string $designation = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $slug = null;
+
     #[ORM\ManyToMany(targetEntity: PostSites::class, mappedBy: 'tags')]
      private $posts;
 
@@ -63,6 +66,18 @@ class Tag
         if ($this->posts->removeElement($posts)) {
             $posts->removeTag($this);
         }
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): static
+    {
+        $this->slug = $slug;
+
         return $this;
     }
 

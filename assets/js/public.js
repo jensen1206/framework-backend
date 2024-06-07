@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let publicContent = document.getElementById('public-content');
         let navRect = nav.getBoundingClientRect();
         let navHeight = navRect.height;
-        publicContent.style.paddingTop = `${navHeight}px`
+       // publicContent.style.paddingTop = `${navHeight}px`
 
         let scrollTimeOut;
         // window_scroll_resize(window.scrollY, window.innerWidth)
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 let mobilHeight = nav.getAttribute('data-mobil')
 
 
-                publicContent.style.paddingTop = `${navHeight}px`
+               // publicContent.style.paddingTop = `${navHeight}px`
                 if (width > 768) {
                     if (height > 400) {
                         if (brandImage) {
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     let publicContent = document.getElementById('public-content');
                     let navRect = nav.getBoundingClientRect();
                     let navHeight = navRect.height;
-                    publicContent.style.paddingTop = `${navHeight}px`
+                    //publicContent.style.paddingTop = `${navHeight}px`
                     if (height > 400) {
                         if (brandImage) {
                             brandImage.style.width = `${scrollHeight}px`;

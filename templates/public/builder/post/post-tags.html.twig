@@ -1,0 +1,20 @@
+{% if post is defined %}
+    <div id="{% if f.config.container_id %}{{ f.config.container_id }}{% else %}{{ f.id }}{% endif %}"
+         class="{{ f.config.css_class }}">
+        {% if post.tags is defined and post.tags|length %}
+            <div class="{{ f.config.wrapper_css }}">
+                {% if f.config.tag_icon is defined %}
+                    {{ f.config.tag_icon|raw }}
+                {% endif %}
+                {% for tag in post.tags %}
+                    {% set href = '' %}
+                    {% if f.config.show_link %}
+                        {% set href = path('public_post', {'postCategory':app.request.server.get('APP_POST_TAG_NAME'), 'slug': tag.slug}) %}
+                    {% endif %}
+                <span class="{{ f.config.item_css }}"><a title="{{ tag.designation }}"
+                            {% if f.config.show_link %}href="{{ href }}"{% endif %}>{{ tag.designation }}</a></span>{% if f.config.separator and not loop.last %}{{ f.config.separator|raw }}{% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endif %}

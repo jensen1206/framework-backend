@@ -24,7 +24,7 @@ export default class PostOffcanvas extends React.Component {
             collapseAttributes: false,
             collapseFile: false,
             collapseCustom: false,
-            collapseCategories: true,
+            collapseCategories: false,
             collapseTags: false,
             selectedCat: '',
             selectedTag: '',

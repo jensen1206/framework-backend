@@ -89,6 +89,8 @@ class FormBuilderPluginsAjaxCall
 
         $postCategory = $this->bp_plugins('post-category', '', '');
 
+        $tagsArr = ['post-tags', 'category-tags'];
+
         $all = [];
         //$medien = $this->bp_plugins('gallery')['plugins'];
         $medien = $this->bp_plugins('', '', 'medien');

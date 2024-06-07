@@ -23,6 +23,7 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 use Symfony\Component\Serializer\Exception\ExceptionInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
+
 class PostAjaxCall
 {
     protected object $responseJson;
@@ -219,15 +220,16 @@ class PostAjaxCall
             $this->responseJson->msg = $this->translator->trans('Ajax transmission error') . ' (Ajx-SE ' . __LINE__ . ')';
             return $this->responseJson;
         }
-
+        $designation = trim($designation);
         $this->responseJson->check_tag = true;
         if($tags){
             $this->responseJson->check_tag = false;
             return $this->responseJson;
         }
-
+        $slug = Urlizer::urlize($designation, '-');
         $tag = new Tag();
-        $tag->setDesignation(trim($designation));
+        $tag->setDesignation($designation);
+        $tag->setSlug($slug);
         $this->em->persist($tag);
 
         $post = $this->em->getRepository(PostSites::class)->find($postId);
@@ -262,20 +264,23 @@ class PostAjaxCall
             $this->responseJson->msg = $this->translator->trans('Ajax transmission error') . ' (Ajx-SE ' . __LINE__ . ')';
             return $this->responseJson;
         }
+        $designation = trim($designation);
         $this->responseJson->check_tag = true;
-        if(strtolower($tag->getDesignation()) != trim(strtolower($designation))) {
-            $check = $this->em->getRepository(Tag::class)->findBy(['designation' => trim($designation)]);
+        if(strtolower($tag->getDesignation()) != strtolower($designation)) {
+            $check = $this->em->getRepository(Tag::class)->findBy(['designation' => $designation]);
             if($check){
                 $this->responseJson->check_tag = false;
                 return $this->responseJson;
             }
         }
-        $tag->setDesignation(trim($designation));
+        $slug = Urlizer::urlize($designation, '-');
+        $tag->setDesignation($designation);
+        $tag->setSlug($slug);
         $this->em->persist($tag);
         $this->em->flush();
         $record = [
             'id' => $id,
-            'designation' => trim($designation)
+            'designation' => $designation
         ];
         $this->responseJson->msg = $this->translator->trans('The changes have been saved successfully.');
         $this->responseJson->status = true;

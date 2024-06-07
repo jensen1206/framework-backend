@@ -112,6 +112,8 @@ export default class PagePlugins extends React.Component {
                             : ''}
                         {this.props.plugin.type === 'post-content' ||
                         this.props.plugin.type === 'gmaps-api' ||
+                        this.props.plugin.type === 'category-tags' ||
+                        this.props.plugin.type === 'post-tags' ||
                         this.props.plugin.type === 'gmaps-iframe' ||
                         this.props.plugin.type === 'osm' ||
                         this.props.plugin.type === 'osm-leaflet' ||

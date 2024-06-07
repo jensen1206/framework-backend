@@ -33,6 +33,19 @@ export default class BackendLoopDate extends React.Component {
                                 placeholder={trans['posts']['Date format']}/>
                         </FloatingLabel>
                     </Col>
+                    <Col xs={12}>
+                        <FloatingLabel
+                            controlId={uuidv4()}
+                            label={`${trans['builder']['Tag Icon']} `}
+                        >
+                            <Form.Control
+                                value={this.props.edit.config.tag_icon || ''}
+                                onChange={(e) => this.props.onSetStateConfig(e.target.value, 'tag_icon')}
+                                className="no-blur"
+                                type="text"
+                                placeholder={trans['builder']['Tag Icon']}/>
+                        </FloatingLabel>
+                    </Col>
                 </Row>
             </React.Fragment>
         )

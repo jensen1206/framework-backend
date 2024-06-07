@@ -37,6 +37,7 @@ import BackenOSMIframe from "./utils/BackenOSMIframe";
 import BackenOSMLeaflet from "./utils/BackenOSMLeaflet";
 import BackendForms from "./utils/BackendForms";
 import BackendAccordion from "./utils/BackendAccordion";
+import BackendTags from "./utils/BackendTags";
 import InputGroup from 'react-bootstrap/InputGroup';
 import Collapse from 'react-bootstrap/Collapse';
 
@@ -1116,7 +1117,6 @@ export default class PluginEditModal extends React.Component {
                                                 </React.Fragment>
                                                 : ''
                                         }
-
                                         <Col xs={12}>
                                             <FloatingLabel
                                                 style={{zIndex: 0}}
@@ -1152,6 +1152,14 @@ export default class PluginEditModal extends React.Component {
                                             <div className="form-text">
                                                 {trans['plugins']['Style particular content element differently - add a class name and refer to it in custom CSS.']}
                                             </div>
+                                        </Col>
+                                        <Col xs={12}>
+                                            {this.state.edit.type === 'category-tags' || this.state.edit.type === 'post-tags' ?
+                                                <BackendTags
+                                                    edit={this.state.edit}
+                                                    onSetStateConfig={this.onSetStateConfig}
+                                                />
+                                                : ''}
                                         </Col>
                                     </Row>
                                 </div>

@@ -129,6 +129,7 @@ export default class BackendPostLoop extends React.Component {
                             </Form.Select>
                         </FloatingLabel>
                     </Col>
+                    {/*}
                     {this.props.builderType !== 'loop' ?
                     <Col xs={12}>
                         <h6 className="my-2">{trans['posts']['Post categories']}</h6>
@@ -154,7 +155,7 @@ export default class BackendPostLoop extends React.Component {
                                 )
                             })}
                         </React.Fragment>
-                    </Col>: ''}
+                    </Col>: ''} {*/}
                     <Col xs={12}>
                         <Form.Check
                             type="switch"

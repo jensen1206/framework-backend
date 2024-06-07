@@ -2,6 +2,9 @@
 {% set catLoop = '' %}
 
 {% if category is defined %}
+    {% if loop_type is defined and loop_type == 'tag' %}
+        <i title="Tag" class="bi bi-tag site-tag"></i>
+    {% endif %}
     {% set catLoop = category %}
 {% else %}
     {% if post is defined %}
