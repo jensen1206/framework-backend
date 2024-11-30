@@ -401,7 +401,7 @@ class AccountAjaxCall
     private
     function account_handle(): object
     {
-        if (!$this->manage_account) {
+        if (!$this->account_edit) {
             $this->responseJson->title = $this->translator->trans('Error');
             $this->responseJson->msg = $this->translator->trans('Missing authorisation') . ' (Ajx-PR ' . __LINE__ . ')';
             return $this->responseJson;
