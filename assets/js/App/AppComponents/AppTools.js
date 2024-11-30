@@ -198,6 +198,28 @@ export const swalAlertMsg = (data) => {
         }).then();
     }
 
+    export function swal_delete_modal(data) {
+        return new Promise((resolve) => {
+            reactSwal.fire({
+                title: data.title,
+                reverseButtons: true,
+                html: `<span class="swal-delete-body">${data.msg}</span>`,
+                confirmButtonText: data.btn,
+                cancelButtonText: trans['swal']['Cancel'],
+                showClass: {
+                    // popup: `animate__animated ${animate ? 'animate__fadeInDown' : 'animate__bounceIn' }`
+                },
+                customClass: {
+                    popup: 'swal-delete-container'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            }).then((result) => {
+                return resolve(result.isConfirmed)
+            });
+        })
+    }
 
 }
 
